@@ -120,6 +120,10 @@ reviewer: CEO
 ## 依存関係
 上位文書: [KNOWLEDGE_PROMOTION_RULES](../02_Rules/KNOWLEDGE_PROMOTION_RULES.md) / [ARCHITECTURE.md](../00_MASTER/ARCHITECTURE.md)（③Knowledge Layer）
 
+## 現在の状態（2026-07-06）
+- Knowledge Builder v1.0 [Experimental] 稼働。`python3 knowledge_builder.py` で転記+索引再生成
+- Knowledge Draft 10件（_drafts/）+ SOP Draft 3件（../04_SOP/_drafts/）= 索引13件。**全件draft・CEOレビュー待ち・Agent参照不可**
+
 ## 今後のTODO
-- Knowledge Builder v1.0の実装（承認済みLesson 11件の転記から開始）
+- Draft 13件のCEOレビュー → 承認分をカテゴリフォルダへ移動しreleased化
 - 1,000件超え時の索引分割・意味検索の導入検討

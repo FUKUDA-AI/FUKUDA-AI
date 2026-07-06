@@ -5,7 +5,7 @@
 ## 次Sprint候補（推奨順）
 
 1. ~~EVOLVING登録Sprint~~ ✅ 2026-07-06完了（EP-001〜008 active）
-3. **Knowledge Builder v1.0（Phase 6）**: 承認済みLesson 11件のKnowledge Draft / SOP（催事設営・so u標準対応・見積対応）への転記
+3. ~~Knowledge Builder v1.0~~ ✅ 2026-07-06完了（Draft13件生成）→ 次は**Knowledge ReviewSprint**（Draft 13件のCEOレビュー→承認分のreleased化・索引再生成）
 4. Lesson/Principle Generator品質改善（却下理由11件を抽出フィルタへ反映）
 5. ルート08_Decision_Log/の99_Archive移動（CEO承認後・AIは提案のみ）
 

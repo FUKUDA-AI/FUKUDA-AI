@@ -6,6 +6,32 @@
 
 ---
 
+## 2026-07-06（v1.0.0後・v1.1に向けて）
+
+### Knowledge Builder v1.0 [Experimental]
+- **対象機能**: knowledge_builder.py（新規）
+- **変更内容**: CEO承認済み（released）Lesson 10件をKnowledge IA v1.0に従いKnowledge Draft 10件（01_Knowledge/_drafts/・KN-xxx形式・YAMLフロントマター13項目・Evidence必須）へ転記。SOP化候補3件を04_SOP/_drafts/へ生成（so u顧客対応・ODM見積対応・催事設営チェックリスト）。knowledge_index.json（13件）をフロントマタースキャンから自動生成
+- **変更理由**: Phase 6実装（CEO指示Sprint）。※CEO指示は「11件」だがLSN-011のHold修正により対象は10件
+- **互換性**: 新規ファイルのみ。Released Knowledge（カテゴリフォルダ直下）への書き込みなし。全Draftはstatus: draft / needs_ceo_review: true・Agent参照不可
+- **担当**: CEO（承認方針）/ AI（実装）
+
+# 🎂 NOMADO AI Operating System v1.0.0 [Released] — 2026-07-06
+
+**この日をFUKUDA AIの誕生日として記録する。**
+「会社の経営思想を学び続けるAI」の確かな出発点（CEO宣言）。今後はv1.1、v1.2…と育てていく。
+
+- **Gitタグ**: `v1.0.0`（コミット f838519・タグメッセージに誕生日を記録）
+- **v1.0.0に含まれるもの**:
+  - 00_MASTER最上位文書群11文書（憲法 / 経営哲学 / 会社情報 / ビジョン / IDENTITY / CORE / EVOLVING / AI憲章 / 開発標準 / ROADMAP / CHANGELOG）
+  - Architecture v1.3 — 学習サイクル: Conversation → Insight/Decision → Pattern → Lesson → Principle → CEO Review → EVOLVING → CORE（+ AI Memory横断層・5層構造）
+  - パイプライン実装: ChatGPT Importer v1.1 / Conversation Index v1.0 / Insight・Decision Extractor v2.0 / Pattern Analyzer v1.0 / Lesson Generator v1.0 / Principle Generator v1.0
+  - **EVOLVING_PRINCIPLES EP-001〜008**（CEO承認済み・運用中）— 学習サイクルの初回一巡の成果
+  - Knowledge昇格ルール v1.0 / Knowledge Information Architecture v1.0 / AI Memory Layer v1.0
+- **Git管理外**: 01_Knowledge/09_ChatGPT_Archive（1.8GBの生データ。正本はフォルダ内に存置）
+- **次**: v1.1に向けてKnowledge Builder v1.0（Phase 6）から
+
+---
+
 ## 2026-07-06
 
 ### Knowledge Information Architecture v1.0 [Released]

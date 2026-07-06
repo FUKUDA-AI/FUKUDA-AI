@@ -13,6 +13,7 @@
 | 2e | LSN-011はhold継続。PRN-010の再整理版「経営判断は売上だけでなく利益・ブランド価値・運営負荷・将来性を総合判断」の再提案とセットで再判断 | lesson_log.json | 中 |
 | 2d | ~~EVOLVING_PRINCIPLES.mdの学習サイクル図v1.3更新~~ ✅ 2026-07-06 EVOLVING登録Sprintで実施（CEO指示に含まれていたため） | — | 完了 |
 | 2f | PRN-009の継続観察: SUNNY NOMADO / so u / MIRAI UP / 今後のブランドで「職人の目と実物で判断」の反復を確認したら再提案 | principle_log.json | 低（観察） |
+| 2g | **Knowledge Draft 10件 + SOP Draft 3件のレビュー**（01_Knowledge/_drafts/ と 04_SOP/_drafts/。承認分をカテゴリフォルダへ移動→released化） | knowledge_index.json参照 | 最高 |
 | 3 | 旧CEO_PRINCIPLES.mdの99_Archive移動可否 | 00_MASTER/CEO_PRINCIPLES.md | 中 |
 | 4 | ルート08_Decision_Log/の99_Archive移動可否（**Extractor v2.0完了済み・移動提案中**） | 08_Decision_Log/ | 中 |
 | 5 | Insight/Decision Extractor のReleased昇格 | CHANGELOG参照 | 中 |
@@ -25,6 +26,14 @@
 - BUSINESS_PHILOSOPHY: 各ブランド哲学の詳細・10年後/30年後の会社像
 
 ## 保留事項
+
+- **Gitロックファイルの削除（要CEO作業）**: サンドボックスはマウントフォルダ内のファイル削除ができず、gitの一時ロックが残留。v1.0.0タグとコミット(f838519)は正常だが、以後のコミットがブロックされている。CEOのMacでターミナルから以下を実行すると解消する:
+  ```
+  cd ~/Claude/Projects/FUKUDA\ AI
+  rm .git/HEAD.lock .git/index.lock .git/index-v2.lock
+  git add -A && git commit -m "docs: v1.0.0リリース記録・FUKUDA AI誕生日"
+  ```
+  （CHANGELOG・IDENTITYへの誕生日記録はファイルとして保存済み。未コミットなだけ）
 
 - Brand Constitution原本（docx）のプロジェクト内保存場所の指定（現状アップロード領域のみ）
 - 憲法第9条【内部限定】事項のAgent参照可否ルール化

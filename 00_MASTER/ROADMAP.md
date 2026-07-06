@@ -68,9 +68,9 @@ Version: v1.0
 
 ### Phase 6: Knowledge Builder 🔶
 - **目的**: 承認済みLesson等を 01_Knowledge へ構造化して転記
-- **現在の状態**: **Knowledge Information Architecture v1.0 設計完了（2026-07-06）** — 11カテゴリ・KN-xxx ID・共通フォーマット（13項目）・knowledge_index.json索引ファースト検索（01_Knowledge/README.md）
-- **次Sprint**: Knowledge Builder v1.0 の実装（IAに従い、承認済みLesson 11件の転記 + 索引生成から開始）
-- **完了条件**: 転記・索引再生成が再実行可能、AgentがReleasedのみ索引経由で参照できる
+- **現在の状態**: Knowledge Builder v1.0 [Experimental]（2026-07-06）— Knowledge Draft 10件 + SOP Draft 3件生成、knowledge_index.json 13件。全件draft・CEOレビュー待ち
+- **次Sprint**: Draft 13件のCEOレビュー → 承認分を各カテゴリフォルダへ移動（released化）し索引再生成
+- **完了条件**: 転記・索引再生成が再実行可能 ✅、AgentがReleasedのみ索引経由で参照できる（released 0件のため未検証）
 - **依存関係**: Knowledge IA v1.0（完了）、Phase 7のCEOレビュー結果（完了）
 
 ### Phase 7: Lessons Learned / Principle 🔶
