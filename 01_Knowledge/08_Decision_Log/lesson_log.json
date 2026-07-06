@@ -1,0 +1,645 @@
+{
+  "meta": {
+    "generator": "Lesson Generator v1.0 [Experimental]",
+    "generated_at": "2026-07-06 10:55:40",
+    "inputs": {
+      "patterns": 4,
+      "insights_candidates": 18,
+      "decisions_with_reason": 1
+    },
+    "note": "全Lessonはdraft。CEO Review前にKnowledge / EVOLVING_PRINCIPLES / CORE_PRINCIPLESへ反映しないこと（KNOWLEDGE_PROMOTION_RULES.md準拠）。",
+    "total_lessons": 23,
+    "ceo_review": {
+      "date": "2026-07-06",
+      "source": "06_Reports/CEO_REVIEW_QUEUE.md（CEO記入版docx）",
+      "result": "approve13 / reject11 / hold3（LSN-011をApprove→Holdへ修正）"
+    }
+  },
+  "lessons": [
+    {
+      "lesson_id": "LSN-001",
+      "title": "反復パターン: 情熱・ストーリー・大切",
+      "summary": "「”歩みゆたかに”という想いを込めて 作り手の情熱と歴史・ストーリーを大切にカタチにして、そして丁寧なモノづくりをお届けできればと思っております」— 異なる会話で6回反復された考え方。今後の発信・判断でも一貫して適用する",
+      "type": "今後の行動指針",
+      "category": "ブランド",
+      "brand": "全社",
+      "reason": "2024-08-29〜2026-04-09に6会話で反復。単発の思いつきではなく検証された考え方（PTN-001）",
+      "expected_effect": "ブランドの語り口・判断の一貫性が保たれ、憲法（歩みゆたかに）との整合を維持できる",
+      "risk": "文脈が変わった場合の適用可否はCEO判断が必要",
+      "related_patterns": [
+        "PTN-001"
+      ],
+      "related_insights": [],
+      "related_decisions": [],
+      "source_ids": [
+        "4616eb3f-7519-4bef-9108-f64a6b8159f1",
+        "670dd740-5524-800e-8dd6-a51856462f11",
+        "6787ad88-93b4-800e-9e6c-4dd4d1f85899",
+        "682ece8b-5bc8-800e-bfb1-7bda75107ed6",
+        "69d678c3-d398-83a6-bb03-d3d52a5b3428",
+        "69d7863c-b4c4-83a6-863b-15d9d3b962cf"
+      ],
+      "confidence": "high",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-002",
+      "title": "反復パターン: 職人・手元・一日",
+      "summary": "「職人にもお手紙を共有し、ご希望の内容にて、一日でも早くお手元にお届けできるよう 職人が大切にお作りさせて頂きます」— 異なる会話で5回反復された考え方。今後の発信・判断でも一貫して適用する",
+      "type": "今後の行動指針",
+      "category": "so u",
+      "brand": "全社",
+      "reason": "2023-06-09〜2026-07-02に5会話で反復。単発の思いつきではなく検証された考え方（PTN-002）",
+      "expected_effect": "ブランドの語り口・判断の一貫性が保たれ、憲法（歩みゆたかに）との整合を維持できる",
+      "risk": "文脈が変わった場合の適用可否はCEO判断が必要",
+      "related_patterns": [
+        "PTN-002"
+      ],
+      "related_insights": [],
+      "related_decisions": [],
+      "source_ids": [
+        "3511c82e-3159-46fc-a9d2-4e170999123d",
+        "3af37a77-68cf-4b70-978f-4f06af8d9e83",
+        "66fbeb73-c344-800e-a03b-a1ce5c4129d3",
+        "d473e102-ab85-486a-a14e-dc3e7b5b4e92",
+        "d96ad36a-4272-4e82-9c9d-4b685b66c491"
+      ],
+      "confidence": "medium",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-003",
+      "title": "判断事例: 駅関係・催事場",
+      "summary": "「駅関係の催事場ですと 東武浅草の「EKIMISE」 … 弊社では8月に出店します」判断理由:「まだ実績がないので売上はわかりません ラスカ平塚の改札横スペース … 弊社では平均30万です」— 類似の判断（催事）の際の基準として再利用する",
+      "type": "判断理由",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Decision Logで判断と理由がセットで記録された事例（重要度高）",
+      "expected_effect": "過去の判断根拠（実績数値を含む）を次回の類似判断で参照できる",
+      "risk": "単一事例。市況・時期が変われば前提が崩れる可能性",
+      "related_patterns": [],
+      "related_insights": [],
+      "related_decisions": [
+        "decision@69e47e75-dffc-83a7-949d-cc5951c1ef2c"
+      ],
+      "source_ids": [
+        "69e47e75-dffc-83a7-949d-cc5951c1ef2c"
+      ],
+      "confidence": "medium",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-004",
+      "title": "反復パターン: https・導入・コストカット",
+      "summary": "「https://www.nomado.shop DX化を導入することにより、いろいろなコストカットが出来ましたので、 従来の１配送30,000円以上送料無料から、こちらのWEBサイトにてご注文の場合に限り １配送下代で15,000円以上で送」— 異なる会話で4回反復された考え方。今後の発信・判断でも一貫して適用する",
+      "type": "判断理由",
+      "category": "在庫・発注",
+      "brand": "SUNNY NOMADO",
+      "reason": "2024-01-08〜2024-11-06に4会話で反復。単発の思いつきではなく検証された考え方（PTN-003）",
+      "expected_effect": "ブランドの語り口・判断の一貫性が保たれ、憲法（歩みゆたかに）との整合を維持できる",
+      "risk": "定型文由来の可能性があり、実際の判断で使われた思想か要確認",
+      "related_patterns": [
+        "PTN-003"
+      ],
+      "related_insights": [],
+      "related_decisions": [],
+      "source_ids": [
+        "0e174410-6c97-428b-bef2-afc0c0a57ce1",
+        "4b66f7fb-7a07-4034-8c4d-ff847981a022",
+        "672ae82e-1a5c-800e-9d61-714a2789828c",
+        "a0af5a35-a0ec-43d9-8d06-46eed20e382e"
+      ],
+      "confidence": "low",
+      "status": "in_review",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "hold_reason": "DXによってお客様へ還元する思想として再整理したい（CEO）"
+    },
+    {
+      "lesson_id": "LSN-005",
+      "title": "反復パターン: 特別・通常・製作体制",
+      "summary": "「通常は行っていない特別な制作ですが、伊角様のために、当工房では特別に製作体制を整え、 供養の心を込め、綺麗でいつまでも輝くように、職人が心を込めてお作りいたします」— 異なる会話で3回反復された考え方。今後の発信・判断でも一貫して適用する",
+      "type": "今後の行動指針",
+      "category": "so u",
+      "brand": "全社",
+      "reason": "2024-01-09〜2024-06-03に3会話で反復。単発の思いつきではなく検証された考え方（PTN-004）",
+      "expected_effect": "ブランドの語り口・判断の一貫性が保たれ、憲法（歩みゆたかに）との整合を維持できる",
+      "risk": "文脈が変わった場合の適用可否はCEO判断が必要",
+      "related_patterns": [
+        "PTN-004"
+      ],
+      "related_insights": [],
+      "related_decisions": [],
+      "source_ids": [
+        "14784800-8939-4164-8a5c-2bd526ce9b70",
+        "757f2cc8-39a3-4fa6-a1d5-19667e9a883d",
+        "d0b67887-5b7e-4735-9c71-5e85cc6db4db"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-006",
+      "title": "改善案: 必要・自動送信",
+      "summary": "「⚠️ 9:25 自動送信について：指定時刻の自動メール送信は、ブラウザを開いていない時間帯にも動作する必要があるため、サーバー側のスケジューラ（Firebase Functions の Cloud Scheduler、または cron-job.org などの外部サービス）が必要です」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "経営",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度高・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@6a067947-dd80-83a5-a233-792db67af4d0"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "6a067947-dd80-83a5-a233-792db67af4d0"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "技術メモであり経営の学びではない"
+    },
+    {
+      "lesson_id": "LSN-007",
+      "title": "改善案: 電話・種類",
+      "summary": "「お電話で伺った2種類は、やはり点で彫刻したほうが良い雰囲気です」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "在庫・発注",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度中・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@69eaa138-7aa8-83a4-84c1-57deba428d15"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "69eaa138-7aa8-83a4-84c1-57deba428d15"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-008",
+      "title": "改善案: 次回・是非",
+      "summary": "「次回は、是非、NOMADO様の出た時期でお取組み出来ればと思っております」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度高・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@69e47e75-dffc-83a7-949d-cc5951c1ef2c"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "69e47e75-dffc-83a7-949d-cc5951c1ef2c"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "予定連絡・社交辞令"
+    },
+    {
+      "lesson_id": "LSN-009",
+      "title": "改善案: 必要・足圧",
+      "summary": "「それに対しては、足を、足の足圧を正常な位置に戻す、姿勢を正させるために、かかとと三点足の部分をしっかり固定する必要があると感じ、高度の高いインソールを制作が必要と考えていました」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "在庫・発注",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度高・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@696848c3-74bc-8324-8b2b-f43b9f609a00"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "696848c3-74bc-8324-8b2b-f43b9f609a00"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-010",
+      "title": "改善案: 中国・工場",
+      "summary": "「中国の工場と旧正月前の準備の打ち合わせをしたところ、現在進行しているさらに硬度を上げるサンプルの件とは別に、インソールに入れるプリントの柄の版も早急に進行する必要があるとのことの連絡がまいりました」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "商品企画",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度中・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@695b1de7-ef70-8323-9577-f2e247f731bc"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "695b1de7-ef70-8323-9577-f2e247f731bc"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "CEO却下（理由未記入）"
+    },
+    {
+      "lesson_id": "LSN-011",
+      "title": "改善案: スペース・作業",
+      "summary": "「・作業スペース └スペースをご用意する必要がある為、費用が発生いたします」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度高・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@68f2e3fa-7ec4-8323-8839-ea1953f30d7a"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "68f2e3fa-7ec4-8323-8839-ea1953f30d7a"
+      ],
+      "confidence": "low",
+      "status": "in_review",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "hold_reason": "「作業スペースに費用がかかる」という事実だけでは会社の原則にはならない（CEO・2026-07-06修正: Approve→Hold）"
+    },
+    {
+      "lesson_id": "LSN-012",
+      "title": "改善案: 以下・メール",
+      "summary": "「そして以下のようなメールが来たのですが、もしかしたら作業されていない日にお伺いした方が良いかと思っていましたが、別の日が良かったのかと思うので、その場合は4/8 15時のお伺いさせて頂ければと思うことを返信したい」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "so u",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度中・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@67ec9e41-a940-800e-850c-69f39c500c65"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "67ec9e41-a940-800e-850c-69f39c500c65"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "予定連絡"
+    },
+    {
+      "lesson_id": "LSN-013",
+      "title": "改善案: 内容・搬出",
+      "summary": "「搬出に別の用事があり、私が伺えていなかったのでお礼ができずすみませんんでしたとの内容で、次回は11月にマツモトキヨシ前での催事出店宜しくお願い致しますとの内容で作成」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度高・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@73ac6a77-02d2-4998-bf34-4e001df31353"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "73ac6a77-02d2-4998-bf34-4e001df31353"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "予定連絡が主"
+    },
+    {
+      "lesson_id": "LSN-014",
+      "title": "改善案: 試作・技術的",
+      "summary": "「技術的には試作を繰り返すことでご要望に近づけることが可能だと思われますが、何度かの試作を経て品質とデザインを確保する必要があるため、現時点で具体的な価格をお伝えすることが難しい点をお詫び申し上げます」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "商品企画",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度中・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@b6b48119-2640-4b60-bbed-fa3bd2a1c7a9"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "b6b48119-2640-4b60-bbed-fa3bd2a1c7a9"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-015",
+      "title": "改善案: 次回・品川駅京急乗",
+      "summary": "「次回は2023年6／12から6／18品川駅京急乗り換え改札口前にて開催予定です」— 実施可否を判断し、実行する場合は担当・期限を決める",
+      "type": "今後の行動指針",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの改善案（重要度高・1件）より抽出",
+      "expected_effect": "業務・商品・サービスの具体的改善",
+      "risk": "未実行のアイデア段階。効果は未検証",
+      "related_patterns": [],
+      "related_insights": [
+        "改善案@b6637c66-bb07-4709-92ea-7eedcd5d8371"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "b6637c66-bb07-4709-92ea-7eedcd5d8371"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "定型（過去の予定連絡）"
+    },
+    {
+      "lesson_id": "LSN-016",
+      "title": "成功要因: 存知・恐縮",
+      "summary": "「私どもが最近動いていて反応が良かった場所として、JR浦和駅の催事 がございます」— この成功要因を他の販路・商品・催事でも意図的に再現する",
+      "type": "成功要因",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの成功要因（重要度高・1件）より抽出",
+      "expected_effect": "実績のある打ち手の横展開により、成功確率の高い判断ができる",
+      "risk": "当時の条件（場所・季節・商材）に依存する可能性。再現時は条件の一致を確認する",
+      "related_patterns": [],
+      "related_insights": [
+        "成功要因@69a6be01-01e8-83a8-947f-b3523b2ffb5d"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "69a6be01-01e8-83a8-947f-b3523b2ffb5d"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-017",
+      "title": "失敗要因: 条件・再調整",
+      "summary": "「頂いた条件で再調整してみますが、 ぎっちりスケジュールが埋まっているので うまくいかなかったらすみません またご連絡させて頂きます」— 同種の失敗を繰り返さないよう、事前チェック項目に組み込む",
+      "type": "失敗要因",
+      "category": "営業",
+      "brand": "全社",
+      "reason": "Insight Logの失敗要因（重要度中・1件）より抽出",
+      "expected_effect": "同じ失敗の再発防止。事故・信用毀損コストの回避",
+      "risk": "個別事情の一般化しすぎ。原因の特定が浅い場合は対策が形骸化する",
+      "related_patterns": [],
+      "related_insights": [
+        "失敗要因@68e361e2-0d58-8321-b8d5-ca13a7d3a5f4"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "68e361e2-0d58-8321-b8d5-ca13a7d3a5f4"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "社交的な断り文"
+    },
+    {
+      "lesson_id": "LSN-018",
+      "title": "失敗要因: 今年・サンプル",
+      "summary": "「今年はサンプルに新作のマルチカラーシリーズに何回もの修正を繰り返し、なかなかうまくいかなかったのですが、時間をかけた結果、品質的にもデザイン的にも自信を持ってご紹介できるまでにななりました」— 同種の失敗を繰り返さないよう、事前チェック項目に組み込む",
+      "type": "失敗要因",
+      "category": "商品企画",
+      "brand": "全社",
+      "reason": "Insight Logの失敗要因（重要度中・1件）より抽出",
+      "expected_effect": "同じ失敗の再発防止。事故・信用毀損コストの回避",
+      "risk": "個別事情の一般化しすぎ。原因の特定が浅い場合は対策が形骸化する",
+      "related_patterns": [],
+      "related_insights": [
+        "失敗要因@685cdb86-43f0-800e-91c5-56d239fb18e7"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "685cdb86-43f0-800e-91c5-56d239fb18e7"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "lesson_id": "LSN-019",
+      "title": "失敗要因: 今回・反省",
+      "summary": "「今回のことを大いに反省し 次回は御社の売り場で売上貢献できるようにして参りますので」— 同種の失敗を繰り返さないよう、事前チェック項目に組み込む",
+      "type": "失敗要因",
+      "category": "経営",
+      "brand": "全社",
+      "reason": "Insight Logの失敗要因（重要度中・1件）より抽出",
+      "expected_effect": "同じ失敗の再発防止。事故・信用毀損コストの回避",
+      "risk": "個別事情の一般化しすぎ。原因の特定が浅い場合は対策が形骸化する",
+      "related_patterns": [],
+      "related_insights": [
+        "失敗要因@679d7309-1014-800e-b580-034dac617da6"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "679d7309-1014-800e-b580-034dac617da6"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "教訓はLSN-023へ統合済み。謝罪文自体はKnowledge不要"
+    },
+    {
+      "lesson_id": "LSN-020",
+      "title": "失敗要因: 当社・反省点",
+      "summary": "「当社として、この度の反省点を踏まえ、今後はより一層のサービス向上に努めて参ります」— 同種の失敗を繰り返さないよう、事前チェック項目に組み込む",
+      "type": "失敗要因",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの失敗要因（重要度高・1件）より抽出",
+      "expected_effect": "同じ失敗の再発防止。事故・信用毀損コストの回避",
+      "risk": "個別事情の一般化しすぎ。原因の特定が浅い場合は対策が形骸化する",
+      "related_patterns": [],
+      "related_insights": [
+        "失敗要因@c8d62b5b-492e-4355-b69f-c9fef2d7b428"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "c8d62b5b-492e-4355-b69f-c9fef2d7b428"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "教訓はLSN-023へ統合済み。謝罪文自体はKnowledge不要"
+    },
+    {
+      "lesson_id": "LSN-021",
+      "title": "失敗要因: 指摘・真摯",
+      "summary": "「その際のご指摘を真摯に受け止め、当社としても深く反省しております」— 同種の失敗を繰り返さないよう、事前チェック項目に組み込む",
+      "type": "失敗要因",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの失敗要因（重要度高・1件）より抽出",
+      "expected_effect": "同じ失敗の再発防止。事故・信用毀損コストの回避",
+      "risk": "個別事情の一般化しすぎ。原因の特定が浅い場合は対策が形骸化する",
+      "related_patterns": [],
+      "related_insights": [
+        "失敗要因@c8d62b5b-492e-4355-b69f-c9fef2d7b428"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "c8d62b5b-492e-4355-b69f-c9fef2d7b428"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "教訓はLSN-023へ統合済み。謝罪文自体はKnowledge不要"
+    },
+    {
+      "lesson_id": "LSN-022",
+      "title": "失敗要因: 上記・経緯",
+      "summary": "「上記のような経緯で事故が発生したこと、深く反省しております」— 同種の失敗を繰り返さないよう、事前チェック項目に組み込む",
+      "type": "失敗要因",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの失敗要因（重要度高・1件）より抽出",
+      "expected_effect": "同じ失敗の再発防止。事故・信用毀損コストの回避",
+      "risk": "個別事情の一般化しすぎ。原因の特定が浅い場合は対策が形骸化する",
+      "related_patterns": [],
+      "related_insights": [
+        "失敗要因@d88c0b2c-de73-4395-bd67-6a34c17904ab"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "d88c0b2c-de73-4395-bd67-6a34c17904ab"
+      ],
+      "confidence": "low",
+      "status": "rejected",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "rejected_reason": "教訓はLSN-023へ統合済み。謝罪文自体はKnowledge不要"
+    },
+    {
+      "lesson_id": "LSN-023",
+      "title": "学び: 事前準備・プロセス",
+      "summary": "「事前準備プロセスの見直し：今回の事故を教訓に、設営作業の事前準備プロセスを徹底的に見直します」— この学びを標準プロセスへ反映する",
+      "type": "会社の学び",
+      "category": "催事",
+      "brand": "全社",
+      "reason": "Insight Logの学び（重要度高・1件）より抽出",
+      "expected_effect": "業務品質の底上げと属人化の防止",
+      "risk": "一度の経験からの一般化。適用範囲の見極めが必要",
+      "related_patterns": [],
+      "related_insights": [
+        "学び@d88c0b2c-de73-4395-bd67-6a34c17904ab"
+      ],
+      "related_decisions": [],
+      "source_ids": [
+        "d88c0b2c-de73-4395-bd67-6a34c17904ab"
+      ],
+      "confidence": "low",
+      "status": "released",
+      "needs_ceo_review": false,
+      "created_at": "2026-07-06",
+      "updated_at": "2026-07-06",
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    }
+  ]
+}

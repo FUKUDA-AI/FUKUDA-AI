@@ -1,0 +1,5 @@
+# 生データ・キャッシュはGit管理外（正本はフォルダ内に存置）
+01_Knowledge/09_ChatGPT_Archive/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "generator": "Pattern Analyzer v1.0 [Experimental]",
+    "generated_at": "2026-07-06 10:35:25",
+    "input": {
+      "insights": "insight_log.json",
+      "decisions": "decision_log.json",
+      "items_analyzed": 402
+    },
+    "params": {
+      "sim_threshold": 0.35,
+      "min_conversations": 3,
+      "verbatim_threshold": 0.9
+    },
+    "note": "全Patternはdraft。CEOレビュー前にCORE_PRINCIPLES / EVOLVING_PRINCIPLES / Knowledge Releasedへ反映しないこと。",
+    "total_patterns": 4,
+    "ceo_review": {
+      "date": "2026-07-06",
+      "source": "06_Reports/CEO_REVIEW_QUEUE.md（CEO記入版docx）",
+      "result": "approve14 / reject11 / hold2"
+    }
+  },
+  "patterns": [
+    {
+      "pattern_id": "PTN-001",
+      "pattern_name": "職人との考え: 情熱・ストーリー・大切",
+      "type": "職人との考え",
+      "category": "ブランド",
+      "brand": "全社",
+      "summary": "”歩みゆたかに”という想いを込めて 作り手の情熱と歴史・ストーリーを大切にカタチにして、そして丁寧なモノづくりをお届けできればと思っております",
+      "evidence_count": 6,
+      "conversation_count": 6,
+      "first_seen": "2024-08-29 17:31",
+      "last_seen": "2026-04-09 19:58",
+      "source_ids": [
+        "4616eb3f-7519-4bef-9108-f64a6b8159f1",
+        "670dd740-5524-800e-8dd6-a51856462f11",
+        "6787ad88-93b4-800e-9e6c-4dd4d1f85899",
+        "682ece8b-5bc8-800e-bfb1-7bda75107ed6",
+        "69d678c3-d398-83a6-bb03-d3d52a5b3428",
+        "69d7863c-b4c4-83a6-863b-15d9d3b962cf"
+      ],
+      "representative_examples": [
+        "\"歩みゆたかに\"という想いを込めて、作り手の情熱とその歴史・ストーリーを大切にしながら、丁寧にものづくりを行っております",
+        "”歩みゆたかに”という想いを込めて 作り手の情熱と歴史・ストーリーを大切にカタチにして、そして丁寧なモノづくりをお届けできればと思っております",
+        "「歩みゆたかに」という想いを込め、作り手の情熱とストーリーを大切に、丁寧なモノづくりを提供"
+      ],
+      "confidence": "high",
+      "verbatim_suspected": false,
+      "status": "released",
+      "needs_ceo_review": false,
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "pattern_id": "PTN-002",
+      "pattern_name": "職人との考え: 職人・手元・一日",
+      "type": "職人との考え",
+      "category": "so u",
+      "brand": "全社",
+      "summary": "職人にもお手紙を共有し、ご希望の内容にて、一日でも早くお手元にお届けできるよう 職人が大切にお作りさせて頂きます",
+      "evidence_count": 6,
+      "conversation_count": 5,
+      "first_seen": "2023-06-09 13:30",
+      "last_seen": "2026-07-02 10:37",
+      "source_ids": [
+        "3511c82e-3159-46fc-a9d2-4e170999123d",
+        "3af37a77-68cf-4b70-978f-4f06af8d9e83",
+        "66fbeb73-c344-800e-a03b-a1ce5c4129d3",
+        "d473e102-ab85-486a-a14e-dc3e7b5b4e92",
+        "d96ad36a-4272-4e82-9c9d-4b685b66c491"
+      ],
+      "representative_examples": [
+        "これより、一日でも早くお手元にお届けできるよう 職人が大切にお作りさせて頂きます",
+        "職人にもお手紙を共有し、ご希望の内容にて、一日でも早くお手元にお届けできるよう 職人が大切にお作りさせて頂きます",
+        "一日でも早くお手元にお届けできるよう 職人が大切にお作りさせて頂きます"
+      ],
+      "confidence": "medium",
+      "verbatim_suspected": false,
+      "status": "released",
+      "needs_ceo_review": false,
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    },
+    {
+      "pattern_id": "PTN-003",
+      "pattern_name": "経営判断: https・導入・コストカット",
+      "type": "経営判断",
+      "category": "在庫・発注",
+      "brand": "SUNNY NOMADO",
+      "summary": "https://www.nomado.shop DX化を導入することにより、いろいろなコストカットが出来ましたので、 従来の１配送30,000円以上送料無料から、こちらのWEBサイトにてご注文の場合に限り １配送下代で15,000円以上で送",
+      "evidence_count": 4,
+      "conversation_count": 4,
+      "first_seen": "2024-01-08 19:24",
+      "last_seen": "2024-11-06 12:53",
+      "source_ids": [
+        "0e174410-6c97-428b-bef2-afc0c0a57ce1",
+        "4b66f7fb-7a07-4034-8c4d-ff847981a022",
+        "672ae82e-1a5c-800e-9d61-714a2789828c",
+        "a0af5a35-a0ec-43d9-8d06-46eed20e382e"
+      ],
+      "representative_examples": [
+        "https://www.nomado.shop いま流行りのDX化を導入することにより、いろいろなコストカットが出来ましたので、 従来の１配送30,000円以上送料無料から、こちらのWEBサイトにてご注文の場合に限り １配送下代で15,000円以上で送料無料にすることができました",
+        "https://www.nomado.shop DX化を導入することにより、いろいろなコストカットが出来ましたので、 従来の１配送30,000円以上送料無料から、こちらのWEBサイトにてご注文の場合に限り １配送下代で15,000円以上で送料無料にすることができました"
+      ],
+      "confidence": "low",
+      "verbatim_suspected": true,
+      "status": "in_review",
+      "needs_ceo_review": true,
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO",
+      "hold_reason": "DXによってお客様へ還元する思想として再整理したい（CEO）"
+    },
+    {
+      "pattern_id": "PTN-004",
+      "pattern_name": "職人との考え: 特別・通常・製作体制",
+      "type": "職人との考え",
+      "category": "so u",
+      "brand": "全社",
+      "summary": "通常は行っていない特別な制作ですが、伊角様のために、当工房では特別に製作体制を整え、 供養の心を込め、綺麗でいつまでも輝くように、職人が心を込めてお作りいたします",
+      "evidence_count": 3,
+      "conversation_count": 3,
+      "first_seen": "2024-01-09 20:00",
+      "last_seen": "2024-06-03 08:59",
+      "source_ids": [
+        "14784800-8939-4164-8a5c-2bd526ce9b70",
+        "757f2cc8-39a3-4fa6-a1d5-19667e9a883d",
+        "d0b67887-5b7e-4735-9c71-5e85cc6db4db"
+      ],
+      "representative_examples": [
+        "通常は行っていない特別な制作ですが、 伊角様のために、当工房では特別に製作体制を整え、 供養の心を込めて、、綺麗にいつまでも輝くように 職人が心を込めてお作りさせて頂きます",
+        "商品名 : 野上さま特注製作 遺骨が星となる置き物 白い惑星 価格 : 59,400円(税込） 今回は通常では作成をしていない事ですが、野上さま用に 工房の製作体制を整え、供養もさせて頂き、綺麗にいつまでも輝くように 職人が心を込めてお作りさせて頂きます"
+      ],
+      "confidence": "low",
+      "verbatim_suspected": false,
+      "status": "released",
+      "needs_ceo_review": false,
+      "reviewed": "2026-07-06",
+      "reviewer": "CEO"
+    }
+  ]
+}
