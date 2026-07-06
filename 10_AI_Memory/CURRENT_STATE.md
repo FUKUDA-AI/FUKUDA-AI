@@ -14,7 +14,8 @@
 - **Morning Brief第1号発行・CEO判断反映済み（2026-07-06 15:02）**: 設計6文書Released化 / 思想文書8本v1.0昇格（人格正式確定）/ Decision Log 7件確定 / EP-001〜008初回運用記録
 - **Sprint 7完了（2026-07-06）**: CEO Assistant v1.1 [Experimental]実装済み — `python3 ceo_assistant.py`でBrief骨組み+Decision Log Draft生成（ハイブリッド方式・書込ホワイトリスト・追記型）。第2号Briefで実運用テスト合格
 - **Brief#2 CEO判断反映済み（2026-07-06）**: ①Git+GitHub Push完了（CEO実施）②PTN-003/LSN-004 hold解消→released ③LSN-011/PRN-010はhold継続+**次回Principle候補「総合判断原則」の再提案指示**。Decision Log 30件
-- **待ち状態**: なし（レビューキュー全消化）。次の着手候補: 催事データ接続 / 催事AI・so u AI定義 / PRN-010改の再提案準備
+- **Sprint 8完了（2026-07-06）**: Events Importer v1.0 [Experimental] — 初のデータ接続基盤稼働（07_Data/events/ raw→normalized→index.json・テスト合格）
+- **待ち状態**: 催事データの投入（CEOがraw/へExcel/CSVを置く→次Sprintで取込・検証）。他の着手候補: 催事AI・so u AI定義 / Claude Importer
 - **Phase 9進捗**: **CEO補佐AI v1.0定義済み（03_Agents/CEO_ASSISTANT.md・Morning Brief専用・FUKUDA AI初の稼働Agent）**。CEOが「Morning Brief」と言えば本定義に従い発行する。次: 催事AI・so u AI
 - **Phase 10進捗**: Data Source Design + CEO Morning Brief Design + **Connector Architecture**（すべてv1.0・2026-07-06）完成。**Morning Brief v1.1は手動運用で即開始可**（CEOが「Morning Brief」と言えば発行）
 - **設計5部作**: ①Agent Design ②Agent Collaboration ③Data Source Design ④Morning Brief Design ⑤Connector Architecture — 全てCEOレビュー待ちDraft
@@ -33,6 +34,7 @@
 | Principle Generator | v1.0 | Experimental（10件・全draft） |
 | Knowledge Builder | v1.1 | Experimental（released12/hold1） |
 | CEO Assistant | v1.1 | Experimental（ceo_assistant.py・ハイブリッド方式） |
+| Events Importer | v1.0 | Experimental（07_Data/events/・データ投入待ち） |
 | AI Memory Layer | v1.0 | Released |
 | Architecture | v1.3 | Released（Principle層新設） |
 | NOMADO AI OS | **v1.0.0** | **Released（2026-07-06・Gitタグ）** |

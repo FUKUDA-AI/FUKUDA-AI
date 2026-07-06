@@ -100,6 +100,7 @@ Version: v1.0
 - **接続段階**: v1.1（催事売上・Sheets・Shopify）→ v1.2（発注在庫・会計・Meta広告・Drive）→ v2.0（Gmail・Calendar・Instagram）
 - **日次運用**: CEO Morning Brief設計完了（2026-07-06・06_Reports/CEO_MORNING_BRIEF_DESIGN.md）。v1.1は手動運用で即開始可能
 - **Connector Architecture v1.0 設計完了（2026-07-06・07_Data/CONNECTOR_ARCHITECTURE.md）**: 全情報源をConnector→Importer→Learning Cycleへ統一。Importer実装順: 催事/Events → Claude → Sheets → Shopify（v1.1）→ Meta/Gemini/Meeting/Drive + ChatGPT v2.0（v1.2）→ Gmail/Calendar（v2.0）
+- **Events Importer v1.0 [Experimental] 実装済み（2026-07-06・Sprint 8）**: 初のデータ接続稼働。次Sprint=催事データ投入（raw/へExcel/CSV投入→取込→KN-EVT-0001の定量検証）
 - **完了条件**: 経営の意思決定サイクルにAI OSが常時組み込まれている状態
 - **依存関係**: Phase 9
 

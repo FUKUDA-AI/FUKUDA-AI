@@ -8,6 +8,13 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### Events Importer v1.0 [Experimental]（Sprint 8: Events Connector）
+- **対象機能**: events_importer.py（新規）/ 07_Data/events/（raw・normalized・index.json）
+- **変更内容**: 催事実績（Excel/CSV）の共通データ基盤を実装 — 列名ゆらぎ吸収マッピング、EventRecord正規化（12項目+取込記録）、読めないセルはnull（推測禁止）、日数・日商のみ算術導出（derived_fields明記）、冪等（record_idで重複排除）、元データ無変更・読み取り専用。index.jsonにサマリー（総件数・平均売上・会場一覧）を生成しMorning Brief・催事AI・CEO補佐AIが参照可能
+- **変更理由**: Sprint 8（v1.1データ接続の一番手・DATA_SOURCE_DESIGN優先順位1位）
+- **互換性**: 新規のみ。テスト合格（正規化3件・null処理・導出・冪等性・本番raw/空で0件index）
+- **担当**: CEO（仕様）/ AI（実装）
+
 ### Morning Brief第2号 CEO判断反映
 - **対象機能**: pattern_log / lesson_log / decision_log_draft / decision_log / EVOLVING_PRINCIPLES / Brief#2
 - **変更内容**: ①Git+GitHub Push完了を確認・記録（CEO実施・origin接続確認済み）②PTN-003/LSN-004をhold解消→released（EP-004への再整理完了が根拠）③LSN-011/PRN-010はhold継続とし、「経営判断は売上だけでなく、利益・ブランド価値・運営負荷・将来性を総合的に判断する」を次回Principle候補として再提案指示を記録 ④Decision Log Draft 3件を確定し本体へ反映（合計30件）⑤EP-004運用記録を追記

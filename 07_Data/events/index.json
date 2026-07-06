@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "generator": "Events Importer v1.0 [Experimental]",
+    "generated_at": "2026-07-06 17:19:24",
+    "note": "催事実績の索引。Morning Brief・催事AI・CEO補佐AIが参照する。生データはraw/（変更禁止）、正規化レコードはnormalized/",
+    "summary": {
+      "total_events": 0,
+      "with_sales": 0,
+      "total_sales": null,
+      "avg_sales": null,
+      "venues": [],
+      "date_range": null
+    }
+  },
+  "events": []
+}

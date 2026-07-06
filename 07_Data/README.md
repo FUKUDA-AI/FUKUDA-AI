@@ -26,7 +26,11 @@ python3 chatgpt_importer.py   # プロジェクトルートで実行
 ```
 再実行時は既存Indexとマージ。詳細はプロジェクトルートREADME参照。
 
+## 稼働中の取込機能
+- **Events Importer v1.0 [Experimental]**（2026-07-06〜）: `events/raw/` のExcel/CSV → EventRecord正規化 + `events/index.json`。詳細は [events/README.md](events/README.md)
+
 ## 今後のTODO
 - ~~催事・発注・在庫・Shopify・Meta広告データの取り込み設計~~ ✅ 2026-07-06 設計完了（上記2文書）
-- v1.1実装: 催事Connector+Events Importer → Claude Importer → Sheets → Shopify
+- ~~催事Connector+Events Importer~~ ✅ 2026-07-06 v1.0実装（データ投入は次Sprint）
+- v1.1実装続き: Claude Importer → Sheets → Shopify
 - ChatGPT Importer v2.0（Connector/Importer分離・共通スキーマ移行。chatgpt_index.jsonは互換変換・削除しない）
