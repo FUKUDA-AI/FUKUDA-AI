@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "note": "Decision Log Draft置き場。CEO承認後にdecision_log.json本体へ確定反映する（AIは本体へ直接書かない）",
+    "generator": "CEO Assistant v1.1 [Experimental]",
+    "updated_at": "2026-07-06 17:03:40",
+    "total_drafts": 3
+  },
+  "drafts": [
+    {
+      "draft_id": "DLD-2026-07-06-01",
+      "判断内容": "【CEO作業】Gitロック解除+本日分コミット（Brief#1判断3: これから実行と回答済み）",
+      "判断理由": "Gitロック解除・コミット・GitHubへのPush完了（CEO実施）",
+      "結果": "実行済み",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 17:03",
+      "source": "Morning Brief 2026-07-06_2.md",
+      "status": "confirmed",
+      "needs_ceo_review": false,
+      "confirmed_at": "2026-07-06 17:14"
+    },
+    {
+      "draft_id": "DLD-2026-07-06-02",
+      "判断内容": "PTN-003/LSN-004のhold解消 — PRN-004（DX還元思想）がApproveされたため、EVOLVING登録Sprintでreleasedへの更新を提案（要CEO確認）",
+      "判断理由": "PRN-004（EP-004）として再整理済みのためhold解消で進める",
+      "結果": "承認",
+      "関連カテゴリ": "経営",
+      "重要度": "中",
+      "日時": "2026-07-06 17:03",
+      "source": "Morning Brief 2026-07-06_2.md",
+      "status": "confirmed",
+      "needs_ceo_review": false,
+      "confirmed_at": "2026-07-06 17:14"
+    },
+    {
+      "draft_id": "DLD-2026-07-06-03",
+      "判断内容": "LSN-011はhold継続。PRN-010の再整理版「経営判断は売上だけでなく利益・ブランド価値・運営負荷・将来性を総合判断」の再提案とセットで再判断",
+      "判断理由": "「作業スペース費用」という事実だけではPrinciple化しない。ただし「経営判断は売上だけでなく、利益・ブランド価値・運営負荷・将来性を総合判断する」として次回Principle候補で再提案すること",
+      "結果": "Hold継続",
+      "関連カテゴリ": "経営",
+      "重要度": "中",
+      "日時": "2026-07-06 17:03",
+      "source": "Morning Brief 2026-07-06_2.md",
+      "status": "confirmed",
+      "needs_ceo_review": false,
+      "confirmed_at": "2026-07-06 17:14"
+    }
+  ]
+}

@@ -105,11 +105,11 @@
       ],
       "confidence": "low",
       "verbatim_suspected": true,
-      "status": "in_review",
-      "needs_ceo_review": true,
+      "status": "released",
+      "needs_ceo_review": false,
       "reviewed": "2026-07-06",
       "reviewer": "CEO",
-      "hold_reason": "DXによってお客様へ還元する思想として再整理したい（CEO）"
+      "hold_resolution": "PRN-004「安くするのではなく、工夫によってお客様へ還元する」（EP-004）として再整理・承認済みのためhold解消（Brief#2判断2・CEO承認）"
     },
     {
       "pattern_id": "PTN-004",

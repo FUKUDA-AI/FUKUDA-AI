@@ -8,6 +8,20 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### Morning Brief第2号 CEO判断反映
+- **対象機能**: pattern_log / lesson_log / decision_log_draft / decision_log / EVOLVING_PRINCIPLES / Brief#2
+- **変更内容**: ①Git+GitHub Push完了を確認・記録（CEO実施・origin接続確認済み）②PTN-003/LSN-004をhold解消→released（EP-004への再整理完了が根拠）③LSN-011/PRN-010はhold継続とし、「経営判断は売上だけでなく、利益・ブランド価値・運営負荷・将来性を総合的に判断する」を次回Principle候補として再提案指示を記録 ④Decision Log Draft 3件を確定し本体へ反映（合計30件）⑤EP-004運用記録を追記
+- **変更理由**: Brief#2へのCEO記入（v1.1ハイブリッド方式の初回フルサイクル完走: 機械生成→LLM言語化→CEO判断→Draft確定→本体反映→EP記録）
+- **互換性**: statusと記録のみ。削除なし
+- **担当**: CEO（判断）/ CEO Assistant v1.1（反映）
+
+### CEO Assistant v1.1 [Experimental]（Sprint 7実装）
+- **対象機能**: ceo_assistant.py（新規）/ 03_Agents/CEO_ASSISTANT.md v1.1 / CEO_ASSISTANT_IMPL_PLAN.md
+- **変更内容**: Morning Brief生成の機械工程を実装 — ①Released Knowledge Reader（released/verifiedのみ・draft除外を機械的に保証）②CORE/EVOLVING Principles Reader ③AI Memory Reader ④PENDING Reader（完了行除外）⑤Brief Generator（6ルールスコアリング・最大3件選定・追記型YYYY-MM-DD_n.md・上書き禁止）⑥Decision Log Draft Generator（decision_log_draft.json専用・本体へ書かない）。書込先3か所のホワイトリストをコードで強制（逸脱・上書きの拒否をテストで検証済み）
+- **変更理由**: Sprint 7（CEO承認3点: 正式Draft保存先/ハイブリッド方式/追記型を反映）
+- **互換性**: 新規ファイルのみ。既存削除なし。ルート08_Decision_Log/は不使用（既存データ存置）
+- **担当**: CEO（方式承認）/ AI（実装）
+
 ### 🎂 Morning Brief第1号 発行・CEO判断反映（FUKUDA AI初の日次運用）
 - **対象機能**: 06_Reports/morning_brief/2026-07-06.md / 00_MASTER思想文書8本 / 設計6文書 / decision_log.json / EVOLVING_PRINCIPLES.md
 - **変更内容**: CEO補佐AI v1.0が第1号Briefを発行し、CEO判断を反映 — ①**設計6文書をReleased化**（Agent Design / Collaboration / Data Source / Morning Brief / Connector / CEO補佐AI定義）②**思想文書8本をv1.0（正式版）へ昇格**（憲法〜AI_CHARTER。FUKUDA AIの人格が正式確定）③Decision Log 7件確定（本日の全CEO判断・根拠EP/KN付き）④**EP-001〜008へ初回運用記録**（Knowledge Review・Brief判断での使用実績=CORE昇格の証拠の蓄積開始）

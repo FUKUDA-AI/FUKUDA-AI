@@ -77,7 +77,7 @@ Version: v1.0
 ### Phase 7: Lessons Learned / Principle 🔶
 - **目的**: 教訓（Lesson）の生成と、判断原則（Principle）への抽象化
 - **現在の状態**: Lesson Generator v1.0 [Experimental]（23件・CEOレビュー済み: released 11 / rejected 11 / hold 1）、Principle Generator v1.0 [Experimental]（10件・全draft・CEOレビュー待ち）
-- **次Sprint**: ~~Principleレビュー・EVOLVING登録~~ ✅ 2026-07-06完了（EP-001〜008運用開始）。次はKnowledge Builder v1.0（承認済みLessonのKnowledge/SOP反映・Phase 6）とEP運用記録の蓄積
+- **次Sprint**: ~~Principleレビュー・EVOLVING登録~~ ✅完了（EP-001〜008運用開始・運用記録蓄積中）。**次回Principle Generator実行時にPRN-010改「経営判断は売上だけでなく、利益・ブランド価値・運営負荷・将来性を総合的に判断する」を再提案**（CEO指示 2026-07-06・Brief#2判断3）
 - **完了条件**: CEOレビューで精度承認 → Released昇格
 - **依存関係**: Phase 5.5（Pattern）。Phase 6（Knowledge Builder）とは並行可
 
@@ -90,7 +90,7 @@ Version: v1.0
 ### Phase 9: AI Agents 🔶
 - **目的**: 専門AI（CEO補佐・so u・SUNNY NOMADO・催事・発注在庫・営業・広告SEO・資金繰り・商品企画・秘書）の構築
 - **現在の状態**: Agent Design + Collaboration完成。**CEO補佐AI v1.0定義済み（2026-07-06・CEO_ASSISTANT.md・FUKUDA AI初の稼働Agent・Morning Brief専用）**
-- **次Sprint**: Morning Brief第1号の発行（実運用検証）→ 催事AI・so u AIの定義
+- **次Sprint**: ~~Morning Brief第1号~~ ✅発行済み。**CEO Assistant v1.1実装済み（ceo_assistant.py・2026-07-06）**。次: 催事AI・so u AIの定義、催事データ接続（v1.1）
 - **完了条件**: 各Agent v1.0がKnowledgeを参照して提案（理由・期待効果・リスク・優先順位・実行手順つき）できる
 - **依存関係**: Knowledge Draft 13件のreleased化（レビュー進行中）
 

@@ -1,8 +1,11 @@
 # CEO_ASSISTANT — CEO補佐AI v1.0（Agent定義書）
 
-Version: v1.0 [Experimental]（定義のみ・専用コードなし。FUKUDA AI本体が本定義に従って動作する）
+Version: v1.1 [Experimental]（ハイブリッド実装: ceo_assistant.py=機械工程 + FUKUDA AI=言語化工程）
 最終更新日: 2026-07-06
-状態: Released（CEO承認 2026-07-06・第1号発行の実運用テストを経て承認）
+状態: Released（定義はCEO承認済み。v1.1実装はExperimental・実運用検証中）
+
+**起動方法（v1.1）**: `python3 ceo_assistant.py` → 骨組み生成 → FUKUDA AIが言語化・検査 → CEOへ提示。`--check`で読込検証のみ。
+分業（CEO承認 2026-07-06）: 機械=情報収集・released/verified確認・PENDING確認・候補抽出・スコアリング・骨組み・Draft生成 / LLM=判断3件の推奨文・理由の言語化。同日複数回は追記型（YYYY-MM-DD_2.md…）・上書き禁止。
 Layer: ⑤Agent Layer（参照: ①〜④ / 書込: 06_Reports・10_AI_Memoryのみ）
 上位設計: [AGENT_DESIGN.md](AGENT_DESIGN.md) §1 / [AGENT_COLLABORATION.md](AGENT_COLLABORATION.md) / [../06_Reports/CEO_MORNING_BRIEF_DESIGN.md](../06_Reports/CEO_MORNING_BRIEF_DESIGN.md)
 
@@ -59,7 +62,7 @@ v1.0での唯一の仕事は **CEO Morning Briefの生成**。CEOがその日に
 ## 6. 書き込み先（これ以外への書き込み禁止）
 
 - `06_Reports/morning_brief/`（Brief本体）
-- `01_Knowledge/08_Decision_Log/decision_log.json` への追記**Draft**（CEO承認後のみ確定反映）
+- `01_Knowledge/08_Decision_Log/decision_log_draft.json`（Draft専用。**本体decision_log.jsonへは直接書かない**。確定はCEO承認後の別操作）
 - `10_AI_Memory/`（PENDING・CURRENT_STATEの更新）
 
 ## 7. やってはいけないこと（AI_CHARTER + Agent共通制約）
@@ -99,3 +102,4 @@ v1.0での唯一の仕事は **CEO Morning Briefの生成**。CEOがその日に
 | 日付 | 版 | 内容 |
 |---|---|---|
 | 2026-07-06 | v1.0 | 初版作成（Morning Brief専用Agent定義。設計のみ・コードなし） |
+| 2026-07-06 | v1.1 | ceo_assistant.py実装（ハイブリッド方式・書込ホワイトリスト・追記型保存・decision_log_draft.json分離）。第2号Briefで実運用テスト合格 |
