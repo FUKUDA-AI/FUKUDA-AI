@@ -4,7 +4,7 @@
 > FUKUDA AIのすべての提案は、提案前に本書と照合される。
 
 - 文書ID: MASTER-06（読込順6）
-- 版: v0.1（Draft・CEOレビュー待ち）
+- 版: v1.0（正式版・CEO承認 2026-07-06）
 - 最終更新: 2026-07-06
 - 上位文書: [00_CONSTITUTION.md](./00_CONSTITUTION.md) / [BUSINESS_PHILOSOPHY.md](./BUSINESS_PHILOSOPHY.md)
 - 改定権限: **CEOのみ**（AIは追記・変更できない。昇格候補は [EVOLVING_PRINCIPLES.md](./EVOLVING_PRINCIPLES.md) 経由）
@@ -68,3 +68,4 @@
 |---|---|---|
 | 2026-07-06 | v0.1 | 初版Draft作成（CEO_PRINCIPLES v0.1の確定事項 + Brand Constitution + プロジェクト憲章を統合） |
 | 2026-07-06 | v0.2 | Brand Constitution原本受領により禁則（環境訴求・皇室非公表）と製品判断の四問を追加。15条→18条 |
+| 2026-07-06 | v1.0 | CEO承認により正式版へ昇格（Morning Brief第1号・判断2） |

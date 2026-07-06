@@ -12,8 +12,11 @@ Architecture Version: **v1.3**（2026-07-06 正式採用・CEO承認）
 ## 1. パイプライン（Architecture v1.3）
 
 ```
-【Data Sources】 Conversation(ChatGPT) │ 将来: Shopify / Meta広告 / Sheets / メール / 催事 / 発注・在庫
-        ↓ Import        （chatgpt_importer.py v1.1）
+【Data Sources】 ChatGPT / Claude / Gemini / 会議 / Gmail / Calendar / Drive / Sheets / Shopify / Meta / 催事 / 発注・在庫 / 会計
+        ↓ Connector Layer（認証・取得・生データ搬入。読み取り専用）
+        ↓ Importer Layer（AI別・ソース別に分離。共通スキーマへ正規化・PIIフィルタ）
+                 （設計: 07_Data/CONNECTOR_ARCHITECTURE.md + DATA_SOURCE_DESIGN.md。外部データはKnowledge直行禁止）
+        ↓ Import        （現行: chatgpt_importer.py v1.1＝Connector+Importer一体型。v2.0で分離）
 【Index】        Conversation Index    （07_Data/chatgpt_index.json）
         ↓ Extract（並列）
 【抽出層】       Insight ・ Decision   （Extractor v2.0 → 01_Knowledge/08_Decision_Log/）
@@ -30,7 +33,8 @@ Architecture Version: **v1.3**（2026-07-06 正式採用・CEO承認）
         ↓ 昇格（CEOのみ）
 【Core】         CORE_PRINCIPLES       （00_MASTER・不変の判断基準）
         ↓
-【Knowledge】    Knowledge Draft → Knowledge Released （01_Knowledge。AIは_draftsのみ書込可）
+【Knowledge】    Knowledge Draft → CEO Review → Released → 実運用 → Verified（会社標準・CEOのみ昇格）
+                 （01_Knowledge。AIは_draftsのみ書込可。Lifecycle: 02_Rules/KNOWLEDGE_PROMOTION_RULES.md §1）
         ↓ 参照専用
 【Agent】        AI Agents             （03_Agents・Phase 9）
         └→ 提案・レポート(06_Reports) → 新Insight Draftとして抽出層へ還流（フィードバックループ）

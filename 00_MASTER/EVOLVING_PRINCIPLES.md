@@ -4,7 +4,7 @@
 > ここに載る原則（EP）は実際の経営判断で継続運用され、複数ブランド・複数事業で有効性が確認され、**CEOが承認した場合のみ**COREへ昇格する。AIは勝手に昇格させない。
 
 - 文書ID: MASTER-07（読込順7）
-- 版: v0.2
+- 版: v1.0（正式版・CEO承認 2026-07-06）
 - 最終更新: 2026-07-06
 - 上位文書: [CORE_PRINCIPLES.md](./CORE_PRINCIPLES.md)
 - 書込権限: AIはCEO承認済みPrincipleの登録・運用記録の追記のみ可（昇格・削除はCEOのみ）
@@ -48,7 +48,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ◎（CEO「会社・ブランド・AIすべての最上位思想」。憲法第1・2条と完全整合）
 - **CORE昇格条件**: 全ブランドの発信・商品判断での継続運用を確認のうえCEO承認。既存CORE第1〜3条との統合方法もCEOが決定
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-BRD-0001承認の根拠として使用（CEO承認）
 
 ### EP-002: お客様の想いは、必ず作り手まで届ける
 
@@ -57,7 +58,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ○（so u標準対応として承認済み）
 - **CORE昇格条件**: so u以外のブランド（SUNNY NOMADO等の職人連携）でも同運用が確認され、CEOが承認したとき
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-CS-0001 / KN-SOP-0001承認の根拠として使用（CEO承認）
 
 ### EP-003: 一人のお客様のために、通常を超える対応を惜しまない
 
@@ -66,7 +68,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ○（憲法第3条「迎える」の実践形）
 - **CORE昇格条件**: 複数ブランドでの特別対応事例の蓄積とCEO承認
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-CS-0002承認の根拠として使用（CEO承認）
 
 ### EP-004: 安くするのではなく、工夫によってお客様へ還元する
 
@@ -75,7 +78,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ◎（CORE第4条「安売りしない」の実践形として統合候補）
 - **CORE昇格条件**: 値付け・販促の実判断での継続運用確認後、CORE第4条への追記としてCEO承認
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-EVT-0002承認の根拠として使用（CEO承認）
 
 ### EP-005: 判断は過去実績の数値を基準に持ちつつ、今年の条件・環境・在庫・市場変化を含めて行う
 
@@ -84,7 +88,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ○（催事AI・発注在庫AIの中核判断原則）
 - **CORE昇格条件**: 催事以外（発注・広告等）の判断でも有効性が確認され、CEOが承認したとき
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-EVT-0001承認の根拠として使用（CEO承認）
 
 ### EP-006: 失敗は謝罪で終わらせず、プロセスの見直しへ昇華させる
 
@@ -93,7 +98,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ○（CEO「継続するために、未然の防止」）
 - **CORE昇格条件**: 催事以外の失敗対応でも運用され、CEOが承認したとき
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-EVT-0003承認・KN-SOP-0003hold判断の根拠 + Morning Brief第1号の優先判断整理（判断3: 成果を履歴に残す仕組み化）に使用
 
 ### EP-007: 品質は時間と反復で確保し、確保できるまで世に出さない・価格を約束しない
 
@@ -102,7 +108,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: ○（CORE第9条・憲法第8条と整合）
 - **CORE昇格条件**: 商品企画・ODM両方での継続運用とCEO承認
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-SLS-0001 / KN-SOP-0002 / KN-PRD-0003承認の根拠として使用（CEO承認）
 
 ### EP-008: 商品は、使い手の身体と課題の観察から設計する
 
@@ -111,7 +118,8 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 - **採用日**: 2026-07-06 / **Status**: active / **Version**: v1.0
 - **CORE昇格候補**: △（根拠が単一のため、まず運用実績の蓄積が必要）
 - **CORE昇格条件**: 複数商品・複数ブランドの開発判断で反復確認後、CEO承認
-- **運用記録**: （未記入）
+- **運用記録**:
+  - 2026-07-06 Knowledge Review: KN-PRD-0002承認の根拠として使用（CEO承認）
 
 ---
 
@@ -130,3 +138,4 @@ Conversation → Insight / Decision → Pattern → Lesson → Principle
 |---|---|---|
 | 2026-07-06 | v0.1 | 初版Draft作成（構造のみ・仮説0件） |
 | 2026-07-06 | v0.2 | CEO承認済みPrinciple 8件をEP-001〜008として登録（Status: active）。学習サイクルをArchitecture v1.3へ更新。Hold 2件を継続観察として記録 |
+| 2026-07-06 | v1.0 | CEO承認により正式版へ昇格（Morning Brief第1号・判断2） |

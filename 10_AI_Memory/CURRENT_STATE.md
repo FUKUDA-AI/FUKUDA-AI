@@ -9,7 +9,13 @@
 - **Phase**: 7 Lessons Learned / Principle（Experimental運用中）
 - **直近Sprint**: EVOLVING登録Sprint v1.0 — **EP-001〜008運用開始**（EVOLVING_PRINCIPLES.md v0.2）。学習サイクル（Conversation→…→Principle→CEO Review→EVOLVING）が初めて一巡した。2026-07-06
 - **直近Sprint（v1.0.0後の第一弾）**: Knowledge Builder v1.0 — Knowledge Draft 10件 + SOP Draft 3件 + knowledge_index.json(13件)生成。2026-07-06完了
-- **待ち状態**: Knowledge/SOP Draft 13件のCEOレビュー（承認分をカテゴリフォルダへ移動→released化）
+- **🎉 マイルストーン**: **Released Knowledge 12件誕生（2026-07-06）** — Agentが参照できる正式Knowledgeが初めて存在する状態。学習サイクルがConversationからReleased Knowledgeまで完全に一巡した
+- **Knowledge Lifecycle**: Draft→Released→Verified（会社標準）を設計済み。Verified昇格はCEOのみ・AIは候補提案まで（利用実績の記録が昇格の根拠になる）
+- **Morning Brief第1号発行・CEO判断反映済み（2026-07-06 15:02）**: 設計6文書Released化 / 思想文書8本v1.0昇格（人格正式確定）/ Decision Log 7件確定 / EP-001〜008初回運用記録
+- **待ち状態**: CEOのGit作業（ロック解除+コミット・実行予定と回答済み）のみ。レビューキューは全消化
+- **Phase 9進捗**: **CEO補佐AI v1.0定義済み（03_Agents/CEO_ASSISTANT.md・Morning Brief専用・FUKUDA AI初の稼働Agent）**。CEOが「Morning Brief」と言えば本定義に従い発行する。次: 催事AI・so u AI
+- **Phase 10進捗**: Data Source Design + CEO Morning Brief Design + **Connector Architecture**（すべてv1.0・2026-07-06）完成。**Morning Brief v1.1は手動運用で即開始可**（CEOが「Morning Brief」と言えば発行）
+- **設計5部作**: ①Agent Design ②Agent Collaboration ③Data Source Design ④Morning Brief Design ⑤Connector Architecture — 全てCEOレビュー待ちDraft
 - **Architecture**: **v1.2（正式・00_MASTER/ARCHITECTURE.md）**
 
 ## 実装済み機能（詳細はCHANGELOGを正とする）

@@ -1,7 +1,7 @@
 {
   "meta": {
     "generated_at": "2026-07-06 10:47:42",
-    "total_decisions": 20,
+    "total_decisions": 27,
     "note": "Decision LogのみでKnowledge未反映"
   },
   "decisions": [
@@ -204,6 +204,83 @@
       "重要度": "高",
       "日時": "2023-05-17 18:19",
       "Conversation ID": "8a560463-7ba3-44a9-aaba-42cf983faefb"
+    },
+    {
+      "判断内容": "Pattern/Lesson 27件レビュー: Approve14/Reject11/Hold2。LSN-011修正により「事実だけでは原則にならない」基準を確立",
+      "判断理由": "反復・憲法整合・再利用性で判定（根拠: EP認定基準・KNOWLEDGE_PROMOTION_RULES）",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
+    },
+    {
+      "判断内容": "Principle 10件レビュー: Approve8をEP-001〜008としてEVOLVING登録。Hold2(PRN-009継続観察/PRN-010再整理指示)",
+      "判断理由": "普遍性と反復実績で判定。COREへの昇格は実運用検証後",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
+    },
+    {
+      "判断内容": "Knowledge 13件レビュー: Approve12をreleased化(初のReleased Knowledge)。Hold1(KN-SOP-0003は実運用で成熟後)",
+      "判断理由": "EP整合・Evidence・Agent参照価値で判定（根拠: EP-001〜008）",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
+    },
+    {
+      "判断内容": "ブランドを2分類(自社/支援・共同)に確立。MIRAI UP=株式会社ベルタ所有・NOMADOは支援と明記",
+      "判断理由": "ブランド所有者・支援会社・共同プロジェクトの混同防止",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "ブランド",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
+    },
+    {
+      "判断内容": "NOMADO AI Operating System v1.0.0リリースを宣言。2026-07-06をFUKUDA AIの誕生日として記録",
+      "判断理由": "会社の経営思想を学び続けるAIの出発点（Gitタグv1.0.0）",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
+    },
+    {
+      "判断内容": "設計6文書(Agent Design/Collaboration/Data Source/Morning Brief/Connector/CEO補佐AI定義)を一括承認しReleased化",
+      "判断理由": "相互参照済みの設計群。承認により実装Sprintへ移行可能（Brief#1判断1）",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
+    },
+    {
+      "判断内容": "00_MASTER思想文書8本をv0.xからv1.0(正式版)へ昇格",
+      "判断理由": "1日の実運用(50件超のレビュー・EP登録・Brief発行)で矛盾なく機能したため（Brief#1判断2）",
+      "結果": "確定（CEO承認済み）",
+      "関連ブランド": "全社",
+      "関連カテゴリ": "経営",
+      "重要度": "高",
+      "日時": "2026-07-06 15:02",
+      "Conversation ID": "morning-brief-2026-07-06",
+      "source": "Morning Brief #1（CEO確定記録）"
     }
   ]
 }

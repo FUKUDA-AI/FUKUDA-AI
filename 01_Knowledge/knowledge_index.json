@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generator": "Knowledge Builder v1.0 [Experimental]",
-    "generated_at": "2026-07-06 12:45:43",
+    "generator": "Knowledge Builder v1.1 [Experimental]",
+    "generated_at": "2026-07-06 14:32:23",
     "note": "AgentはStatus: releasedのみ参照可。draftは通常判断に使わない。",
     "total": 13
   },
@@ -12,75 +12,10 @@
       "category": "BRD",
       "brand": "全社",
       "summary": "全ブランドの紹介文・発信は「歩みゆたかに」の想いと、作り手の情熱・歴史・ストーリーを大切にした丁寧なものづくりを軸に語る…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-BRD-0001_ブランド発信の核_—_歩みゆたかに×作り手の情熱・ストーリー.md",
+      "status": "released",
+      "path": "01_Knowledge/01_Brands/KN-BRD-0001_ブランド発信の核_—_歩みゆたかに×作り手の情熱・ストーリー.md",
       "related_principle": [
         "EP-001"
-      ],
-      "last_reviewed": "2026-07-06"
-    },
-    {
-      "knowledge_id": "KN-CS-0001",
-      "title": "so u標準対応 — お客様の手紙を職人と共有し最速でお手元へ",
-      "category": "CS",
-      "brand": "so u",
-      "summary": "so uでは、お客様からの手紙・想いを必ず職人と共有し、ご希望の内容で一日でも早くお手元へ届くよう心を込めて製作する。C…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-CS-0001_so_u標準対応_—_お客様の手紙を職人と共有し最速でお手元.md",
-      "related_principle": [
-        "EP-002"
-      ],
-      "last_reviewed": "2026-07-06"
-    },
-    {
-      "knowledge_id": "KN-CS-0002",
-      "title": "so u特別製作体制 — 一人のお客様のための通常外対応",
-      "category": "CS",
-      "brand": "so u",
-      "summary": "お客様のために、通常は行わない特別な製作体制を整えた実績がある（3会話で反復）。供養の心を込め、職人が一点一点製作する。…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-CS-0002_so_u特別製作体制_—_一人のお客様のための通常外対応.md",
-      "related_principle": [
-        "EP-003"
-      ],
-      "last_reviewed": "2026-07-06"
-    },
-    {
-      "knowledge_id": "KN-EVT-0001",
-      "title": "駅系催事の売上実績 — 平均30万円",
-      "category": "EVT",
-      "brand": "全社",
-      "summary": "駅関係の催事場（東武浅草EKIMISE・ラスカ平塚改札横スペース等）の売上実績は平均30万円。催事出店判断の土台となる実…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-EVT-0001_駅系催事の売上実績_—_平均30万円.md",
-      "related_principle": [
-        "EP-005"
-      ],
-      "last_reviewed": "2026-07-06"
-    },
-    {
-      "knowledge_id": "KN-EVT-0002",
-      "title": "催事場実績 — JR浦和駅の反応が良好",
-      "category": "EVT",
-      "brand": "全社",
-      "summary": "最近の催事で反応が良かった場所としてJR浦和駅の実績がある。催事場選定の判断材料（KN-EVT-0001の平均売上30万…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-EVT-0002_催事場実績_—_JR浦和駅の反応が良好.md",
-      "related_principle": [
-        "EP-004"
-      ],
-      "last_reviewed": "2026-07-06"
-    },
-    {
-      "knowledge_id": "KN-EVT-0003",
-      "title": "催事設営の教訓 — 事故を受けた事前準備プロセスの見直し",
-      "category": "EVT",
-      "brand": "全社",
-      "summary": "催事設営作業で事故が発生した教訓から、設営作業の事前準備プロセスを徹底的に見直す。個別の謝罪で終わらせず、チェックリスト…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-EVT-0003_催事設営の教訓_—_事故を受けた事前準備プロセスの見直し.md",
-      "related_principle": [
-        "EP-006"
       ],
       "last_reviewed": "2026-07-06"
     },
@@ -90,8 +25,8 @@
       "category": "PRD",
       "brand": "so u",
       "summary": "so uの彫刻は「点」で彫刻したほうが良い雰囲気に仕上がる（職人・実物確認による知見）。仕上がり判断の参考知見。関連: …",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-PRD-0001_so_u彫刻仕様_—_点彫りの方が良い雰囲気.md",
+      "status": "released",
+      "path": "01_Knowledge/02_Products/KN-PRD-0001_so_u彫刻仕様_—_点彫りの方が良い雰囲気.md",
       "related_principle": [],
       "last_reviewed": "2026-07-06"
     },
@@ -101,8 +36,8 @@
       "category": "PRD",
       "brand": "Dr.Nomado",
       "summary": "足圧を正常な位置に戻し姿勢を正すため、かかとと三点足の部分をしっかり固定する構造が必要と判断し、高硬度インソールを開発し…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-PRD-0002_Dr.Nomadoインソール設計思想_—_足圧の正常化.md",
+      "status": "released",
+      "path": "01_Knowledge/02_Products/KN-PRD-0002_Dr.Nomadoインソール設計思想_—_足圧の正常化.md",
       "related_principle": [
         "EP-008"
       ],
@@ -114,10 +49,75 @@
       "category": "PRD",
       "brand": "SUNNY NOMADO",
       "summary": "新作マルチカラーシリーズはサンプルに何度もの修正を繰り返し、時間をかけた結果、品質・デザインともに自信を持って紹介できる…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-PRD-0003_マルチカラーシリーズ開発_—_修正反復による品質確保.md",
+      "status": "released",
+      "path": "01_Knowledge/02_Products/KN-PRD-0003_マルチカラーシリーズ開発_—_修正反復による品質確保.md",
       "related_principle": [
         "EP-007"
+      ],
+      "last_reviewed": "2026-07-06"
+    },
+    {
+      "knowledge_id": "KN-CS-0001",
+      "title": "so u標準対応 — お客様の手紙を職人と共有し最速でお手元へ",
+      "category": "CS",
+      "brand": "so u",
+      "summary": "so uでは、お客様からの手紙・想いを必ず職人と共有し、ご希望の内容で一日でも早くお手元へ届くよう心を込めて製作する。C…",
+      "status": "released",
+      "path": "01_Knowledge/03_Customers/KN-CS-0001_so_u標準対応_—_お客様の手紙を職人と共有し最速でお手元.md",
+      "related_principle": [
+        "EP-002"
+      ],
+      "last_reviewed": "2026-07-06"
+    },
+    {
+      "knowledge_id": "KN-CS-0002",
+      "title": "so u特別製作体制 — 一人のお客様のための通常外対応",
+      "category": "CS",
+      "brand": "so u",
+      "summary": "お客様のために、通常は行わない特別な製作体制を整えた実績がある（3会話で反復）。供養の心を込め、職人が一点一点製作する。…",
+      "status": "released",
+      "path": "01_Knowledge/03_Customers/KN-CS-0002_so_u特別製作体制_—_一人のお客様のための通常外対応.md",
+      "related_principle": [
+        "EP-003"
+      ],
+      "last_reviewed": "2026-07-06"
+    },
+    {
+      "knowledge_id": "KN-EVT-0001",
+      "title": "駅系催事の売上実績 — 平均30万円",
+      "category": "EVT",
+      "brand": "全社",
+      "summary": "駅関係の催事場（東武浅草EKIMISE・ラスカ平塚改札横スペース等）の売上実績は平均30万円。催事出店判断の土台となる実…",
+      "status": "released",
+      "path": "01_Knowledge/05_Events/KN-EVT-0001_駅系催事の売上実績_—_平均30万円.md",
+      "related_principle": [
+        "EP-005"
+      ],
+      "last_reviewed": "2026-07-06"
+    },
+    {
+      "knowledge_id": "KN-EVT-0002",
+      "title": "催事場実績 — JR浦和駅の反応が良好",
+      "category": "EVT",
+      "brand": "全社",
+      "summary": "最近の催事で反応が良かった場所としてJR浦和駅の実績がある。催事場選定の判断材料（KN-EVT-0001の平均売上30万…",
+      "status": "released",
+      "path": "01_Knowledge/05_Events/KN-EVT-0002_催事場実績_—_JR浦和駅の反応が良好.md",
+      "related_principle": [
+        "EP-004"
+      ],
+      "last_reviewed": "2026-07-06"
+    },
+    {
+      "knowledge_id": "KN-EVT-0003",
+      "title": "催事設営の教訓 — 事故を受けた事前準備プロセスの見直し",
+      "category": "EVT",
+      "brand": "全社",
+      "summary": "催事設営作業で事故が発生した教訓から、設営作業の事前準備プロセスを徹底的に見直す。個別の謝罪で終わらせず、チェックリスト…",
+      "status": "released",
+      "path": "01_Knowledge/05_Events/KN-EVT-0003_催事設営の教訓_—_事故を受けた事前準備プロセスの見直し.md",
+      "related_principle": [
+        "EP-006"
       ],
       "last_reviewed": "2026-07-06"
     },
@@ -127,8 +127,8 @@
       "category": "SLS",
       "brand": "全社",
       "summary": "技術的には試作の反復で要望に近づけられるが、品質とデザインの確保には複数回の試作が必要なため、試作前に具体的な価格を確定…",
-      "status": "draft",
-      "path": "01_Knowledge/_drafts/KN-SLS-0001_ODM見積対応_—_試作を経ない価格提示はしない.md",
+      "status": "released",
+      "path": "01_Knowledge/10_Sales/KN-SLS-0001_ODM見積対応_—_試作を経ない価格提示はしない.md",
       "related_principle": [
         "EP-007"
       ],
@@ -140,8 +140,8 @@
       "category": "SOP",
       "brand": "so u",
       "summary": "so u顧客対応プロセス — 手紙共有・最速納品",
-      "status": "draft",
-      "path": "04_SOP/_drafts/KN-SOP-0001_so_u顧客対応プロセス_—_手紙共有・最速納品.md",
+      "status": "released",
+      "path": "04_SOP/KN-SOP-0001_so_u顧客対応プロセス_—_手紙共有・最速納品.md",
       "related_principle": [
         "EP-002"
       ],
@@ -153,8 +153,8 @@
       "category": "SOP",
       "brand": "全社",
       "summary": "ODM見積対応プロセス — 試作と価格提示",
-      "status": "draft",
-      "path": "04_SOP/_drafts/KN-SOP-0002_ODM見積対応プロセス_—_試作と価格提示.md",
+      "status": "released",
+      "path": "04_SOP/KN-SOP-0002_ODM見積対応プロセス_—_試作と価格提示.md",
       "related_principle": [
         "EP-007"
       ],
@@ -166,7 +166,7 @@
       "category": "SOP",
       "brand": "全社",
       "summary": "催事設営チェックリスト（事前準備）",
-      "status": "draft",
+      "status": "in_review",
       "path": "04_SOP/_drafts/KN-SOP-0003_催事設営チェックリスト（事前準備）.md",
       "related_principle": [
         "EP-006"

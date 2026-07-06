@@ -66,11 +66,12 @@ Version: v1.0
 - **完了条件**: CEOレビューで精度承認 → Released昇格
 - **依存関係**: Phase 4, 5
 
-### Phase 6: Knowledge Builder 🔶
+### Phase 6: Knowledge Builder ✅（初回サイクル完了）
 - **目的**: 承認済みLesson等を 01_Knowledge へ構造化して転記
-- **現在の状態**: Knowledge Builder v1.0 [Experimental]（2026-07-06）— Knowledge Draft 10件 + SOP Draft 3件生成、knowledge_index.json 13件。全件draft・CEOレビュー待ち
-- **次Sprint**: 06_Reports/KNOWLEDGE_REVIEW_QUEUE.md（2026-07-06作成済み）へのCEO判断記入 → 承認分を各カテゴリフォルダへ移動（released化）し索引再生成
-- **完了条件**: 転記・索引再生成が再実行可能 ✅、AgentがReleasedのみ索引経由で参照できる（released 0件のため未検証）
+- **現在の状態**: **Released Knowledge 12件誕生（2026-07-06）**。Knowledge Builder v1.1（冪等性検証済み）。hold 1件（KN-SOP-0003・実運用で成熟後に昇格）
+- **次Sprint**: 新規Lesson承認時の随時実行。KN-SOP-0003の実運用と成熟判断
+- **Knowledge Lifecycle**: Draft→Released→**Verified（会社標準）**の三段階を設計済み（2026-07-06・02_Rules準拠）。Verified昇格はCEOのみ。初回昇格候補の提案は運用実績蓄積後（目安: 2027-01以降）
+- **完了条件**: 転記・索引再生成が再実行可能 ✅、AgentがReleasedのみ索引経由で参照できる ✅（released 12件）
 - **依存関係**: Knowledge IA v1.0（完了）、Phase 7のCEOレビュー結果（完了）
 
 ### Phase 7: Lessons Learned / Principle 🔶
@@ -86,15 +87,19 @@ Version: v1.0
 - **完了条件**: CEO Principles Generator v1.0 [Released]、CEO承認
 - **依存関係**: Phase 7
 
-### Phase 9: AI Agents ⬜
+### Phase 9: AI Agents 🔶
 - **目的**: 専門AI（CEO補佐・so u・SUNNY NOMADO・催事・発注在庫・営業・広告SEO・資金繰り・商品企画・秘書）の構築
-- **現在の状態**: 未着手
+- **現在の状態**: Agent Design + Collaboration完成。**CEO補佐AI v1.0定義済み（2026-07-06・CEO_ASSISTANT.md・FUKUDA AI初の稼働Agent・Morning Brief専用）**
+- **次Sprint**: Morning Brief第1号の発行（実運用検証）→ 催事AI・so u AIの定義
 - **完了条件**: 各Agent v1.0がKnowledgeを参照して提案（理由・期待効果・リスク・優先順位・実行手順つき）できる
-- **依存関係**: Phase 6, 7, 8
+- **依存関係**: Knowledge Draft 13件のreleased化（レビュー進行中）
 
 ### Phase 10: NOMADO AI Operating System ⬜
-- **目的**: 全Agent・全データ（Shopify / Meta広告 / Sheets / メール / 催事 / 発注 / 在庫）の統合運用
-- **現在の状態**: 未着手
+- **目的**: 全Agent・全データ（10ソース）の統合運用
+- **現在の状態**: **Data Source Design v1.0 完成（2026-07-06・07_Data/DATA_SOURCE_DESIGN.md・CEOレビュー待ち）**。接続実装は未着手
+- **接続段階**: v1.1（催事売上・Sheets・Shopify）→ v1.2（発注在庫・会計・Meta広告・Drive）→ v2.0（Gmail・Calendar・Instagram）
+- **日次運用**: CEO Morning Brief設計完了（2026-07-06・06_Reports/CEO_MORNING_BRIEF_DESIGN.md）。v1.1は手動運用で即開始可能
+- **Connector Architecture v1.0 設計完了（2026-07-06・07_Data/CONNECTOR_ARCHITECTURE.md）**: 全情報源をConnector→Importer→Learning Cycleへ統一。Importer実装順: 催事/Events → Claude → Sheets → Shopify（v1.1）→ Meta/Gemini/Meeting/Drive + ChatGPT v2.0（v1.2）→ Gmail/Calendar（v2.0）
 - **完了条件**: 経営の意思決定サイクルにAI OSが常時組み込まれている状態
 - **依存関係**: Phase 9
 

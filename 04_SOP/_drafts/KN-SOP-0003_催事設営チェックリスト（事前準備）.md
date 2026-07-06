@@ -9,8 +9,10 @@ related_lesson: [LSN-023]
 related_pattern: []
 evidence: [d88c0b2c-de73-4395-bd67-6a34c17904ab, lesson_log.json/LSN-023（CEO承認 2026-07-06）]
 last_reviewed: 2026-07-06
+reviewer: CEO
+hold_reason: 現場確認TODOが残っているため。実際の催事設営で数回運用し、チェックリストとして成熟した段階でReleasedへ昇格（CEO 2026-07-06）
 version: v0.1
-status: draft
+status: in_review
 needs_ceo_review: true
 ---
 

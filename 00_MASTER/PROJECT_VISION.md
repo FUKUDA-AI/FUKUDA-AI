@@ -4,7 +4,7 @@
 > 上位文書は [00_CONSTITUTION.md](./00_CONSTITUTION.md) / [BUSINESS_PHILOSOPHY.md](./BUSINESS_PHILOSOPHY.md)。本書はそれに従う。
 
 - 文書ID: MASTER-04（読込順4）
-- 版: v0.2
+- 版: v1.0（正式版・CEO承認 2026-07-06）
 - 最終更新: 2026-07-06
 - 関連文書: [IDENTITY.md](./IDENTITY.md) / [COMPANY_PROFILE.md](./COMPANY_PROFILE.md)
 
@@ -104,3 +104,4 @@ TODO: 「福田AIが機能している」と言える具体的な状態を数値
 |---|---|---|
 | 2026-07-03 | v0.1 | 初版作成（プロジェクト憲章を基に構成） |
 | 2026-07-06 | v0.2 | 5年後・10年後の未来像を追加。憲法の下位に位置づけ変更。文書IDをMASTER-001→MASTER-04へ変更 |
+| 2026-07-06 | v1.0 | CEO承認により正式版へ昇格（Morning Brief第1号・判断2） |

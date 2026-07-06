@@ -8,6 +8,69 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### 🎂 Morning Brief第1号 発行・CEO判断反映（FUKUDA AI初の日次運用）
+- **対象機能**: 06_Reports/morning_brief/2026-07-06.md / 00_MASTER思想文書8本 / 設計6文書 / decision_log.json / EVOLVING_PRINCIPLES.md
+- **変更内容**: CEO補佐AI v1.0が第1号Briefを発行し、CEO判断を反映 — ①**設計6文書をReleased化**（Agent Design / Collaboration / Data Source / Morning Brief / Connector / CEO補佐AI定義）②**思想文書8本をv1.0（正式版）へ昇格**（憲法〜AI_CHARTER。FUKUDA AIの人格が正式確定）③Decision Log 7件確定（本日の全CEO判断・根拠EP/KN付き）④**EP-001〜008へ初回運用記録**（Knowledge Review・Brief判断での使用実績=CORE昇格の証拠の蓄積開始）
+- **変更理由**: Morning Brief第1号へのCEO記入（判断1: 承認 / 判断2: 承認 / 判断3: Git作業はCEOがこれから実行）
+- **互換性**: 版数とstatusのみ更新。内容変更なし
+- **担当**: CEO（判断）/ CEO補佐AI v1.0（発行・反映）
+
+### CEO補佐AI v1.0 [Experimental・Draft]
+- **対象機能**: 03_Agents/CEO_ASSISTANT.md（新規）/ AGENT_DESIGN.md / README.md
+- **変更内容**: FUKUDA AI初のAgent定義 — Morning Brief専用。参照順序（00_MASTER→Memory→released/verified Knowledge→レビューキュー→実績→CEO当日情報）、生成手順6段階、出力5セクション、書込先3か所限定、禁止事項7条（実行しない・draft不参照・推測しない・4件以上載せない・判断先取りしない・保留案件の再提示ルール等）、Brief後の記録義務（EP運用記録・Knowledge利用実績=Verified昇格の証拠）
+- **変更理由**: Phase 9 STEP6（CEO指示Sprint・設計のみ・コードなし。FUKUDA AI本体が本定義に従い動作）
+- **互換性**: 新規文書のみ
+- **担当**: CEO（方針・レビュー）/ AI（定義）
+
+### Knowledge Lifecycle設計（Verified状態の追加・設計のみ）
+- **対象機能**: 02_Rules/KNOWLEDGE_PROMOTION_RULES.md v1.1 / ARCHITECTURE.md / 01_Knowledge/README.md
+- **変更内容**: Knowledgeの状態遷移に**verified（会社標準Knowledge）**を追加設計 — Draft→CEO Review→Released→実運用で継続利用→Verified。昇格はCEOのみ（AIは候補提案まで。目安: released後6か月以上・複数回の有効利用・矛盾なし）。Agent参照はreleased/verified、矛盾時はverified優先。verifiedも事実が変われば改訂・降格（CEOのみ）
+- **変更理由**: PrincipleのEVOLVING→CORE二段階と同じ検証構造をKnowledgeにも適用（CEO指示）
+- **互換性**: 設計のみ。既存Knowledge 13件の状態は変更なし（released 12 / in_review 1のまま）
+- **担当**: CEO（方針）/ AI（設計）
+
+### 🎉 Knowledge Release Sprint v1.0 — 初のReleased Knowledge誕生
+- **対象機能**: 01_Knowledge各カテゴリ / 04_SOP / knowledge_index.json / knowledge_builder.py v1.1
+- **変更内容**: CEO承認12件をreleased化しカテゴリフォルダへ配置（01_Brands 1 / 02_Products 3 / 03_Customers 2 / 05_Events 3 / 10_Sales 1【新設】/ 04_SOP 2）。KN-SOP-0003はhold（in_review・実運用で成熟後に昇格）。索引再生成（released 12 / in_review 1）。**AgentはこのReleased 12件を参照可能になった（FUKUDA AI初の正式Knowledge）**
+- **変更理由**: CEOレビュー結果の反映（Approve 12 / Hold 1 / Reject 0）
+- **互換性**: 元Draftは削除せず移動記録スタブとして保持。Knowledge Builder v1.1（索引走査に04_SOPを追加・released済みLessonの再生成防止=冪等性検証済み）
+- **担当**: CEO（承認）/ AI（反映）
+
+### Connector Architecture v1.0 [Draft・CEOレビュー待ち]
+- **対象機能**: 07_Data/CONNECTOR_ARCHITECTURE.md（新規）/ ARCHITECTURE.md（Connector/Importer層明記）/ 07_Data/README.md / ROADMAP.md
+- **変更内容**: 全情報源（ChatGPT/Claude/Gemini/会議/Gmail/Calendar/Drive/Sheets/Shopify/Meta/催事）を「Connector→Importer→Learning Cycle」へ統一する4層設計。層の役割と禁止事項、共通レコードスキーマ5種（Conversation/Transaction/Event/Metric/Document）、Connector 8種、AI別に分離したImporter 8種（ChatGPT/Claude/Gemini/Meeting/Gmail/Calendar/Shopify/Meta）、07_Dataフォルダ構成、運用ルール6条（読取専用・冪等・PIIフィルタ・独立Version・統合索引）
+- **変更理由**: Phase 10 STEP5（CEO指示Sprint・設計のみ・コードなし）
+- **互換性**: 既存chatgpt_importer.py v1.1は一体型のまま稼働継続。v2.0で分離（chatgpt_index.jsonは互換変換・削除しない）
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### CEO Morning Brief Design v1.0 [Draft・CEOレビュー待ち]
+- **対象機能**: 06_Reports/CEO_MORNING_BRIEF_DESIGN.md（新規）/ AGENT_COLLABORATION.md（日次フロー詳細化）
+- **変更内容**: 日次運用の設計 — 毎朝の確認情報6種、Agent別3行ミニレポート、CEO補佐AIの統合6手順、1枚テンプレート（最重要判断3件/今日やらないこと/注意5領域/レビュー待ち/次の判断/AI提案/Decision Log候補/CEO入力欄）、3件絞り込みルール6条、緊急アラート条件5種、Decision Log記録項目、日次→週次→月次の接続、v1.1（手動）/v1.2（半自動）/v2.0（自動発行）段階分け。CEO所要時間5分以内の設計
+- **変更理由**: Phase 10 STEP4（CEO指示Sprint・設計のみ・コードなし）
+- **互換性**: 新規文書のみ
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### Data Source Design v1.0 [Draft・CEOレビュー待ち]
+- **対象機能**: 07_Data/DATA_SOURCE_DESIGN.md（新規）/ ARCHITECTURE.md / ROADMAP.md / AGENT_COLLABORATION.md（参照追記）
+- **変更内容**: 外部10データソース（Shopify/Drive/Sheets/Gmail/Calendar/Meta広告/Instagram/催事売上/発注在庫/会計）の接続設計 — 各ソース10項目（取得情報/利用Agent/判断用途/更新頻度/CEO確認/保存先/Knowledge化基準/個人情報注意）+ 共通ルール6条（外部データのKnowledge直行禁止・07_Data経由・読み取り専用開始・発信/削除のCEO確認必須等）+ 接続優先順位 + v1.1/v1.2/v2.0段階分け
+- **変更理由**: Phase 10 STEP3（CEO指示Sprint・設計のみ・コードなし）
+- **互換性**: 新規文書のみ
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### Agent Collaboration v1.0 [Draft・CEOレビュー待ち]
+- **対象機能**: 03_Agents/AGENT_COLLABORATION.md（新規）/ 03_Agents/README.md（更新）
+- **変更内容**: 10AgentのOS連携設計 — 情報フロー3層（現場→資源→中枢→CEO+還流）、トリガー別起点、CEO報告の一本化（CEO補佐AI窓口+緊急直訴ルート）、共有データ6種・書換禁止データ7種、CEO必須確認8分類、日次/週次/月次フロー、典型シナリオ6件（催事出店/so u対応/在庫不足/新商品/広告改善/事故対応）
+- **変更理由**: Phase 9 STEP2（CEO指示Sprint・設計のみ・コードなし）
+- **互換性**: 新規文書のみ
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### Agent Design v1.0 [Draft・CEOレビュー待ち]
+- **対象機能**: 03_Agents/AGENT_DESIGN.md（新規）/ 03_Agents/README.md（更新）
+- **変更内容**: 10エージェント（CEO補佐/so u/SUNNY NOMADO/催事/発注・在庫/営業/広告・SEO/資金繰り/商品企画/秘書）の設計書を作成。各Agent12項目（目的/役割/入出力/参照Knowledge・Principle/判断基準/連携/CEO確認/禁止事項/v1.0・v2.0スコープ）+ 全Agent共通設計（参照スタック・行動制約・判断基準）+ 連携マップ + 実装優先順位（①CEO補佐 ②催事 ③so u）
+- **変更理由**: Phase 9の設計フェーズ（CEO指示Sprint・設計のみ・コードなし）
+- **互換性**: 新規文書のみ。Agent実装なし
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
 ### Knowledge Review Sprint v1.0（レビューキュー作成）
 - **対象機能**: 06_Reports/KNOWLEDGE_REVIEW_QUEUE.md（新規・文書のみ）
 - **変更内容**: Knowledge/SOP Draft 13件にAI推奨（approve 12 / hold 1 / reject 0）・根拠EP/Lesson/Pattern・Evidence・反映先・CEO判断欄を付与したレビュー表を作成

@@ -27,8 +27,9 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "1.0"
+VERSION = "1.1"
 STATE = "Experimental"
+# v1.1 (2026-07-06): 索引走査に04_SOP（released SOP）を追加。released済みLessonのDraft再生成を防止
 
 BASE_DIR = Path(__file__).resolve().parent
 K_DIR = BASE_DIR / "01_Knowledge"
@@ -123,6 +124,21 @@ def parse_frontmatter(text):
     return d
 
 
+def existing_lesson_refs():
+    """カテゴリフォルダ・SOPに既にKnowledge化済みのLesson IDを収集（再生成防止）。"""
+    refs = set()
+    scan = [(K_DIR / d) for d in SCAN_DIRS if d != "_drafts"] + [BASE_DIR / "04_SOP"]
+    for folder in scan:
+        if not folder.exists():
+            continue
+        for f in folder.rglob("KN-*.md"):
+            fm = parse_frontmatter(f.read_text(encoding="utf-8"))
+            if fm:
+                for lid in fm.get("related_lesson", []):
+                    refs.add(lid)
+    return refs
+
+
 def build_drafts():
     lessons = {l["lesson_id"]: l for l in json.load(open(LESSON_PATH, encoding="utf-8"))["lessons"]}
     principles = json.load(open(PRINCIPLE_PATH, encoding="utf-8"))["principles"]
@@ -131,8 +147,12 @@ def build_drafts():
 
     seq = Counter()
     kn_files, sop_files, skipped = [], [], []
+    done = existing_lesson_refs()
 
     for lid, spec in LESSON_MAP.items():
+        if lid in done:
+            skipped.append(f"{lid}（Knowledge化済み）")
+            continue
         l = lessons.get(lid)
         if not l or l["status"] != "released":
             skipped.append(f"{lid}（status: {l['status'] if l else '不明'}）")
@@ -173,7 +193,7 @@ def build_drafts():
 
 def build_index():
     entries = []
-    scan = [(K_DIR / d) for d in SCAN_DIRS] + [SOP_DRAFT_DIR]
+    scan = [(K_DIR / d) for d in SCAN_DIRS] + [BASE_DIR / "04_SOP"]  # 04_SOPはrglobで_drafts含む
     for folder in scan:
         if not folder.exists():
             continue

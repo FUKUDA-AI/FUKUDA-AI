@@ -1,6 +1,6 @@
 # KNOWLEDGE_PROMOTION_RULES — Knowledge昇格ルール
 
-Version: v1.0
+Version: v1.1（Knowledge Lifecycle: Verified状態を追加）
 最終更新日: 2026-07-06
 状態: Released
 上位文書: [../00_MASTER/AI_CHARTER.md](../00_MASTER/AI_CHARTER.md) / [../00_MASTER/ARCHITECTURE.md](../00_MASTER/ARCHITECTURE.md)
@@ -10,12 +10,28 @@ Version: v1.0
 
 ---
 
-## 1. 状態管理
+## 1. 状態管理（Knowledge Lifecycle）
 
 ```
 draft（AI生成） → in_review（CEOレビュー中） → released（正式Knowledge）
                                              → rejected（却下・理由つきで保存）
+released → 実運用で継続利用 → verified（会社標準Knowledge・CEO承認のみ昇格可）
 ```
+
+| 状態 | 定義 | Agent参照 |
+|---|---|---|
+| **draft** | AI生成。まだ会社の知識ではない | ❌ 参照しない |
+| **in_review** | CEOレビュー中・hold | ❌ 参照しない |
+| **released** | CEO承認済みの正式Knowledge | ✅ 参照可能 |
+| **verified** | 長期間運用され有効性が確認された**会社標準Knowledge** | ✅ 参照可能（**releasedと矛盾する場合はverifiedを優先**） |
+| **rejected** | 却下（理由つき保存・学習データ） | ❌ 参照しない |
+
+### Verified昇格ルール
+
+1. **昇格できるのはCEOのみ。AIは勝手にverifiedへ昇格しない**（EVOLVING→COREと同じ原則）
+2. AIができるのは昇格候補の**提案**まで。提案の目安: releasedから相当期間（目安6か月以上）経過 / 実際の判断・Agent参照で複数回利用され有効だった / 内容の矛盾・訂正が発生していない
+3. 昇格時は `status: verified` / `verified_at` / `verifier: CEO` を記録し、利用実績（どの判断で使われたか）を添える
+4. verifiedでも事実が変わったら降格・改訂する（会社標準=不変ではない。改訂もCEOのみ）
 
 ## 2. 原則（7か条）
 
