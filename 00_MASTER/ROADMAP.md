@@ -69,7 +69,7 @@ Version: v1.0
 ### Phase 6: Knowledge Builder 🔶
 - **目的**: 承認済みLesson等を 01_Knowledge へ構造化して転記
 - **現在の状態**: Knowledge Builder v1.0 [Experimental]（2026-07-06）— Knowledge Draft 10件 + SOP Draft 3件生成、knowledge_index.json 13件。全件draft・CEOレビュー待ち
-- **次Sprint**: Draft 13件のCEOレビュー → 承認分を各カテゴリフォルダへ移動（released化）し索引再生成
+- **次Sprint**: 06_Reports/KNOWLEDGE_REVIEW_QUEUE.md（2026-07-06作成済み）へのCEO判断記入 → 承認分を各カテゴリフォルダへ移動（released化）し索引再生成
 - **完了条件**: 転記・索引再生成が再実行可能 ✅、AgentがReleasedのみ索引経由で参照できる（released 0件のため未検証）
 - **依存関係**: Knowledge IA v1.0（完了）、Phase 7のCEOレビュー結果（完了）
 

@@ -8,6 +8,13 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### Knowledge Review Sprint v1.0（レビューキュー作成）
+- **対象機能**: 06_Reports/KNOWLEDGE_REVIEW_QUEUE.md（新規・文書のみ）
+- **変更内容**: Knowledge/SOP Draft 13件にAI推奨（approve 12 / hold 1 / reject 0）・根拠EP/Lesson/Pattern・Evidence・反映先・CEO判断欄を付与したレビュー表を作成
+- **変更理由**: Draft released化前のCEOレビュー運用（KNOWLEDGE_PROMOTION_RULES §4）
+- **互換性**: 新規文書のみ。Released化・Draft移動は未実施（全13件draftのまま）
+- **担当**: CEO（判断・これから）/ AI（キュー作成）
+
 ### Knowledge Builder v1.0 [Experimental]
 - **対象機能**: knowledge_builder.py（新規）
 - **変更内容**: CEO承認済み（released）Lesson 10件をKnowledge IA v1.0に従いKnowledge Draft 10件（01_Knowledge/_drafts/・KN-xxx形式・YAMLフロントマター13項目・Evidence必須）へ転記。SOP化候補3件を04_SOP/_drafts/へ生成（so u顧客対応・ODM見積対応・催事設営チェックリスト）。knowledge_index.json（13件）をフロントマタースキャンから自動生成
