@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "note": "Result Draft置き場。判定（成功/失敗/継続観察）はCEOのみ。CEO確認後に result_log.json へ確定する（AIは本体へ勝手に書かない）",
+    "generator": "Result Recorder v1.0 [Experimental]",
+    "updated_at": "2026-07-07 13:32:07",
+    "total_drafts": 2
+  },
+  "drafts": [
+    {
+      "result_id": "RES-0001",
+      "decision_fingerprint": "4a12c832bab2",
+      "decision_ref": {
+        "判断内容": "工場打ち合わせ",
+        "日時": "2026-07-07 11:41",
+        "関連カテゴリ": "経営",
+        "結果": "完了（実施済み）"
+      },
+      "action": {
+        "action_date": "2026-07-07",
+        "action_source": "decision_log.json（結果欄の実行記録）",
+        "actor": "CEO",
+        "what": "工場打ち合わせ"
+      },
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "review_after_days_proposal": null,
+      "check_due_date": null,
+      "result_date": null,
+      "status": "（CEO判定待ち: 成功 / 失敗 / 継続観察）",
+      "outcome": null,
+      "数値結果": null,
+      "成功要因": null,
+      "失敗要因": null,
+      "想定との差異": null,
+      "evidence": {
+        "decision_source": "decision_log.json",
+        "decision_fingerprint": "4a12c832bab2",
+        "result_evidence": null,
+        "note": "result_evidence（実績データID/CEO記入+日付）が入るまで learning_ready 不可"
+      },
+      "reviewer": null,
+      "learning_ready": false,
+      "record_status": "draft",
+      "created_at": "2026-07-07 13:32:07",
+      "recorder_version": "v1.0"
+    },
+    {
+      "result_id": "RES-0002",
+      "decision_fingerprint": "6606edcff151",
+      "decision_ref": {
+        "判断内容": "催事 搬入の最終確認",
+        "日時": "2026-07-07 11:41",
+        "関連カテゴリ": "催事",
+        "結果": "完了（実施済み）"
+      },
+      "action": {
+        "action_date": "2026-07-07",
+        "action_source": "decision_log.json（結果欄の実行記録）",
+        "actor": "CEO",
+        "what": "催事 搬入の最終確認"
+      },
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "review_after_days_proposal": null,
+      "check_due_date": null,
+      "result_date": null,
+      "status": "（CEO判定待ち: 成功 / 失敗 / 継続観察）",
+      "outcome": null,
+      "数値結果": null,
+      "成功要因": null,
+      "失敗要因": null,
+      "想定との差異": null,
+      "evidence": {
+        "decision_source": "decision_log.json",
+        "decision_fingerprint": "6606edcff151",
+        "result_evidence": null,
+        "note": "result_evidence（実績データID/CEO記入+日付）が入るまで learning_ready 不可"
+      },
+      "reviewer": null,
+      "learning_ready": false,
+      "record_status": "draft",
+      "created_at": "2026-07-07 13:32:07",
+      "recorder_version": "v1.0"
+    }
+  ]
+}

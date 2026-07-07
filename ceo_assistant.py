@@ -32,7 +32,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "1.3"
+VERSION = "1.3.1"
 STATE = "Experimental"
 # v1.2 (2026-07-07): FOS接続 — 07_Data/fos/index.json（FOS Importer出力）から
 # Decision候補・期限切れ・優先タスクをBrief判断候補へ統合（Sprint 13）
@@ -111,6 +111,16 @@ def read_memory():
         out[name] = [l.strip("- ").strip() for l in text.split("\n")
                      if l.strip().startswith("- **") or l.strip().startswith("- ")][:15]
     return out
+
+
+def read_result_due():
+    """Result Reader（v1.3.1）— 07_Data/results/index.json（Result Recorder出力・読み取りのみ）。
+    Brief「⏰ 結果確認待ち」の参照元。判定（成功/失敗/継続観察）はCEOのみ。"""
+    p = BASE_DIR / "07_Data" / "results" / "index.json"
+    if not p.exists():
+        return []
+    idx = json.load(open(p, encoding="utf-8"))
+    return idx.get("check_due", [])
 
 
 def read_fos():
@@ -373,6 +383,7 @@ def main():
     else:
         print("FOS: 未接続（07_Data/fos/index.jsonなし → fos_importer.py実行で接続）")
 
+    print(f"結果確認待ち（Result Recorder）: {len(read_result_due())}件")
     cands = score_candidates(pending) + fos_candidates(fos)
     cands.sort(key=lambda c: -c["score"])
     selected, dropped = select_top3(cands)
@@ -387,7 +398,9 @@ def main():
     materials = {"today": today, "now": datetime.now().strftime("%H:%M"),
                  "knowledge": knowledge, "principles": principles,
                  "memory": memory, "pending_count": len(pending),
-                 "result_check_due": (fos or {}).get("summary", {}).get("decision_metadata", {}).get("result_check_due", [])}
+                 # 結果確認待ち = Result Recorder（07_Data/results/）+ FOS index集計の統合（v1.3.1）
+                 "result_check_due": read_result_due() +
+                     (fos or {}).get("summary", {}).get("decision_metadata", {}).get("result_check_due", [])}
     path = next_brief_path(today)
     generate_brief(materials, selected, dropped, path, brief_no=path.stem.replace(today, "第" + (path.stem.split("_")[-1] if "_" in path.stem else "1") + "号"))
     total = generate_decision_drafts(selected, path.name, today)

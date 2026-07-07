@@ -8,7 +8,32 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
-### Commerce/Logistics/POS Dataset Expansion v1.0 [Draft・CEOレビュー待ち]（Sprint 14.6・設計のみ）
+### Dashboard Generator v1.0 [Experimental]（Sprint 15.2・実装）
+- **対象機能**: dashboard_generator.py（新規）/ 06_Reports/dashboard/（新規・追記型YYYY-MM-DD.md + _state.json）/ CEO_DASHBOARD.md（承認反映・起動方法追記）
+- **変更内容**: CEO Dashboard v1.0設計（CEO承認済み）の実装 — 接続済みデータのみで6セクションを1枚生成。①Company Health: 接続済み3項目（未対応10・期限10・Learning10=30点分）を機械的算定式（待ち/超過1件毎-5・released有無+直近7日Decision）で按分表示・未接続70点分は対象外と明示 ②Today's Dashboard: FOS由来3項目表示・売上系は「未接続」表示（推測しない）③Morning Brief統合: 当日Brief原文を転記（⏰セクションは§4へ集約・重複排除。生成はしない）④Result Review: 07_Data/results/index.json参照（期待vs実績記入欄・判定はCEOのみ）⑤Dataset Status: Registry 10件（ACTIVE/WARNING/ERROR/DRAFT・最終同期・機械的判定のみ）⑥AI Learning Status: 6段階件数+今日の増分（_state.json比較）+Evidence付与率
+- **テスト**: --check→本実行→再実行（追記型: _2.md生成・上書きなし・内容は増分基準行以外同一=決定的）/ 書込制限（dashboard/外拒否・既存md上書き拒否）— 全合格。初号発行済み（Health 15/30・Result確認待ち2件）
+- **変更理由**: Sprint 15.2（CEO指示・実装Sprint）
+- **互換性**: 全入力読み取り専用・既存ファイル無変更・削除なし。DashboardからKnowledge生成なし
+- **担当**: CEO（承認・判定記入）/ AI（実装・テスト）
+
+### CEO Dashboard v1.0 [Released・CEO承認 2026-07-07]（Sprint 15.1・設計のみ）
+- **対象機能**: 03_Agents/CEO_DASHBOARD.md（新規）/ ARCHITECTURE.md §7 / CEO_ASSISTANT.md（Brief統合の注記）
+- **変更内容**: 経営コックピットを設計 — 6セクション: ①**Company Health**（100点満点: 売上20/利益15/現金15/在庫10/出荷10/未対応10/期限10/Learning10。将来Dataset自動計算・未接続項目は按分表示・AIは推測して埋めない）②**Today's Dashboard**（売上/受注/出荷/入金予定/スタッフ待ち/期限超過/本日予定 — FOS分はv1.1で表示可）③**Morning Brief統合**（判断3件→やらないこと→レビュー待ち→Decision Draft。生成ルールはCEO_ASSISTANT.mdが正）④**Result Review**（Result Recorder接続: 結果確認待ち・期待vs実績・差分・判定=CEOのみ）⑤**Dataset Status**（Registry接続: ACTIVE/WARNING/ERROR/未登録+最終同期・機械的判定のみ）⑥**AI Learning Status**（Decision〜Verified件数・今日の増分・Evidence Score平均は将来/当面はEvidence付与率）
+- **重要ルール**: Dashboard読み取り専用・AIは書き換えない・Dataset→Brief→Decision Log→Learningから生成・DashboardからKnowledgeを作らない
+- **変更理由**: Sprint 15.1（CEO指示・設計のみ。「Morning Brief中心」→「経営コックピット」へ）
+- **互換性**: Brief生成ロジック無変更（表示面の統合のみ）。実装はdashboard_generator.py v1.1として次Sprint以降
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### Result Recorder v1.0 [Experimental]（Sprint 15・実装）
+- **対象機能**: result_recorder.py（新規）/ 07_Data/results/（新規: result_draft_log.json・result_log.json・index.json・README.md）/ ceo_assistant.py v1.3.1（Result Reader追加・結果確認待ち統合）/ RESULT_LAYER_DESIGN.md（実装開始へ状態更新）
+- **変更内容**: Result Layer初実装 — ①decision_log.json（読み取りのみ）から結果待ちDecision抽出（trackable条件明記: 結果=完了/実行済み・開発/記録系除外）②Action Record（事実のみ: date/actor/what）+ Result Draft生成（status=**CEO判定待ち**・outcome/数値/要因は全てCEO記入欄）③Metadata引き継ぎ（decision_type main/sub・importance・expected_result・review_after_days・無ければnull）④Evidence必須構造（result_evidenceが入るまでlearning_ready=false）⑤index.json→Brief「⏰ 結果確認待ち」接続（ceo_assistant v1.3.1）⑥確定はCEO確認後にresult_log.jsonへ（AIは判定・確定しない）
+- **Result Draft**: 2件生成（RES-0001 工場打ち合わせ / RES-0002 催事搬入確認 — PENDING #11のResult初号候補）
+- **テスト**: --check → 本実行 → 再実行（冪等: 新規0件）/ 書込ホワイトリスト検証（results/外への書込をPermissionErrorで拒否）/ Brief統合テスト（一時領域: RES 2件掲載・CEO判定欄・expected未入力表示）— 全合格
+- **変更理由**: Sprint 15（CEO指示・実装Sprint）
+- **互換性**: Decision Log本体無変更・既存ファイル削除なし。旧判断はメタ項目null（未入力と表示・推測しない）
+- **担当**: CEO（判定・確定）/ AI（実装・テスト）
+
+### Commerce/Logistics/POS Dataset Expansion v1.0 [Released（設計登録として承認 2026-07-07。実接続はsource_location・認証・エクスポート方法確認後にactive化）]（Sprint 14.6・設計のみ）
 - **対象機能**: 07_Data/datasets/DATASET_REGISTRY.md（§2-1新設）+ dataset_registry.json（7件draft追加・total 10）/ DATA_SOURCE_DESIGN.md / CONNECTOR_ARCHITECTURE.md（Connector 6種追加）/ ARCHITECTURE.md §1
 - **変更内容**: EC・物流・POS・決済系を正式登録 — ①source_type 7種追加（shopify/makeshop/hapilogi/logiec/flam/airregi/airpay・計24種）②7 Dataset draft登録: DS-SLS-0001 Shopify（EC注文・商品別売上・顧客・在庫・返品・決済・広告流入元）/ DS-SLS-0002 MakeShop（旧EC・過去実績・移行前データ）/ DS-LOG-0001 はぴロジ（出荷・在庫・入荷・返品・配送遅延・倉庫差異）/ DS-LOG-0002 logiec（物流連携・出荷指示・在庫/注文連携・エラー履歴）/ DS-INV-0001 FLAM（在庫・受注・発注・仕入・売上・商品マスタ・取引先）/ DS-POS-0001 Airレジ（催事/店舗/商品別/日別売上・決済方法別）/ DS-FIN-0001 Airペイ（決済実績・入金予定・手数料・未入金/差異）③record_schema 5種新設（OrderRecord/ShipmentRecord/InventoryRecord/SalesRecord/PaymentRecord）④Agent用途マップ（CEO補佐=売上/在庫/入金/出荷遅延/利益異常、催事=Airレジ、発注在庫=FLAM/はぴロジ/logiec/EC、資金繰り=Airペイ/EC入金、SUNNY NOMADO・so u=EC/商品別売上/受注）
 - **重要ルール**: 全て読み取り専用開始・**AIは注文/出荷/返金/決済/在庫変更を実行しない**・data_sensitivity/pii_level原則high（顧客情報・住所・電話・メール・決済情報を含むため）・Knowledge直行禁止

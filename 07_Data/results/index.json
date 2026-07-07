@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "generator": "Result Recorder v1.0 [Experimental]",
+    "generated_at": "2026-07-07 13:32:07",
+    "note": "Brief『結果確認待ち』の参照元。判定はCEOのみ"
+  },
+  "summary": {
+    "drafts_total": 2,
+    "pending_ceo_review": 2,
+    "check_due_now": 2,
+    "confirmed_results": 0
+  },
+  "check_due": [
+    {
+      "result_id": "RES-0001",
+      "判断": "工場打ち合わせ",
+      "判断日": "2026-07-07",
+      "確認予定日": "未設定（実行済み=確認可）",
+      "expected_result": null,
+      "decision_type_main": null,
+      "decision_importance": null
+    },
+    {
+      "result_id": "RES-0002",
+      "判断": "催事 搬入の最終確認",
+      "判断日": "2026-07-07",
+      "確認予定日": "未設定（実行済み=確認可）",
+      "expected_result": null,
+      "decision_type_main": null,
+      "decision_importance": null
+    }
+  ]
+}

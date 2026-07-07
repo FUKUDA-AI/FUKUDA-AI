@@ -114,7 +114,13 @@ Task開始前の最終確認は [SYSTEM_BOOT_CHECKLIST.md](SYSTEM_BOOT_CHECKLIST
 **Current Mode（v1.2・Sprint 14.4）**: 作業モード6種（Review/Planning/Implementation/Operation/Analysis/Emergency）でModeごとに読込範囲をさらに絞る。Mode値の正本はCURRENT_STATE.md・Mode別読込ルールの正本はSYSTEM_BOOT.md。
 目的はトークン消費の抑制と長期運用: **全ファイル読込禁止・Knowledge全文検索禁止・Agentごとに最小読込**。5層構造（§3）に対する読み方の規約であり、層の定義・更新権限は変えない。
 
-## 7. Version履歴
+## 7. CEO Dashboard（経営コックピット・v1.0設計 2026-07-07・Sprint 15.1）
+
+CEOが毎朝最初に見る表示面。**Morning BriefはDashboardの一部**（セクション3）になる。
+構成: ①Company Health（100点・将来Dataset自動計算）②Today's Dashboard ③Morning Brief ④Result Review（Result Recorder接続）⑤Dataset Status（Registry接続）⑥AI Learning Status。
+原則: **読み取り専用**（AIはDashboardを書き換えない・DashboardからKnowledgeを作らない）。生成は Dataset → Morning Brief → Decision Log → Learning の読み取りのみで組み立てる。詳細は [../03_Agents/CEO_DASHBOARD.md](../03_Agents/CEO_DASHBOARD.md) を正とする。
+
+## 8. Version履歴
 
 | Version | 日付 | 内容 |
 |---|---|---|
