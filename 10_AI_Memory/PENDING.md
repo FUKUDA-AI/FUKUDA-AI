@@ -21,6 +21,10 @@
 | 4 | ルート08_Decision_Log/の99_Archive移動可否（**Extractor v2.0完了済み・移動提案中**） | 08_Decision_Log/ | 中 |
 | 5 | Insight/Decision Extractor のReleased昇格 | CHANGELOG参照 | 中 |
 
+| 7 | **Learning Cycle v2.0設計のレビュー**（09_Learning/LEARNING_CYCLE_V2.md。承認で実装Sprint開始・Architecture v1.4へ） | 09_Learning/ | 高 |
+| 8 | 催事データの投入（07_Data/events/raw/へExcel/CSV。置くだけで取込可能） | CEO作業 | 高 |
+| 9 | ~~FOS-data.json配置~~ ✅ 2026-07-07 配置完了→FOS Connector v1.0稼働（TaskRecord34件・Brief接続済み） | — | 完了 |
+
 ## 未確定事項（データ不足TODO）
 
 - COMPANY_PROFILE: 従業員数・決算期・財務数値・顧客データ・知財登録番号

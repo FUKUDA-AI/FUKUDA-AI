@@ -101,6 +101,11 @@ Version: v1.0
 - **日次運用**: CEO Morning Brief設計完了（2026-07-06・06_Reports/CEO_MORNING_BRIEF_DESIGN.md）。v1.1は手動運用で即開始可能
 - **Connector Architecture v1.0 設計完了（2026-07-06・07_Data/CONNECTOR_ARCHITECTURE.md）**: 全情報源をConnector→Importer→Learning Cycleへ統一。Importer実装順: 催事/Events → Claude → Sheets → Shopify（v1.1）→ Meta/Gemini/Meeting/Drive + ChatGPT v2.0（v1.2）→ Gmail/Calendar（v2.0）
 - **Events Importer v1.0 [Experimental] 実装済み（2026-07-06・Sprint 8）**: 初のデータ接続稼働。次Sprint=催事データ投入（raw/へExcel/CSV投入→取込→KN-EVT-0001の定量検証）
+- **Learning Cycle v2.0 設計完了（2026-07-06・Sprint 9・09_Learning/）**: Decision Log起点の自動学習+Verifiedまでの閉ループ。採用時にArchitecture v1.4
+- **Insight Generator v1.0 [Experimental] 実装済み（2026-07-06・Sprint 10）**: 初回実行でInsight Draft 10件（CEO確定判断由来）
+- **Pattern Generator v1.0 [Experimental] 実装済み（2026-07-06・Sprint 11）**: 初回0件（設計どおり・日次運用で自然に育つ）。残り: Review Queue自動化 → Knowledge Gen → Verified Candidate
+- **Result Layer v1.0 設計完了（2026-07-06・Sprint 12・09_Learning/RESULT_LAYER_DESIGN.md）**: 判断の結果から学ぶ層（成功/失敗/継続観察=CEOのみ判定）。承認後の実装順: Result Recorder → 結果待ち抽出 → Brief結果確認欄（ceo_assistant v1.2）→ 実績照合 → Insight Gen v1.1
+- **FOS を正式データソースへ追加（2026-07-06・CEO指示・接続優先順位0番=最優先）**: 日次運用ボード。**正本=FOS-data.json（Source of Truth・JSON正本化 2026-07-06 CEO決定）、FOS.htmlは表示用補助**。フロー: FOS-data.json→FOS Importer→TaskRecord→Morning Brief→Decision候補。読み取り専用・原本無変更・タスク操作はCEO確認後のみ。~~配置待ち~~ ✅ **FOS Connector v1.0稼働（2026-07-07・Sprint 13）**: TaskRecord 34件・Decision候補5件・期限切れ検知2件・CEO Assistant v1.2でBrief接続済み
 - **完了条件**: 経営の意思決定サイクルにAI OSが常時組み込まれている状態
 - **依存関係**: Phase 9
 

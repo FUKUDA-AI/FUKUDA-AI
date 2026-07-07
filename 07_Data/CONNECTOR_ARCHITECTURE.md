@@ -57,6 +57,7 @@ Version: v1.0（設計のみ・実装なし）
 | Shopify Connector | Shopify API | APIキー読み取り専用 | v1.1 |
 | Meta Connector | Meta Marketing API | OAuth読み取り専用 | v1.2 |
 | 催事データConnector | 手元Excel/Sheets | ファイル投入 or Sheets経由 | **v1.1最優先** |
+| **FOS Connector**（2026-07-06追加・JSON正本） | **FOS-data.json**（正本・Source of Truth）。FOS.htmlは表示用補助 | ローカルJSON読み取り専用 | **✅稼働中**（2026-07-07・fos_importer.py v1.0） |
 
 ## 4. Importer設計（AIごと・ソースごとに分離）
 
@@ -92,6 +93,14 @@ Version: v1.0（設計のみ・実装なし）
 
 ※ 催事データはSheets/Excel経由のため専用Importerは「Events Importer（v1.1）」として催事Connectorとセットで実装（EventRecord出力）。
 
+### 4-9. FOS Importer（新規・v1.1・2026-07-06追加 / JSON正本化）
+- 入力: **FOS-data.json（正本・Source of Truth。読み取り専用・原本を変更しない）**。FOS.htmlは表示用の補助データであり解析しない
+- フロー: `FOS-data.json → FOS Importer → TaskRecord → Morning Brief → Decision候補`
+- 出力: **TaskRecord**: record_id / title / status（今日やること・未完了・完了）/ sprint / pending_ref / due_date / priority / decision_candidate / brief_candidate / imported_at
+- 保存先: 07_Data/fos/（スナップショット+正規化+索引）
+- JSON正本の利点: Importer実装が単純・HTML解析不要・Brief反映が容易・将来API化しやすい（CEO決定理由）
+- 特記: ①タスクの完了化・削除・変更はCEO確認後のみ（AIはFOSに書かない）②内容はKnowledge直行禁止（Data Layer→意味づけ後にLearning Cycle）③10_AI_Memory/PENDINGとの同期ルール（FOS=CEO操作面/PENDING=AI記録面）を実装時に定義 ④JSONスキーマは初回接続時にCEOと項目対応を確認してから実装（DATA_SOURCE_DESIGN §4準拠）
+
 ## 5. フォルダ構成（Data Layer）
 
 ```
@@ -100,6 +109,7 @@ Version: v1.0（設計のみ・実装なし）
 ├── conversations/     ConversationRecord + 統合索引（全AI・会議・メール横断）
 ├── transactions/      TransactionRecord（Shopify・卸）
 ├── events/            EventRecord（催事）
+├── fos/               TaskRecord（FOS日次運用ボード。正本=FOS-data.json / HTML=補助・2026-07-06） 
 ├── metrics/           MetricRecord（広告・EC）
 ├── documents/         DocumentRecord索引（原本はDrive）
 ├── finance/           会計・資金繰り（アクセス限定）
@@ -118,7 +128,7 @@ Version: v1.0（設計のみ・実装なし）
 
 | 段階 | 実装 |
 |---|---|
-| v1.1 | 催事Connector+Events Importer → Claude Importer → Sheets Connector → Shopify Connector+Importer |
+| v1.1 | 催事Connector+Events Importer ✅ → **FOS Connector+Importer（2026-07-06追加・移設後即）** → Claude Importer → Sheets Connector → Shopify Connector+Importer |
 | v1.2 | Meta / Gemini / Meeting / Drive の各Connector+Importer、ChatGPT Importer v2.0（共通スキーマ移行） |
 | v2.0 | Gmail / Calendar（個人情報系・運用ルール成熟後） |
 

@@ -4,7 +4,7 @@ Version: v1.1 [Experimental]（ハイブリッド実装: ceo_assistant.py=機械
 最終更新日: 2026-07-06
 状態: Released（定義はCEO承認済み。v1.1実装はExperimental・実運用検証中）
 
-**起動方法（v1.1）**: `python3 ceo_assistant.py` → 骨組み生成 → FUKUDA AIが言語化・検査 → CEOへ提示。`--check`で読込検証のみ。
+**起動方法（v1.2）**: 事前に`python3 fos_importer.py`（FOS取込）→ `python3 ceo_assistant.py` → 骨組み生成 → FUKUDA AIが言語化・検査 → CEOへ提示。`--check`で読込検証のみ。v1.2でFOS（Decision候補・期限切れ・優先タスク）がBrief判断候補に統合された。
 分業（CEO承認 2026-07-06）: 機械=情報収集・released/verified確認・PENDING確認・候補抽出・スコアリング・骨組み・Draft生成 / LLM=判断3件の推奨文・理由の言語化。同日複数回は追記型（YYYY-MM-DD_2.md…）・上書き禁止。
 Layer: ⑤Agent Layer（参照: ①〜④ / 書込: 06_Reports・10_AI_Memoryのみ）
 上位設計: [AGENT_DESIGN.md](AGENT_DESIGN.md) §1 / [AGENT_COLLABORATION.md](AGENT_COLLABORATION.md) / [../06_Reports/CEO_MORNING_BRIEF_DESIGN.md](../06_Reports/CEO_MORNING_BRIEF_DESIGN.md)

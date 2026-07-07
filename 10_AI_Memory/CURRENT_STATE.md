@@ -15,7 +15,11 @@
 - **Sprint 7完了（2026-07-06）**: CEO Assistant v1.1 [Experimental]実装済み — `python3 ceo_assistant.py`でBrief骨組み+Decision Log Draft生成（ハイブリッド方式・書込ホワイトリスト・追記型）。第2号Briefで実運用テスト合格
 - **Brief#2 CEO判断反映済み（2026-07-06）**: ①Git+GitHub Push完了（CEO実施）②PTN-003/LSN-004 hold解消→released ③LSN-011/PRN-010はhold継続+**次回Principle候補「総合判断原則」の再提案指示**。Decision Log 30件
 - **Sprint 8完了（2026-07-06）**: Events Importer v1.0 [Experimental] — 初のデータ接続基盤稼働（07_Data/events/ raw→normalized→index.json・テスト合格）
-- **待ち状態**: 催事データの投入（CEOがraw/へExcel/CSVを置く→次Sprintで取込・検証）。他の着手候補: 催事AI・so u AI定義 / Claude Importer
+- **Sprint 9-10完了（2026-07-06）**: Learning Cycle v2.0設計 + **Insight Generator v1.0稼働**（CEO確定判断10件→Insight Draft 10件・冪等検証済み）。FUKUDA AIがCEOの判断から自動で学び始めた
+- **Sprint 11完了（2026-07-06）**: **Pattern Generator v1.0 [Experimental]稼働**（初回0件=設計どおり・抑制1件は「異なる日」待ち。テスト5ケース+冪等性合格）。Learning Cycle v2.0はInsight→Patternまで機械化完了
+- **Sprint 12完了（2026-07-06）**: Result Layer v1.0設計（09_Learning/RESULT_LAYER_DESIGN.md・判断の結果から学ぶ層・CEOレビュー待ち）
+- **Sprint 13完了（2026-07-07）**: **FOS Connector v1.0稼働** — FOS-data.json（正本）→TaskRecord 34件→Brief接続（CEO Assistant v1.2）。Decision候補5件・期限切れ2件（工場打ち合わせ・催事搬入確認）が判断候補上位へ。実タスクでBriefが動く状態になった
+- **待ち状態**: ①FOS.html移設（CEO作業）②Result Layer+Learning Cycle v2.0設計レビュー ③催事データ投入
 - **Phase 9進捗**: **CEO補佐AI v1.0定義済み（03_Agents/CEO_ASSISTANT.md・Morning Brief専用・FUKUDA AI初の稼働Agent）**。CEOが「Morning Brief」と言えば本定義に従い発行する。次: 催事AI・so u AI
 - **Phase 10進捗**: Data Source Design + CEO Morning Brief Design + **Connector Architecture**（すべてv1.0・2026-07-06）完成。**Morning Brief v1.1は手動運用で即開始可**（CEOが「Morning Brief」と言えば発行）
 - **設計5部作**: ①Agent Design ②Agent Collaboration ③Data Source Design ④Morning Brief Design ⑤Connector Architecture — 全てCEOレビュー待ちDraft
@@ -35,6 +39,7 @@
 | Knowledge Builder | v1.1 | Experimental（released12/hold1） |
 | CEO Assistant | v1.1 | Experimental（ceo_assistant.py・ハイブリッド方式） |
 | Events Importer | v1.0 | Experimental（07_Data/events/・データ投入待ち） |
+| Insight Generator | v1.0 | Experimental（09_Learning/insights/・Draft10件） |
 | AI Memory Layer | v1.0 | Released |
 | Architecture | v1.3 | Released（Principle層新設） |
 | NOMADO AI OS | **v1.0.0** | **Released（2026-07-06・Gitタグ）** |

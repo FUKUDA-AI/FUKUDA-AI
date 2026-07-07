@@ -29,6 +29,9 @@ python3 chatgpt_importer.py   # プロジェクトルートで実行
 ## 稼働中の取込機能
 - **Events Importer v1.0 [Experimental]**（2026-07-06〜）: `events/raw/` のExcel/CSV → EventRecord正規化 + `events/index.json`。詳細は [events/README.md](events/README.md)
 
+## 稼働中の取込機能（続き）
+- **FOS Importer v1.0 [Experimental]**（2026-07-07〜）: `FOS/FOS-data.json`（正本・読み取り専用）→ TaskRecord → `fos/index.json`。Morning Brief接続済み（CEO Assistant v1.2）
+
 ## 今後のTODO
 - ~~催事・発注・在庫・Shopify・Meta広告データの取り込み設計~~ ✅ 2026-07-06 設計完了（上記2文書）
 - ~~催事Connector+Events Importer~~ ✅ 2026-07-06 v1.0実装（データ投入は次Sprint）

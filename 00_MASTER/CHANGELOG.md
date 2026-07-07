@@ -8,6 +8,62 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### FOS Importer v1.0 [Experimental] + CEO Assistant v1.2（Sprint 13: FOS Connector）
+- **対象機能**: fos_importer.py（新規）/ 07_Data/fos/（index.json+snapshots）/ ceo_assistant.py v1.2
+- **変更内容**: FOS-data.json（正本・読み取り専用・HTMLは読まない）→TaskRecord 34件へ正規化（tasks18/next_action11/staff_request1/improvements2/events2）。**Decision候補生成**（staffRequestsの要判断・期限切れevent・improvements=5件）、**期限切れ検知**（2件検出）、priority順ソート、PENDING同期レポート、Sprint同期（projects状態集計）、--check、冪等（内容ハッシュでスナップショット重複回避）。CEO Assistant v1.2でBrief判断候補へ統合（期限切れが最上位・スタッフ相談は「人が待っている」加点）
+- **変更理由**: Sprint 13（FOS-data.json配置完了を受けた実装）
+- **互換性**: FOS原本無変更を検証済み。書込は07_Data/fos/のみ。Knowledge直行なし（Data Layer経由）
+- **担当**: CEO（配置・仕様）/ AI（実装）
+
+### FOS設計変更: FOS-data.jsonを正本（Source of Truth）へ（CEO指示）
+- **対象機能**: DATA_SOURCE_DESIGN.md 1-11 / CONNECTOR_ARCHITECTURE.md 4-9 / 07_Data/README / ROADMAP / PENDING
+- **変更内容**: FOSの正本をFOS.html→**FOS-data.json**へ変更（HTMLは表示用補助・解析対象外）。フロー: FOS-data.json→FOS Importer→TaskRecord→Morning Brief→Decision候補。理由: Importer簡単・HTML解析不要・Brief反映容易・将来API化容易
+- **変更理由**: CEO指示（2026-07-06）
+- **互換性**: 設計のみ。配置待ち（推奨: FOS/FOS-data.json・PENDING #9更新済み）。初回接続時にJSONスキーマの項目対応をCEOと確認
+- **担当**: CEO（決定）/ AI（設計反映）
+
+### FOS を正式データソースへ追加（設計・CEO指示）
+- **対象機能**: DATA_SOURCE_DESIGN.md（1-11追加・優先順位0番）/ CONNECTOR_ARCHITECTURE.md（FOS Connector・FOS Importer 4-9・TaskRecordスキーマ・07_Data/fos/）/ AGENT_COLLABORATION.md（共有データ追加）/ ROADMAP / PENDING
+- **変更内容**: FOS（FUKUDA Operating System・日次運用ボードHTML）を最優先データソースとして登録。取得: 今日やること・未完了/完了タスク・Sprint・PENDING・期限・優先度・Decision候補・Brief候補。ルール: 読み取り専用開始・原本無変更・タスク完了/削除はCEO確認後のみ・内容はKnowledge直行禁止（Data Layer→意味づけ後にLearning Cycle）
+- **変更理由**: CEO指示（FOSはMorning Brief・タスク・Sprint・PENDING管理の入力元）
+- **互換性**: 設計のみ。**実装前提: FOS.htmlが別セッション出力フォルダにあり現在アクセス不可 → プロジェクト内移設（推奨: FOS/FOS.html）が要CEO作業（PENDING #9）**
+- **担当**: CEO（指示・移設）/ AI（設計・登録）
+
+### Result Layer v1.0 設計 [Draft・CEOレビュー待ち]（Sprint 12・設計のみ）
+- **対象機能**: 09_Learning/RESULT_LAYER_DESIGN.md（新規・コードなし）/ ARCHITECTURE.md（§5追記）
+- **変更内容**: Decision→Action→Result→Insightの閉ループを設計 — Result Record 13項目（decision_id遡及リンク・Evidence必須・learning_ready機械判定）、**成功/失敗/継続観察の判定と要因分析はCEOのみ（AIは推測しない。機械は数値・日付・出典の転記だけ）**、入力3経路（Brief結果確認欄/実績データ照合/週次棚卸し）、失敗Resultを最重要学習素材に、Verified条件の深化（利用実績→**成功Resultで検証された**利用実績へ・失敗根拠のKNは昇格せず見直し）
+- **変更理由**: Sprint 12（CEO指示・設計のみ）
+- **互換性**: 新規文書のみ。実装は承認後（保存先: 07_Data/results/）
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### Pattern Generator v1.0 [Experimental]（Sprint 11実装）
+- **対象機能**: pattern_generator.py（新規）/ 09_Learning/patterns/pattern_draft_log.json
+- **変更内容**: Insight横断（v2.0 CEO判断由来10件+v1.3会話由来382件）の反復検出を実装。Pattern成立はCEO承認4条件（v2由来1件以上・異なる日・異なる文脈・Decision遡及可能）+出現3回以上（同日同文脈=1回）を**機械検証**。重複判定: 既存Pattern類似は非生成、EP/CORE類似はEP運用記録候補へ、**CEO却下済み類似は再提案しない**（再整理指示つきのみ例外・抑制理由をログ記録）。書込は09_Learning/patterns/のみ・冪等
+- **変更理由**: Sprint 11（CEO承認2点を反映した実装）
+- **互換性**: 新規のみ。初回実行: **Pattern Draft 0件**（設計どおり: v2.0 Insightが1日分のため「異なる日」条件を満たす群が無い）。抑制1件（hold解消判断とDX還元Insightの群・異なる日待ち）。合成データテスト5ケース+冪等性検証合格
+- **担当**: CEO（条件承認）/ AI（実装）
+
+### Pattern Generator v1.0 実装計画 [Draft・CEO確認待ち]（Sprint 11・計画のみ）
+- **対象機能**: 09_Learning/PATTERN_GENERATOR_PLAN.md（新規・コードなし）
+- **変更内容**: Insight Draft→Pattern Draftの実装計画 — 認定条件（**異なる日×異なる文脈で3回以上・同日同案件は1回**・機械検証）、v1.3会話由来Insightとの横断カウント（CEO判断由来1件以上を必須）、重複判定4種（同一冪等/類似は既存強化/EP・CORE類似はEP運用記録候補へ/**CEO却下済みは再提案しない**）、Evidence連鎖（Pattern→Insight→Decision 2ホップ遡及保証）、リスク明示（初回実行はデータ1日分のため0件の見込み=正直な予測）
+- **変更理由**: Sprint 11（CEO指示・設計と実装計画のみ）
+- **互換性**: 新規文書のみ
+- **担当**: CEO（確認・これから）/ AI（計画）
+
+### Insight Generator v1.0 [Experimental]（Sprint 10・Learning Cycle v2.0第一コンポーネント）
+- **対象機能**: insight_generator.py（新規）/ 09_Learning/insights/insight_draft_log.json
+- **変更内容**: Decision LogからInsight Draftを自動生成 — 入力は**CEO確定判断のみ**（会話からの機械抽出分20件は対象外として除外）、判断理由未記入からは生成しない（推測禁止）、結果から承認基準/却下基準/保留・不足情報を分類、既存Insight・EPとの意味類似判定（≧0.80は新規作成せず既存Evidence強化）、Evidence必須（Decision指紋・日時・根拠EP/KN封入）、冪等（処理済み指紋管理・再実行で重複ゼロを検証）、書込は09_Learning/insights/のみ
+- **変更理由**: Sprint 10（CEO指示・コード実装）
+- **互換性**: 新規のみ。decision_log本体は無変更。初回実行: 確定判断10件→Insight Draft 10件（承認基準9・保留1）
+- **担当**: CEO（指示）/ AI（実装）
+
+### Learning Cycle v2.0 設計 [Draft・CEOレビュー待ち]（Sprint 9）
+- **対象機能**: 09_Learning/（新規フォルダ）LEARNING_CYCLE_V2.md + README.md / ARCHITECTURE.md（§5参照追記）
+- **変更内容**: Decision Log起点の自動学習を設計 — Insight Generator v2.0（確定判断の理由・**却下理由**から抽出。理由未記入からは作らない）/ Pattern Generator v2.0（異なる日・文脈で3回以上・v1.3会話ルートと横断）/ Knowledge Generator v2.0（Evidence連鎖封入・IA準拠）/ 昇格条件表（Released=CEO Review・Verified=CEOのみ・候補入り機械判定は180日+利用実績3回+矛盾ゼロ）/ 重複判定3層（同一・類似は既存強化・却下照合）/ Brief・Decision Log・Knowledge連携 / Agent反映（released化で全Agentへ即時反映+将来の週次ダイジェスト・提案採否の還流学習）
+- **変更理由**: Sprint 9（CEO指示・設計のみ・コードなし）
+- **互換性**: 新規文書のみ。v1.3サイクルと並存。Architecture版数は承認時にv1.4へ
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
 ### Events Importer v1.0 [Experimental]（Sprint 8: Events Connector）
 - **対象機能**: events_importer.py（新規）/ 07_Data/events/（raw・normalized・index.json）
 - **変更内容**: 催事実績（Excel/CSV）の共通データ基盤を実装 — 列名ゆらぎ吸収マッピング、EventRecord正規化（12項目+取込記録）、読めないセルはnull（推測禁止）、日数・日商のみ算術導出（derived_fields明記）、冪等（record_idで重複排除）、元データ無変更・読み取り専用。index.jsonにサマリー（総件数・平均売上・会場一覧）を生成しMorning Brief・催事AI・CEO補佐AIが参照可能

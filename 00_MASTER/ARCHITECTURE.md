@@ -93,7 +93,15 @@ MemoryはKnowledgeを**複製せず**、以下だけを保持する。
 2. どのLayerを参照するか
 3. どのLayerを更新するか
 
-## 5. Version履歴
+## 5. Learning Cycle v2.0（設計済み・CEOレビュー待ち・未採用）
+
+Decision Log起点の自動学習ルート（Decision Log → Insight → Pattern → Knowledge Draft → CEO Review → Released → Verified Candidate → Verified）を設計済み。詳細は [../09_Learning/LEARNING_CYCLE_V2.md](../09_Learning/LEARNING_CYCLE_V2.md)。Insight Generator v1.0 / Pattern Generator v1.0は先行実装済み。承認・実装時にArchitecture v1.4として正式採用する（それまで本書はv1.3のまま）。
+
+### Result Layer（設計済み・CEOレビュー待ち・未採用）
+
+判断の**結果**から学ぶ層: Decision → Action → Result（成功/失敗/継続観察・**判定はCEOのみ・AIは推測しない**）→ 結果つきInsight → 既存サイクルへ。Verified判定を「使われた」から「使われて効いた」へ深化させる。詳細は [../09_Learning/RESULT_LAYER_DESIGN.md](../09_Learning/RESULT_LAYER_DESIGN.md)。v1.4採用時にLearning Cycle v2.0と併せて正式化する。
+
+## 6. Version履歴
 
 | Version | 日付 | 内容 |
 |---|---|---|

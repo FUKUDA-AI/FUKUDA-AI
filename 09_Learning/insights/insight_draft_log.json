@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "generator": "Insight Generator v1.0 [Experimental]",
+    "note": "Decision Log（CEO確定判断）由来のInsight Draft。全件draft・CEOレビュー前にKnowledge/Principlesへ反映しない。",
+    "processed_fingerprints": [
+      "0fd22c55f271",
+      "10e03a634c4b",
+      "49de262be997",
+      "66a289c7c088",
+      "80a71e2ca318",
+      "9f7e55be65d1",
+      "afa4f14c7e1c",
+      "b4e163480c69",
+      "d24c04d03419",
+      "d4f7f3abc191"
+    ],
+    "generated_at": "2026-07-06 17:45:40",
+    "total_insights": 10
+  },
+  "insights": [
+    {
+      "insight_id": "INS2-001",
+      "type": "承認基準",
+      "内容": "承認した判断:「Pattern/Lesson 27件レビュー: Approve14/Reject11/Hold2。LSN-011修正により「事実だけでは原則にならない」基準を確立」。判断基準: 反復・憲法整合・再利用性で判定（根拠: EP認定基準・KNOWLEDGE_PROMOTION_RULES）",
+      "判断理由_原文": "反復・憲法整合・再利用性で判定（根拠: EP認定基準・KNOWLEDGE_PROMOTION_RULES）",
+      "source_decisions": [
+        "80a71e2ca318"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-002",
+      "type": "承認基準",
+      "内容": "承認した判断:「Principle 10件レビュー: Approve8をEP-001〜008としてEVOLVING登録。Hold2(PRN-009継続観察/PRN-010再整理指示)」。判断基準: 普遍性と反復実績で判定。COREへの昇格は実運用検証後",
+      "判断理由_原文": "普遍性と反復実績で判定。COREへの昇格は実運用検証後",
+      "source_decisions": [
+        "10e03a634c4b"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-003",
+      "type": "承認基準",
+      "内容": "承認した判断:「Knowledge 13件レビュー: Approve12をreleased化(初のReleased Knowledge)。Hold1(KN-SOP-0003は実運用で成熟後)」。判断基準: EP整合・Evidence・Agent参照価値で判定（根拠: EP-001〜008）",
+      "判断理由_原文": "EP整合・Evidence・Agent参照価値で判定（根拠: EP-001〜008）",
+      "source_decisions": [
+        "afa4f14c7e1c"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-004",
+      "type": "承認基準",
+      "内容": "承認した判断:「ブランドを2分類(自社/支援・共同)に確立。MIRAI UP=株式会社ベルタ所有・NOMADOは支援と明記」。判断基準: ブランド所有者・支援会社・共同プロジェクトの混同防止",
+      "判断理由_原文": "ブランド所有者・支援会社・共同プロジェクトの混同防止",
+      "source_decisions": [
+        "66a289c7c088"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "ブランド",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-005",
+      "type": "承認基準",
+      "内容": "承認した判断:「NOMADO AI Operating System v1.0.0リリースを宣言。2026-07-06をFUKUDA AIの誕生日として記録」。判断基準: 会社の経営思想を学び続けるAIの出発点（Gitタグv1.0.0）",
+      "判断理由_原文": "会社の経営思想を学び続けるAIの出発点（Gitタグv1.0.0）",
+      "source_decisions": [
+        "0fd22c55f271"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-006",
+      "type": "承認基準",
+      "内容": "承認した判断:「設計6文書(Agent Design/Collaboration/Data Source/Morning Brief/Connector/CEO補佐AI定義)を一括承認しReleased化」。判断基準: 相互参照済みの設計群。承認により実装Sprintへ移行可能（Brief#1判断1）",
+      "判断理由_原文": "相互参照済みの設計群。承認により実装Sprintへ移行可能（Brief#1判断1）",
+      "source_decisions": [
+        "b4e163480c69"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-007",
+      "type": "承認基準",
+      "内容": "承認した判断:「00_MASTER思想文書8本をv0.xからv1.0(正式版)へ昇格」。判断基準: 1日の実運用(50件超のレビュー・EP登録・Brief発行)で矛盾なく機能したため（Brief#1判断2）",
+      "判断理由_原文": "1日の実運用(50件超のレビュー・EP登録・Brief発行)で矛盾なく機能したため（Brief#1判断2）",
+      "source_decisions": [
+        "49de262be997"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 15:02"
+        ],
+        "source": "Morning Brief #1（CEO確定記録）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": []
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-008",
+      "type": "承認基準",
+      "内容": "承認した判断:「【CEO作業】Gitロック解除+本日分コミット（Brief#1判断3: これから実行と回答済み）」。判断基準: Gitロック解除・コミット・GitHubへのPush完了（CEO実施）",
+      "判断理由_原文": "Gitロック解除・コミット・GitHubへのPush完了（CEO実施）",
+      "source_decisions": [
+        "9f7e55be65d1"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 17:14"
+        ],
+        "source": "Morning Brief #2（CEO確定・Draft経由）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": [
+          "EP-004",
+          "EP-006"
+        ]
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-009",
+      "type": "承認基準",
+      "内容": "承認した判断:「PTN-003/LSN-004のhold解消 — PRN-004（DX還元思想）がApproveされたため、EVOLVING登録Sprintでreleasedへの更新を提案（要CEO確認）」。判断基準: PRN-004（EP-004）として再整理済みのためhold解消で進める",
+      "判断理由_原文": "PRN-004（EP-004）として再整理済みのためhold解消で進める",
+      "source_decisions": [
+        "d24c04d03419"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 17:14"
+        ],
+        "source": "Morning Brief #2（CEO確定・Draft経由）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": [
+          "EP-004",
+          "EP-006"
+        ]
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    },
+    {
+      "insight_id": "INS2-010",
+      "type": "保留・不足情報",
+      "内容": "保留した判断:「LSN-011はhold継続。PRN-010の再整理版「経営判断は売上だけでなく利益・ブランド価値・運営負荷・将来性を総合判断」の再提案とセットで再判断」。保留理由・条件: 「作業スペース費用」という事実だけではPrinciple化しない。ただし「経営判断は売上だけでなく、利益・ブランド価値・運営負荷・将来性を総合判断する」として次回Principle候補で再提案すること",
+      "判断理由_原文": "「作業スペース費用」という事実だけではPrinciple化しない。ただし「経営判断は売上だけでなく、利益・ブランド価値・運営負荷・将来性を総合判断する」として次回Principle候補で再提案すること",
+      "source_decisions": [
+        "d4f7f3abc191"
+      ],
+      "evidence": {
+        "decision_dates": [
+          "2026-07-06 17:14"
+        ],
+        "source": "Morning Brief #2（CEO確定・Draft経由）",
+        "関連カテゴリ": "経営",
+        "根拠EP_KN": [
+          "EP-004",
+          "EP-006"
+        ]
+      },
+      "status": "draft",
+      "needs_ceo_review": true,
+      "created_at": "2026-07-06",
+      "generator_version": "v1.0"
+    }
+  ]
+}

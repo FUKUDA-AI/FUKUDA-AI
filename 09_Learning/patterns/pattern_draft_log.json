@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "generator": "Pattern Generator v1.0 [Experimental]",
+    "note": "Pattern Draft。全件draft・CEO承認なしにKnowledge/Principle/EP/COREへ昇格しない。",
+    "processed_fingerprints": [
+      "09ebb6622cbb",
+      "285ab7d0966d",
+      "33956be4f0f4",
+      "4e590b5246f8",
+      "5c1411e2ac5f",
+      "64369a66c8e6",
+      "7602d0daaebd",
+      "9832f3f01276",
+      "c10fe5305b00"
+    ],
+    "generated_at": "2026-07-06 18:00:14",
+    "total_patterns": 0
+  },
+  "patterns": [],
+  "suppressed": [
+    {
+      "reason": "条件未達: 異なる日が含まれない（1日）",
+      "members": [
+        "INS2-002",
+        "INS2-009"
+      ],
+      "代表": "承認した判断:「PTN-003/LSN-004のhold解消 — PRN-004（DX還元思想）がApproveされたため、EVOLVING登録Sprintでr"
+    }
+  ],
+  "ep_usage_candidates": []
+}

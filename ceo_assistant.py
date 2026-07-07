@@ -32,8 +32,10 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "1.1"
+VERSION = "1.2"
 STATE = "Experimental"
+# v1.2 (2026-07-07): FOS接続 — 07_Data/fos/index.json（FOS Importer出力）から
+# Decision候補・期限切れ・優先タスクをBrief判断候補へ統合（Sprint 13）
 
 BASE_DIR = Path(__file__).resolve().parent
 BRIEF_DIR = BASE_DIR / "06_Reports" / "morning_brief"
@@ -87,6 +89,36 @@ def read_memory():
         out[name] = [l.strip("- ").strip() for l in text.split("\n")
                      if l.strip().startswith("- **") or l.strip().startswith("- ")][:15]
     return out
+
+
+def read_fos():
+    """FOS Reader（v1.2）— 07_Data/fos/index.json（Data Layer経由・FOS原本は読まない）。"""
+    p = BASE_DIR / "07_Data" / "fos" / "index.json"
+    if not p.exists():
+        return None
+    idx = json.load(open(p, encoding="utf-8"))
+    return {
+        "records": idx["records"],
+        "decisions": [r for r in idx["records"] if r.get("decision_candidate")],
+        "overdue": [r for r in idx["records"] if r.get("overdue")],
+        "summary": idx.get("summary", {}),
+        "generated_at": idx["meta"].get("generated_at"),
+    }
+
+
+def fos_candidates(fos):
+    """FOSのDecision候補・期限切れをBrief判断候補形式へ変換。"""
+    cands = []
+    for r in (fos["decisions"] if fos else []):
+        urgent = bool(r.get("overdue")) or r["source_type"] == "staff_request"
+        cands.append({
+            "no": r["record_id"], "item": str(r["title"]),
+            "place": f"FOS（{r['source_type']}）", "priority": "高",
+            "score": (r.get("priority") or 50) + (1000 if r.get("overdue") else 0)
+                     + (20 if r["source_type"] == "staff_request" else 0),  # 人が待っている
+            "urgent": urgent, "fos": r,
+        })
+    return cands
 
 
 def read_pending():
@@ -245,13 +277,20 @@ def main():
     principles = read_principles()
     memory = read_memory()
     pending = read_pending()
+    fos = read_fos()
 
     print(f"CEO Assistant v{VERSION} [{STATE}]")
     print(f"Knowledge: released/verified {len(knowledge['usable'])}件（draft等 {knowledge['excluded_count']}件を除外）")
     print(f"Principles: CORE {principles['core_count']}条 / EP {len(principles['eps'])}件")
     print(f"PENDING未完了: {len(pending)}件")
+    if fos:
+        print(f"FOS: TaskRecord {len(fos['records'])}件 / Decision候補 {len(fos['decisions'])}件 / "
+              f"期限切れ {len(fos['overdue'])}件（取込: {fos['generated_at']}）")
+    else:
+        print("FOS: 未接続（07_Data/fos/index.jsonなし → fos_importer.py実行で接続）")
 
-    cands = score_candidates(pending)
+    cands = score_candidates(pending) + fos_candidates(fos)
+    cands.sort(key=lambda c: -c["score"])
     selected, dropped = select_top3(cands)
     print(f"判断候補: {len(cands)}件 → 選定{len(selected)}件 / 選外{len(dropped)}件")
     for c in selected:

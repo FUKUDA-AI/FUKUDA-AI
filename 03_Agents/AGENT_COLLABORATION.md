@@ -55,7 +55,8 @@ Version: v1.0（設計のみ・実装なし）
 |---|---|---|
 | Released Knowledge | 01_Knowledge（knowledge_index.json経由） | 全Agent共通の判断根拠 |
 | EVOLVING/CORE Principles | 00_MASTER | 全Agent共通の判断原則 |
-| 実績データ | 07_Data（将来: Shopify/催事/在庫/広告/財務） | 常時最新を参照可 |
+| 実績データ | 07_Data（催事✅・**FOS**・将来: Shopify/在庫/広告/財務） | 常時最新を参照可 |
+| **FOSタスクボード** | 07_Data/fos/（TaskRecord。原本FOS.htmlは読み取り専用・変更はCEO確認後のみ） | Brief判断候補・タスク・Sprint・PENDINGの入力元（2026-07-06追加） |
 | Agentレポート | 06_Reports | 各Agentの提案・分析（相互参照可） |
 | 作業状態 | 10_AI_Memory | 進行中Sprint・保留・レビュー待ち |
 | SOP | 04_SOP | 標準手順（released分） |
