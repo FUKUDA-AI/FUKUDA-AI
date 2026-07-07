@@ -12,10 +12,10 @@ Architecture Version: **v1.3**（2026-07-06 正式採用・CEO承認）
 ## 1. パイプライン（Architecture v1.3）
 
 ```
-【Data Sources】 ChatGPT / Claude / Gemini / 会議 / Gmail / Calendar / Drive / Sheets / Shopify / Meta / 催事 / 発注・在庫 / 会計
-        ↓ Connector Layer（認証・取得・生データ搬入。読み取り専用）
-        ↓ Importer Layer（AI別・ソース別に分離。共通スキーマへ正規化・PIIフィルタ）
-                 （設計: 07_Data/CONNECTOR_ARCHITECTURE.md + DATA_SOURCE_DESIGN.md。外部データはKnowledge直行禁止）
+【Data Sources】 ChatGPT / Claude / Gemini / 会議 / Gmail / Calendar / Drive / Sheets / Shopify / MakeShop / はぴロジ / logiec / FLAM / Airレジ / Airペイ / Meta / 催事 / 発注・在庫 / 会計
+        ↓ Connector Layer（認証・取得・生データ搬入。読み取り専用。**接続先は07_Data/datasets/のDataset Registryに登録済みのもののみ**・Sprint 14.5）
+        ↓ Importer Layer（AI別・ソース別に分離。共通スキーマへ正規化・PIIフィルタ。**AI会話=ChatGPT/Claude/Geminiは共通ConversationRecordへ統一**）
+                 （設計: 07_Data/CONNECTOR_ARCHITECTURE.md + DATA_SOURCE_DESIGN.md + datasets/DATASET_REGISTRY.md。外部データはKnowledge直行禁止）
         ↓ Import        （現行: chatgpt_importer.py v1.1＝Connector+Importer一体型。v2.0で分離）
 【Index】        Conversation Index    （07_Data/chatgpt_index.json）
         ↓ Extract（並列）
@@ -101,7 +101,20 @@ Decision Log起点の自動学習ルート（Decision Log → Insight → Patter
 
 判断の**結果**から学ぶ層: Decision → Action → Result（成功/失敗/継続観察・**判定はCEOのみ・AIは推測しない**）→ 結果つきInsight → 既存サイクルへ。Verified判定を「使われた」から「使われて効いた」へ深化させる。詳細は [../09_Learning/RESULT_LAYER_DESIGN.md](../09_Learning/RESULT_LAYER_DESIGN.md)。v1.4採用時にLearning Cycle v2.0と併せて正式化する。
 
-## 6. Version履歴
+## 6. SYSTEM_BOOT（起動ガイド=BIOS・v1.1設計 2026-07-07・Sprint 14.3/14.3.1）
+
+起動時は [SYSTEM_BOOT.md](SYSTEM_BOOT.md) から読込を開始する。SYSTEM_BOOTは設計書ではなく、**「何を・どの順で・どのルールで読むか」だけを定義するBIOS**であり、Version情報を保持しない（**Version・Phase・Sprintの正本は 10_AI_Memory/CURRENT_STATE.md**）。
+
+```
+SYSTEM_BOOT → MASTER（必読10文書）→ Memory（CURRENT_STATE/NEXT/PENDINGのみ）
+→ 必要Agent（1つ）→ 必要Knowledge（索引経由・released/verifiedのみ）→ 必要Data（該当indexのみ）→ Task開始
+```
+
+Task開始前の最終確認は [SYSTEM_BOOT_CHECKLIST.md](SYSTEM_BOOT_CHECKLIST.md)（運用チェック専用・10項目）。
+**Current Mode（v1.2・Sprint 14.4）**: 作業モード6種（Review/Planning/Implementation/Operation/Analysis/Emergency）でModeごとに読込範囲をさらに絞る。Mode値の正本はCURRENT_STATE.md・Mode別読込ルールの正本はSYSTEM_BOOT.md。
+目的はトークン消費の抑制と長期運用: **全ファイル読込禁止・Knowledge全文検索禁止・Agentごとに最小読込**。5層構造（§3）に対する読み方の規約であり、層の定義・更新権限は変えない。
+
+## 7. Version履歴
 
 | Version | 日付 | 内容 |
 |---|---|---|

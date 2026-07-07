@@ -47,14 +47,23 @@ Version: v1.0（設計のみ・実装なし）
 
 ## 3. Connector一覧
 
-| Connector | 接続先 | 方式（想定） | 段階 |
+> **Dataset Registry（v1.0・Sprint 14.5）**: 全Connectorの接続先は事前に [datasets/DATASET_REGISTRY.md](datasets/DATASET_REGISTRY.md) へ登録する（未登録Datasetは読まない・read_only=true初期値）。
+> **AI Conversation Source**: ChatGPT / Claude / Gemini の会話Importerは、入口は別・**出口は共通のConversationRecord（16項目・DATASET_REGISTRY.md §3）**に統一する。どのAIで話してもLearning Cycleへ統合される。そのままKnowledge化は禁止（ConversationRecord→Insight→Decision→Pattern→Lesson→Knowledge Draft→CEO Review→Released）。
+
+| Connector | 接続先 | 方式（想定) | 段階 |
 |---|---|---|---|
-| ChatGPT Connector | ChatGPTエクスポートZIP | 手動エクスポート→_inbox投入 | 稼働中（v1.1一体型） |
-| Claude Connector | Claude Code / Cowork会話ログ | エクスポート→_inbox投入 | v1.1 |
-| Gemini Connector | Geminiエクスポート | 手動エクスポート→_inbox投入 | v1.2 |
+| ChatGPT Connector | ChatGPTエクスポートZIP | 手動エクスポート→_inbox投入 → **ConversationRecord正規化（v2.0）** | 稼働中（v1.1一体型） |
+| Claude Connector | Claude Code / Cowork会話ログ | エクスポート→_inbox投入 → **ConversationRecord正規化** | v1.1 |
+| Gemini Connector | Geminiエクスポート | 手動エクスポート→_inbox投入 → **ConversationRecord正規化** | v1.2 |
 | Meeting Connector | 会議録音・議事メモ | 文字起こしファイル→_inbox投入 | v1.2 |
-| Google（Drive/Gmail/Calendar/Sheets）Connector | Google API | OAuth読み取り専用 | Sheets=v1.1 / Drive=v1.2 / Gmail・Calendar=v2.0 |
-| Shopify Connector | Shopify API | APIキー読み取り専用 | v1.1 |
+| Google（Drive/Gmail/Calendar/Sheets）Connector | Google API | OAuth読み取り専用。**Sheetsは接続前にSpreadsheet Registry登録必須（07_Data/spreadsheets/・v1.0設計 Sprint 14.4。未登録シートは読まない・read_only=true初期値）** | Sheets=v1.1 / Drive=v1.2 / Gmail・Calendar=v2.0 |
+| Shopify Connector | Shopify API | APIキー読み取り専用 → OrderRecord | v1.1 |
+| MakeShop Connector（14.6追加） | MakeShop CSVエクスポート | ファイル投入 読み取り専用 → OrderRecord | v1.2 |
+| はぴロジConnector（14.6追加） | はぴロジ CSV/API | 読み取り専用 → ShipmentRecord | v1.2 |
+| logiec Connector（14.6追加） | logiec連携データ | 読み取り専用 → ShipmentRecord | v1.2 |
+| FLAM Connector（14.6追加） | FLAM CSVエクスポート | 読み取り専用 → InventoryRecord | v1.2 |
+| Airレジ Connector（14.6追加） | Airレジ CSVエクスポート | 読み取り専用 → SalesRecord（催事Connectorと連携・events照合） | **v1.1（催事とセット）** |
+| Airペイ Connector（14.6追加） | Airペイ CSVエクスポート | 読み取り専用 → PaymentRecord | v1.2 |
 | Meta Connector | Meta Marketing API | OAuth読み取り専用 | v1.2 |
 | 催事データConnector | 手元Excel/Sheets | ファイル投入 or Sheets経由 | **v1.1最優先** |
 | **FOS Connector**（2026-07-06追加・JSON正本） | **FOS-data.json**（正本・Source of Truth）。FOS.htmlは表示用補助 | ローカルJSON読み取り専用 | **✅稼働中**（2026-07-07・fos_importer.py v1.0） |
@@ -137,3 +146,4 @@ Version: v1.0（設計のみ・実装なし）
 | 日付 | 版 | 内容 |
 |---|---|---|
 | 2026-07-06 | v1.0 | 初版作成（4層定義・共通スキーマ5種・Connector8種・Importer8種・運用ルール。設計のみ） |
+| 2026-07-07 | v1.0追補（Sprint 14.6・設計のみ） | EC/物流/POS/決済系Connector 6種追加（MakeShop/はぴロジ/logiec/FLAM/Airレジ/Airペイ。全て読み取り専用・Dataset Registry登録必須）。出力スキーマにOrder/Shipment/Inventory/Sales/PaymentRecordを追加 |

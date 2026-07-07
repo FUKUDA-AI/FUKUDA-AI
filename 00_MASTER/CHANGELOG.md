@@ -8,6 +8,83 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### Commerce/Logistics/POS Dataset Expansion v1.0 [Draft・CEOレビュー待ち]（Sprint 14.6・設計のみ）
+- **対象機能**: 07_Data/datasets/DATASET_REGISTRY.md（§2-1新設）+ dataset_registry.json（7件draft追加・total 10）/ DATA_SOURCE_DESIGN.md / CONNECTOR_ARCHITECTURE.md（Connector 6種追加）/ ARCHITECTURE.md §1
+- **変更内容**: EC・物流・POS・決済系を正式登録 — ①source_type 7種追加（shopify/makeshop/hapilogi/logiec/flam/airregi/airpay・計24種）②7 Dataset draft登録: DS-SLS-0001 Shopify（EC注文・商品別売上・顧客・在庫・返品・決済・広告流入元）/ DS-SLS-0002 MakeShop（旧EC・過去実績・移行前データ）/ DS-LOG-0001 はぴロジ（出荷・在庫・入荷・返品・配送遅延・倉庫差異）/ DS-LOG-0002 logiec（物流連携・出荷指示・在庫/注文連携・エラー履歴）/ DS-INV-0001 FLAM（在庫・受注・発注・仕入・売上・商品マスタ・取引先）/ DS-POS-0001 Airレジ（催事/店舗/商品別/日別売上・決済方法別）/ DS-FIN-0001 Airペイ（決済実績・入金予定・手数料・未入金/差異）③record_schema 5種新設（OrderRecord/ShipmentRecord/InventoryRecord/SalesRecord/PaymentRecord）④Agent用途マップ（CEO補佐=売上/在庫/入金/出荷遅延/利益異常、催事=Airレジ、発注在庫=FLAM/はぴロジ/logiec/EC、資金繰り=Airペイ/EC入金、SUNNY NOMADO・so u=EC/商品別売上/受注）
+- **重要ルール**: 全て読み取り専用開始・**AIは注文/出荷/返金/決済/在庫変更を実行しない**・data_sensitivity/pii_level原則high（顧客情報・住所・電話・メール・決済情報を含むため）・Knowledge直行禁止
+- **変更理由**: Sprint 14.6（CEO指示・設計のみ）
+- **互換性**: 既存Dataset 3件（active）は無変更。コードなし・Connector/Importerは未実装（v1.1〜v1.2で実装）
+- **担当**: CEO（方針・レビュー・active化）/ AI（設計・draft登録）
+
+### FOS Metadata実装 — FOS Importer v1.2 / CEO Assistant v1.3 [Experimental]（Implementation Mode）
+- **対象機能**: fos_importer.py v1.2 / ceo_assistant.py v1.3
+- **変更内容**: Sprint 14系承認済み設計の実装 — ①Importer: Decision Metadata 6項目をTaskRecordへ透過（項目なし=null・推測で埋めない）・decision_needed=YESを判断候補の第一条件に・index.jsonサマリーへimportance別/main別集計+「結果確認待ち」抽出（decision_log.json読み取りのみ）②Assistant: Brief並び順v1.2（期限切れ→S→待ち人→A→期限3日→priority高・スコア段階制）・【main】見出し表示・未分類/未設定のCEO確認行（1タップ記入）・review_after_days初期値提案（S30/A14/B7・確定はCEO）・Brief新セクション「⏰ 結果確認待ち」（expected_result vs actual_result比較欄+成功/失敗/継続観察）・Decision Log Draftへメタ5項目保存
+- **テスト**: Importer実行（34件・全メタnull互換・冪等確認）+ Assistantユニットテスト5/5合格（スコア・並び順・Brief生成・Draft保存・上書き禁止。一時領域でのみ書込・本番Brief未発行）
+- **変更理由**: CEO一括承認（2026-07-07）による実装指示
+- **互換性**: 既存FOS-data.json無変更で動作（現データは全件「未分類/未設定」と表示=正常）。既存index.json/draft構造は項目追加のみ
+- **担当**: CEO（承認）/ AI（実装・テスト）
+
+### Sprint 14系 CEO一括承認（2026-07-07）
+- **承認対象**: FOS Operating Rule v1.0〜v1.2 / SYSTEM_BOOT v1.3 / SYSTEM_BOOT_CHECKLIST v1.0 / Current Mode / Dataset Registry v1.0 / AI Conversation Connectors設計 → **すべてDraft→Released**
+- **Dataset active化**: DS-AI-0001（FOS）/ DS-AI-0002（ChatGPT）/ DS-EVT-0001（催事）— last_reviewed=2026-07-07。**以後、未登録Datasetは読まない**
+- **Mode移行**: Planning → **Implementation**（CURRENT_STATE.md更新）
+
+### Dataset Registry + AI Conversation Connectors v1.0 [Released・CEO承認 2026-07-07]（Sprint 14.5・設計のみ）
+- **対象機能**: 07_Data/datasets/（新規: DATASET_REGISTRY.md + dataset_registry.json）/ 07_Data/spreadsheets/（Supersededへ・誘導追記・削除禁止）/ 07_Data/README.md / DATA_SOURCE_DESIGN.md / CONNECTOR_ARCHITECTURE.md / ARCHITECTURE.md §1 / SYSTEM_BOOT.md v1.3（Data Rule）
+- **変更内容**: ①**Dataset Registry**: Spreadsheet Registryを全データソース共通台帳へ上位概念化 — 23項目（19項目+source_location/connector_name/importer_name/record_schema）・source_type 18種（google_sheets/excel/csv/json/fos_json/shopify/meta_ads/gmail/google_calendar/notion/airtable/sqlite/postgresql/chatgpt_export/claude_conversation/gemini_conversation/meeting_transcript/other）。未登録Datasetは読まない・read_only=true初期値・登録確定はCEOのみ。稼働中3ソース（DS-AI-0001 FOS / DS-AI-0002 ChatGPT / DS-EVT-0001 催事）をdraft登録 ②**AI Conversation Source**: ChatGPT/Gemini/Claudeの会話を共通**ConversationRecord（16項目: conversation_id/source_ai/title/created_at/updated_at/participants/messages/summary/decision_candidates/insight_candidates/related_project/related_brand/data_sensitivity/pii_level/imported_at/status）**へ正規化。**そのままKnowledge化禁止**（ConversationRecord→Insight→Decision→Pattern→Lesson→Knowledge Draft→CEO Review→Released）。個人情報・顧客・契約・財務を含む会話=sensitivity high/pii high
+- **変更理由**: Sprint 14.5（CEO指示・設計のみ）
+- **互換性**: Spreadsheet Registry設計は破壊せず継承（旧フォルダ保持・READMEで誘導）。chatgpt_index.json（3,323件）はv2.0で互換変換・削除しない。コードなし
+- **担当**: CEO（方針・レビュー・登録確定）/ AI（設計・draft提案）
+
+### Current Mode + Spreadsheet Registry v1.0 [Draft・CEOレビュー待ち]（Sprint 14.4・設計のみ）
+- **対象機能**: 10_AI_Memory/CURRENT_STATE.md（Current Mode欄新設）/ 00_MASTER/SYSTEM_BOOT.md v1.2（Mode別読込ルール）/ 07_Data/spreadsheets/（新規: SPREADSHEET_REGISTRY.md + spreadsheet_registry.json）/ ARCHITECTURE.md §6 / 07_Data/README.md / DATA_SOURCE_DESIGN.md §1-3 / CONNECTOR_ARCHITECTURE.md
+- **変更内容**: ①**Current Mode**: 作業モード6種（Review=書込禁止 / Planning=コード変更禁止 / Implementation / Operation / Analysis / Emergency=最小読込で止血）。Mode値はCURRENT_STATE.mdのみが正本（BIOSは持たない）・Mode別読込ルールはSYSTEM_BOOT §Mode別読込ルール ②**Spreadsheet Registry**: 19項目台帳（id/name/description/owner/data_domain 12候補/related_agent 10候補/related_brand/source_type/update_frequency/data_sensitivity/pii_level/access_rule/read_only/allowed_use/forbidden_use/related_knowledge/related_decision_type/last_reviewed/status）。**未登録シートは読まない・AIは編集しない（read_only=true初期値）・個人情報/財務/原価/顧客情報=high・Knowledge直行禁止（Spreadsheet→Connector→Importer→Data Layer→Learning Cycle）**。登録・変更はCEO確認後のみ
+- **変更理由**: Sprint 14.4（CEO指示・設計のみ。Sheets Connector v1.1実装の前提）
+- **互換性**: 既存の読込シーケンス・Rule無変更（Modeは範囲をさらに絞る追加規約）。DATA_SOURCE_DESIGNの保存先を07_Data/sheets/→spreadsheets/へ統一。コードなし・登録0件
+- **担当**: CEO（方針・レビュー・登録確定）/ AI（設計・draft提案）
+
+### SYSTEM_BOOT v1.1 [Draft・CEOレビュー待ち]（Sprint 14.3.1・設計のみ）
+- **対象機能**: 00_MASTER/SYSTEM_BOOT.md（v1.1）/ 00_MASTER/SYSTEM_BOOT_CHECKLIST.md（新規）/ README.md / ARCHITECTURE.md §6 / 10_AI_Memory/CURRENT_STATE.md
+- **変更内容**: v1.0のCEOレビュー反映 — ①**BIOS化**: 役割を「何を・どの順で・どのルールで読むかの定義」に限定（設計書ではない・「唯一読むファイル」表現を廃止・読込シーケンスの定義者として明記）②**Version管理分離**: Current Version/Phase/SprintをSYSTEM_BOOTから削除し、**CURRENT_STATE.mdを唯一の正本に**（SYSTEM_BOOTはほとんど変更されないBIOSになる）③**SYSTEM_BOOT_CHECKLIST.md新設**: Task開始前の運用チェック10項目（□SYSTEM_BOOT→□MASTER→□Memory→□Agent決定→□Knowledge→□Data→□AI_CHARTER→□推測禁止→□Evidence→□Task開始。設計書ではない）
+- **変更理由**: Sprint 14.3.1（CEOレビュー・設計のみ）
+- **互換性**: 読込シーケンス・各Rule・禁止事項は変更なし。CURRENT_STATEにVersion管理セクション追加（既存内容は保持）
+- **担当**: CEO（レビュー・方針）/ AI（設計）
+
+### SYSTEM_BOOT v1.0 [Draft・CEOレビュー待ち]（Sprint 14.3・設計のみ）
+- **対象機能**: 00_MASTER/SYSTEM_BOOT.md（新規・起動時に最初に読む唯一のファイル）/ 00_MASTER/README.md（Session Start Protocolの入口をSYSTEM_BOOTへ）/ ARCHITECTURE.md（§6起動プロトコル追記・章番号繰下げ）
+- **変更内容**: 起動時最小読込を設計 — ①必読10文書（AI_CHARTER→PHILOSOPHY→CEO_PRINCIPLES（=CORE/EVOLVING）→ARCHITECTURE→DATA_SOURCE→CONNECTOR→AGENT_DESIGN→COLLABORATION）②Knowledge Rule（索引経由・released/verifiedのみ・draft禁止）③Data Rule（事実のみ・意味づけ禁止・Knowledge直行禁止）④Learning Rule（Decision→…→Verified・Result推測禁止・Evidence必須）⑤Agent Rule（必要な1Agentのみ）⑥FOS Rule（JSON正本・AI変更禁止）⑦Memory Rule（CURRENT_STATE/NEXT/PENDINGのみ）⑧Token Rule（全ファイル読込禁止・全文検索禁止）⑨禁止事項7つ ⑩起動シーケンス7段。Current Version/Phase/SprintはSprint完了時にAIが更新・本文変更はCEO承認のみ
+- **変更理由**: Sprint 14.3（CEO指示・設計のみ。トークン消費を抑えFUKUDA AIを長期運用するため）
+- **互換性**: 既存の11文書読込順は「矛盾時の優先順位」として存続（README.mdに明記）。コードなし
+- **担当**: CEO（方針・レビュー）/ AI（設計）
+
+### FOS Decision Metadata v1.2 [Draft・CEOレビュー待ち]（Sprint 14.2・設計のみ・Result Layer接続の前提設計）
+- **対象機能**: FOS/README.md v1.2 / 07_Data/fos/README.md / CEO_ASSISTANT.md / fos_importer.py・ceo_assistant.py（TODOコメントのみ・ロジック無変更）
+- **変更内容**: 判断メタデータに3項目追加 — ①**decision_importance S/A/B/C**（経営重要度。priority=作業の急ぎ度と分離。S=方針・数十万円以上・新ブランド・人事・契約法務・大投資・撤退・不可逆 → **原則Brief必載**）②**expected_result**（判断時の期待結果。Result Recordへ引き継ぎactual_resultと差分比較）③**review_after_days**（結果確認日数。初期値S30/A14/B7/Cなし・催事/発注/広告は実務調整可。経過でBrief「結果確認待ち」へ自動掲載）④テンプレート14項目化 ⑤Brief並び順: 期限切れ→S→待ち人→A→期限3日→priority高 ⑥Decision Logへ5項目保存・Knowledge化時はRelated Decision Metadata保持 ⑦AIはimportance/expected_resultを推測確定しない（未入力=未設定→CEOへ確認。review_after_daysのみ初期値提案可・確定はCEO）
+- **変更理由**: Sprint 14.2（CEO指示・設計のみ。Result Recorder v1.0実装前の前提設計 — Evidence Scorer・Verified昇格条件が重要度別・分類別の成功率を参照する接続点）
+- **互換性**: 既存FOS-data.json無変更・項目なしはnull/未設定互換。コードはTODOのみ（実装はfos_importer v1.2 / ceo_assistant v1.3として次Sprint）
+- **担当**: CEO（基準・レビュー）/ AI（設計）
+
+### FOS Decision Metadata v1.1 [Draft・CEOレビュー待ち]（Sprint 14.1・設計のみ）
+- **対象機能**: FOS/README.md v1.1 / 07_Data/fos/README.md / CEO_ASSISTANT.md / fos_importer.py・ceo_assistant.py（TODOコメントのみ・ロジック無変更）
+- **変更内容**: 判断メタデータを設計 — ①**decision_needed**（YES条件9種: 5万円以上・待ち人・方針/ブランド影響・契約法務・在庫発注・催事出店・例外対応・変更コスト高 / NO条件5種。YES=Brief最優先候補）②**decision_type main/sub 2階層**（13分類・main必須・sub任意=null。FOS→Brief→Decision Log→Result→Knowledgeまで一気通貫し分類別の判断傾向・成功率が集計可能に）③入力テンプレートへ3項目追加 ④AIは分類を推測確定しない（未入力=未分類→BriefでCEOへ確認）⑤既存FOS-data.jsonは無変更・項目なしはnull互換
+- **変更理由**: Sprint 14.1（CEO指示・設計のみ）
+- **互換性**: 既存データ・コードのロジック無変更（TODOコメントのみ）。実装はfos_importer v1.1 / ceo_assistant v1.3として次Sprint
+- **担当**: CEO（基準・レビュー）/ AI（設計）
+
+### FOS Operating Rule v1.0 [Draft・CEOレビュー待ち]（Sprint 14・設計のみ）
+- **対象機能**: FOS/README.md（新規・運用ルール本体）/ 07_Data/fos/README.md（新規・データ辞書）/ CEO_ASSISTANT.md（参照追記）
+- **変更内容**: FOS入力ルールを設計 — ①必ず入れるもの6種（CEO判断・待ち人・期限・お金・現場業務・Briefに出したいもの。**迷ったら入れる**）②入れなくてよいもの4種 ③FOS=CEO操作面/PENDING=AI記録面の分担（同一案件の二重管理禁止・境界例はFOS優先）④入力テンプレート9項目（Brief#3のso u相談を模範例として記載）⑤Brief掲載の機械判定6条件 ⑥Decision Log送付条件（判断のみ・作業完了は送らない）⑦Result Record送付条件（trackable判断・実行2週間後に結果確認）⑧運用の1日（朝Brief・日中入力・夕方完了化）
+- **変更理由**: Sprint 14（Brief#3後のCEO指摘「FOSに入っていない重要タスクがある」を受けて）
+- **互換性**: 設計のみ・コードなし。運用はCEOの入力習慣として開始
+- **担当**: CEO（方針・レビュー・運用）/ AI（設計）
+
+### Morning Brief第3号（FOS連携初号）発行・CEO判断反映
+- **対象機能**: 06_Reports/morning_brief/2026-07-07.md / decision_log（33件）/ EVOLVING_PRINCIPLES（EP-005運用記録）/ PENDING / NEXT
+- **変更内容**: FOS由来の判断3件をCEOが処理 — ①工場打ち合わせ: 済み（結果メモ後日=Result記録初号候補）②催事搬入確認: 済み ③so u発注量: **保留**（販売条件の前回比較+上限予算の確認後にB案方向で判断）。Decision Log 3件確定。**EP-005の運用記録に「CEOがEPをそのまま実践した初の実例」を記録**。確認事項2点をPENDING #10へ、FOS側への確認タスク追加をCEOへ推奨
+- **変更理由**: Brief#3へのCEO記入（FOS→Brief→判断→記録のフルサイクル初完走）
+- **互換性**: 記録のみ。**次Sprint予約: FOS入力ルール設計**（FOS外の重要タスク存在のCEO指摘による）
+- **担当**: CEO（判断）/ CEO Assistant v1.2（反映）
+
 ### FOS Importer v1.0 [Experimental] + CEO Assistant v1.2（Sprint 13: FOS Connector）
 - **対象機能**: fos_importer.py（新規）/ 07_Data/fos/（index.json+snapshots）/ ceo_assistant.py v1.2
 - **変更内容**: FOS-data.json（正本・読み取り専用・HTMLは読まない）→TaskRecord 34件へ正規化（tasks18/next_action11/staff_request1/improvements2/events2）。**Decision候補生成**（staffRequestsの要判断・期限切れevent・improvements=5件）、**期限切れ検知**（2件検出）、priority順ソート、PENDING同期レポート、Sprint同期（projects状態集計）、--check、冪等（内容ハッシュでスナップショット重複回避）。CEO Assistant v1.2でBrief判断候補へ統合（期限切れが最上位・スタッフ相談は「人が待っている」加点）

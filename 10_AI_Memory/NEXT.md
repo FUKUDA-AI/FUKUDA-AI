@@ -2,9 +2,14 @@
 
 最終更新: 2026-07-06（更新者: AI）
 
-## 次Sprint候補（推奨順・2026-07-06更新）
+## 次Sprint候補（推奨順・2026-07-07更新）
 
-0. **Morning Brief第1号の発行**（CEO補佐AI v1.0の実運用検証。CEOの「Morning Brief」発話で即実行可）
+0. ~~FOS入力ルール設計~~ ✅ 2026-07-07完了（FOS/README.md v1.0 → **v1.1 Decision Metadata追加済み**・CEOレビュー待ち）。**FOS外だった重要タスクのFOSへの入力はCEO作業**（テンプレート§5・11項目を使用）
+1. so u発注量の再判断（PENDING #10の確認2点が揃い次第・次回Brief）
+2. ~~FOS Decision Metadata実装Sprint~~ ✅ 2026-07-07完了（fos_importer v1.2 + ceo_assistant v1.3・テスト5/5合格）
+3. **Result Recorder v1.0実装**（次の本命。v1.2メタデータ実装済み=前提が揃った。expected_result vs actual_result比較 → Evidence Scorer・Verified昇格条件へ接続）
+4. CEO作業: FOSの既存タスクへdecision_needed / type / importance / expected_result / review_after_daysを入力（テンプレート§5・14項目）。入力後の初Briefで新メタデータが機能する
+5. CEO作業: FOS上の完了済みタスク（工場打ち合わせ・催事搬入）の完了化（期限切れ誤検知の解消）
 
 ## 旧候補（消化済み多数・記録として保持）
 

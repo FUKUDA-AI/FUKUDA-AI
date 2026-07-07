@@ -32,10 +32,32 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "1.2"
+VERSION = "1.3"
 STATE = "Experimental"
 # v1.2 (2026-07-07): FOS接続 — 07_Data/fos/index.json（FOS Importer出力）から
 # Decision候補・期限切れ・優先タスクをBrief判断候補へ統合（Sprint 13）
+# v1.3 (2026-07-07): FOS Operating Rule v1.0〜v1.2 CEO承認後の実装 —
+# 並び順v1.2（期限切れ→S→待ち人→A→期限3日→priority高）/【main】見出し表示 /
+# 未分類・未設定のCEO確認行 / review_after_days初期値提案（S30/A14/B7・確定はCEO）/
+# Brief「⏰ 結果確認待ち」セクション（expected vs actual比較欄）/ Draft5項目保存
+#
+# 実装済みの設計メモ（旧TODO v1.3・Sprint 14.1）:
+# - decision_needed=YES を最優先の判断候補として扱う（現行のsource_type判定を置換）
+# - decision_type_main を判断見出しの【】に表示（subは必要時のみ併記）
+# - 未入力のdecision_type は「未分類」とし、BriefでCEOへ分類確認を提示（AIは推測確定しない）
+# - Decision Log Draft起票時に decision_type_main / sub を両方保存
+# - 既存FOS-data.jsonに項目がない場合は null（未分類）として互換動作（壊さない）
+#
+# 実装済みの設計メモ（旧TODO v1.3追補・Sprint 14.2）:
+# - Brief判断候補の並び順: 期限切れ → decision_importance=S（原則必載）→ waiting_person
+#   → importance=A → 期限3日以内 → priority高（priority=急ぎ度 / importance=経営重要度は別軸）
+# - Brief新セクション「⏰ 結果確認待ち」: review_after_days経過の判断を自動掲載し、
+#   expected_result と actual_result（CEO記入欄）を並べて提示 → 成功/失敗/継続観察の判定 → Result Record化
+# - Decision Log Draft起票時に decision_importance / expected_result / review_after_days も保存（計5項目）
+# - importance未入力=「未設定」としてCEOへ確認。expected_resultは推測しない。
+#   review_after_days未入力はimportance初期値（S30/A14/B7/Cなし）を提案表示のみ・確定はCEO
+# - Knowledge化時は Related Decision Metadata（main/sub/importance/expected_result）を保持
+#   （将来のEvidence Scorer・Verified昇格条件が重要度別・分類別の成功率を参照する前提）
 
 BASE_DIR = Path(__file__).resolve().parent
 BRIEF_DIR = BASE_DIR / "06_Reports" / "morning_brief"
@@ -106,17 +128,46 @@ def read_fos():
     }
 
 
+IMPORTANCE_DEFAULT_REVIEW = {"S": 30, "A": 14, "B": 7}  # C=原則なし（FOS Rule §4-5）
+
+
+def deadline_within(r, days=3):
+    """due_dateが今日からdays日以内か（期限切れは別加点のため除く）。"""
+    from datetime import date, timedelta
+    d = str(r.get("due_date") or "")[:10]
+    try:
+        dd = date.fromisoformat(d)
+    except ValueError:
+        return False
+    return date.today() <= dd <= date.today() + timedelta(days=days)
+
+
 def fos_candidates(fos):
-    """FOSのDecision候補・期限切れをBrief判断候補形式へ変換。"""
+    """FOSのDecision候補をBrief判断候補形式へ変換（v1.3・FOS Rule v1.2 §6準拠）。
+    並び順: 期限切れ → importance=S（原則必載）→ 人が待っている → A → 期限3日以内 → priority高"""
     cands = []
     for r in (fos["decisions"] if fos else []):
-        urgent = bool(r.get("overdue")) or r["source_type"] == "staff_request"
+        imp = r.get("decision_importance")      # None=未設定（AIは推測しない）
+        main = r.get("decision_type_main")      # None=未分類
+        waiting = r["source_type"] == "staff_request" or bool(r.get("waiting_person"))
+        score = (r.get("priority") or 50)       # priority=急ぎ度（最下位の判定条件）
+        if r.get("overdue"):
+            score += 100000                     # 1. 期限切れ
+        if imp == "S":
+            score += 50000                      # 2. S=原則必載
+        if waiting:
+            score += 20000                      # 3. 人が待っている
+        if imp == "A":
+            score += 10000                      # 4. A
+        if deadline_within(r):
+            score += 5000                       # 5. 期限3日以内
         cands.append({
-            "no": r["record_id"], "item": str(r["title"]),
-            "place": f"FOS（{r['source_type']}）", "priority": "高",
-            "score": (r.get("priority") or 50) + (1000 if r.get("overdue") else 0)
-                     + (20 if r["source_type"] == "staff_request" else 0),  # 人が待っている
-            "urgent": urgent, "fos": r,
+            "no": r["record_id"],
+            "item": f"【{main or '未分類'}】{r['title']}",
+            "place": f"FOS（{r['source_type']}）",
+            "priority": f"重要度{imp}" if imp else "重要度未設定",
+            "score": score, "urgent": bool(r.get("overdue")),
+            "fos": r,
         })
     return cands
 
@@ -160,7 +211,8 @@ def score_candidates(pending):
         deadline = bool(re.search(r"期限|今日|本日|明日|締切", it["item"]))
         waiting = bool(re.search(r"お客様|職人|取引先|待ち(?!キュー)", it["item"]))
         ceo_task = "CEO作業" in it["item"] or "【CEO", it["item"][:5]
-        score = base + (1000 if urgent else 0) + (30 if deadline else 0) + (20 if waiting else 0)
+        # v1.3: FOS候補とスケール統一（緊急=期限切れ相当 > 待ち人 > 期限）
+        score = base + (100000 if urgent else 0) + (20000 if waiting else 0) + (5000 if deadline else 0)
         cands.append({**it, "score": score, "urgent": urgent})
     return sorted(cands, key=lambda c: -c["score"])
 
@@ -205,7 +257,20 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
         urgent_mark = "🚨【緊急】" if c["urgent"] else ""
         lines += [
             f"### {i}. {urgent_mark}{c['item']}",
-            f"- 出典: PENDING #{c['no']}（{c['place']}）/ 優先度: {c['priority']} / スコア: {c['score']}",
+            f"- 出典: {c['no']}（{c['place']}）/ {c['priority']} / スコア: {c['score']}",
+        ]
+        fr = c.get("fos")
+        if fr is not None:  # v1.3: Decision Metadata表示（FOS Rule v1.2）
+            imp, main, sub = fr.get("decision_importance"), fr.get("decision_type_main"), fr.get("decision_type_sub")
+            exp, rad = fr.get("expected_result"), fr.get("review_after_days")
+            lines.append(f"- 分類: main={main or '未分類'} / sub={sub or '-'} / 重要度: {imp or '未設定'} / 期待結果: {exp or '未入力'}")
+            if main is None or imp is None:
+                lines.append("- ⚠ CEO確認（1タップ）: 未入力の分類/重要度を記入 → main=______ / importance=[ S / A / B / C ]")
+            if rad is not None:
+                lines.append(f"- 結果確認: 判断から{rad}日後（Brief「結果確認待ち」に自動掲載）")
+            elif imp in IMPORTANCE_DEFAULT_REVIEW:
+                lines.append(f"- 結果確認（AI提案・確定はCEO）: {IMPORTANCE_DEFAULT_REVIEW[imp]}日後（importance {imp}の初期値）[ 採用 / 変更: __日 ]")
+        lines += [
             "- 推奨: <!-- LLM: 推奨案・理由・期待効果・リスク・実行手順・根拠EP/KNをここに記述 -->",
             "- CEO判断: [ 承認 / 却下 / 保留 ] ______",
             "",
@@ -216,6 +281,18 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
             lines.append(f"- {c['item']}（優先度: {c['priority']}・スコア{c['score']}で選外）")
     else:
         lines.append("- なし")
+    due = materials.get("result_check_due") or []
+    lines += ["", "## ⏰ 結果確認待ち（Result Layer入口・判定はCEOのみ）", ""]
+    if due:
+        for d in due:
+            lines += [
+                f"- **{d.get('判断')}**（判断日 {d.get('判断日')} / 確認予定 {d.get('確認予定日')} / 分類 {d.get('decision_type_main') or '未分類'} / 重要度 {d.get('decision_importance') or '未設定'}）",
+                f"  - expected_result: {d.get('expected_result') or '未入力'}",
+                "  - actual_result（CEO記入）: ______",
+                "  - 判定: [ 成功 / 失敗 / 継続観察 ] ______",
+            ]
+    else:
+        lines.append("- なし（review_after_days経過の判断はありません）")
     lines += [
         "",
         "## 📋 レビュー待ち",
@@ -248,12 +325,19 @@ def generate_decision_drafts(selected, brief_file: str, today: str):
         data = {"meta": {"note": "Decision Log Draft置き場。CEO承認後にdecision_log.json本体へ確定反映する（AIは本体へ直接書かない）",
                          "generator": f"CEO Assistant v{VERSION} [{STATE}]"}, "drafts": []}
     for c in selected:
+        fr = c.get("fos") or {}
         data["drafts"].append({
             "draft_id": f"DLD-{today}-{len(data['drafts'])+1:02d}",
             "判断内容": c["item"],
             "判断理由": "（CEO記入待ち）",
             "結果": "（CEO判断待ち: 承認/却下/保留）",
             "関連カテゴリ": "経営", "重要度": c["priority"],
+            # v1.3: Decision Metadata（FOS Rule v1.2 §7。未入力はnull=未分類/未設定・AIは確定しない）
+            "decision_type_main": fr.get("decision_type_main"),
+            "decision_type_sub": fr.get("decision_type_sub"),
+            "decision_importance": fr.get("decision_importance"),
+            "expected_result": fr.get("expected_result"),
+            "review_after_days": fr.get("review_after_days"),
             "日時": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "source": f"Morning Brief {brief_file}",
             "status": "draft", "needs_ceo_review": True,
@@ -302,7 +386,8 @@ def main():
 
     materials = {"today": today, "now": datetime.now().strftime("%H:%M"),
                  "knowledge": knowledge, "principles": principles,
-                 "memory": memory, "pending_count": len(pending)}
+                 "memory": memory, "pending_count": len(pending),
+                 "result_check_due": (fos or {}).get("summary", {}).get("decision_metadata", {}).get("result_check_due", [])}
     path = next_brief_path(today)
     generate_brief(materials, selected, dropped, path, brief_no=path.stem.replace(today, "第" + (path.stem.split("_")[-1] if "_" in path.stem else "1") + "号"))
     total = generate_decision_drafts(selected, path.name, today)

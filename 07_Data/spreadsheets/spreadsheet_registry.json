@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "name": "Spreadsheet Registry",
+    "version": "1.0",
+    "state": "Draft",
+    "created": "2026-07-07",
+    "sprint": "14.4",
+    "note": "設計のみ。登録・変更はCEO確認後のみ（AIはdraft提案まで）。未登録シートは読まない。ルールの正本はSPREADSHEET_REGISTRY.md",
+    "total": 0
+  },
+  "schema": {
+    "spreadsheet_id": "string（Google SheetsのID or ファイル名）",
+    "name": "string（シート名）",
+    "description": "string（内容1〜2行）",
+    "owner": "string（所有者・管理者）",
+    "data_domain": "催事 | 売上 | 在庫 | 発注 | 受注 | 顧客対応 | 商品 | マーケティング | 財務 | 法務 | AI | その他",
+    "related_agent": "CEO補佐AI | 催事AI | 発注・在庫AI | so u AI | SUNNY NOMADO AI | 営業AI | 広告・SEO AI | 資金繰りAI | 商品企画AI | 秘書AI",
+    "related_brand": "string | null（自社/支援の区別を維持）",
+    "source_type": "google_sheets | excel | csv",
+    "update_frequency": "string（日次/週次/催事ごと等）",
+    "data_sensitivity": "low | mid | high（個人情報・財務・原価・顧客情報はhigh）",
+    "pii_level": "none | low | high",
+    "access_rule": "string（誰が読めるか）",
+    "read_only": "boolean（初期値true固定。解禁はCEO承認のみ）",
+    "allowed_use": "string（使ってよい用途）",
+    "forbidden_use": "string（禁止用途。Knowledge直行は全シート共通で禁止）",
+    "related_knowledge": "string | null（KN-xxx）",
+    "related_decision_type": "string | null（FOS 13分類）",
+    "last_reviewed": "YYYY-MM-DD | null（CEO確認日）",
+    "status": "active | paused | archived | draft"
+  },
+  "spreadsheets": []
+}

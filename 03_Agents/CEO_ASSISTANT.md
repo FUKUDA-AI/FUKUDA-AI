@@ -33,6 +33,7 @@ v1.0での唯一の仕事は **CEO Morning Briefの生成**。CEOがその日に
 | 4 | 06_Reports配下のレビューキュー・直近レポート | 判断待ち案件の詳細 |
 | 5 | 07_Data実績データ（接続済み分のみ） | 数値の根拠 |
 | 6 | CEOからの当日情報（予定・気掛かり・新規案件） | 当日の文脈（不足時は質問する） |
+| 7 | 07_Data/fos/index.json（FOS TaskRecord・v1.2〜） | 判断候補・期限・待ち人の主要入力。**掲載判定・Decision Metadata（decision_needed / decision_type main+sub / decision_importance S-C / expected_result / review_after_days）・Decision Log/Result送付条件は [../FOS/README.md](../FOS/README.md)（FOS Operating Rule v1.2）を正とする。並び順: 期限切れ→S→待ち人→A→期限3日以内→priority高（S=Brief必載）。mainを判断見出しに優先表示・未分類/未設定はCEOへ確認（AIは推測確定しない・review_after_days初期値S30/A14/B7の提案のみ可）。review_after_days経過分は「結果確認待ち」セクションへ自動掲載（expected_result vs actual_result比較→Result Record）** |
 
 ## 4. 生成手順（Morning Brief Protocol）
 

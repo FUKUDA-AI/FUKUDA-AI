@@ -12,8 +12,9 @@ v1.0
 
 ## AIが毎回読む順番（Session Start Protocol）
 
-セッション全体の参照順は **00_MASTER → AI Memory（10_AI_Memory）→ Knowledge（01_Knowledge）→ Task** とする。
-00_MASTER内では、AIは必ずこの順に読み込む。**矛盾がある場合は読込順の小さい文書を正とする。**
+**起動時はまず [SYSTEM_BOOT.md](SYSTEM_BOOT.md)（起動ガイド=BIOS・v1.1）を読む。** SYSTEM_BOOTは「何を・どの順で・どのルールで読むか」だけを定義し、SYSTEM_BOOT→MASTER→Memory→必要Agent→必要Knowledge→必要Data→Taskの読込シーケンスへ進む（トークン削減・長期運用のため全ファイル読込禁止）。Task開始前の最終確認は [SYSTEM_BOOT_CHECKLIST.md](SYSTEM_BOOT_CHECKLIST.md)。**Version・Phase・Sprintの正本は 10_AI_Memory/CURRENT_STATE.md。**
+
+以下の11文書読込順は**文書の優先順位（矛盾時の正）**として引き続き有効。**矛盾がある場合は読込順の小さい文書を正とする。**
 
 | 順 | 文書 | 役割 |
 |---|---|---|
@@ -31,6 +32,8 @@ v1.0
 
 ## 読込順序の対象外（補助文書）
 
+- [SYSTEM_BOOT.md](SYSTEM_BOOT.md) — **起動ガイド（BIOS）**（v1.1・必読10文書と最小読込ルールを定義。Version情報は持たない）
+- [SYSTEM_BOOT_CHECKLIST.md](SYSTEM_BOOT_CHECKLIST.md) — Task開始前の運用チェックリスト（10項目・設計書ではない）
 - [ARCHITECTURE.md](ARCHITECTURE.md) — 正式Architecture v1.3（パイプライン・Principle層・5層構造・Memory横断層）。開発作業時に必ず参照
 - [NAMING_CONVENTION.md](NAMING_CONVENTION.md) — 命名規則（DEVELOPMENT_STANDARDの下位文書）
 - CEO_PRINCIPLES.md — CORE_PRINCIPLES / EVOLVING_PRINCIPLES へ役割分離済み。アーカイブはCEO確認後に実施

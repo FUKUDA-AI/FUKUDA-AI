@@ -8,10 +8,10 @@
 - [DATA_SOURCE_DESIGN.md](DATA_SOURCE_DESIGN.md) — 10データソース別の取得範囲・優先順位・段階分け（v1.0 Draft）
 
 ## Version
-v1.1（Connector Architecture設計を追加）
+v1.3（Dataset Registry v1.0を追加・Spreadsheet Registryを統合・Sprint 14.5）
 
 ## 最終更新日
-2026-07-06
+2026-07-07
 
 ## 関連機能
 - ChatGPT Importer v1.1 [Released] → `chatgpt_index.json`（Conversation Index v1.0、3,323件）
@@ -31,6 +31,12 @@ python3 chatgpt_importer.py   # プロジェクトルートで実行
 
 ## 稼働中の取込機能（続き）
 - **FOS Importer v1.0 [Experimental]**（2026-07-07〜）: `FOS/FOS-data.json`（正本・読み取り専用）→ TaskRecord → `fos/index.json`。Morning Brief接続済み（CEO Assistant v1.2）
+
+## Dataset Registry（v1.0設計・Sprint 14.5・全データソース共通の台帳）
+- `datasets/DATASET_REGISTRY.md` + `dataset_registry.json` — **あらゆるデータソースの台帳**（23項目・source_type 18種: google_sheets/excel/csv/json/fos_json/shopify/meta_ads/gmail/google_calendar/notion/airtable/sqlite/postgresql/chatgpt_export/claude_conversation/gemini_conversation/meeting_transcript/other）。稼働中3ソース（FOS/ChatGPT/催事）をdraft登録済み
+- **AI Conversation Source**: ChatGPT/Claude/Geminiの会話は共通の**ConversationRecord**（16項目）へ正規化してLearning Cycleへ統合（そのままKnowledge化禁止）
+- ルール: **未登録Datasetは読まない / AIは編集しない（read_only=true初期値）/ 個人情報・顧客・契約・財務=sensitivity high / Knowledge直行禁止（Dataset→Connector→Importer→Data Layer→Learning Cycle）**
+- `spreadsheets/`（Sprint 14.4）はDataset Registryへ統合済み・互換のため保持（削除禁止）
 
 ## 今後のTODO
 - ~~催事・発注・在庫・Shopify・Meta広告データの取り込み設計~~ ✅ 2026-07-06 設計完了（上記2文書）
