@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "name": "Airレジ dataset_type判別テーブル",
+    "version": "1.0",
+    "created": "2026-07-07",
+    "note": "唯一の判別根拠（コード本体から分離）。新CSV種類はここへ1行追加（CEO確認後のみ）で対応する。列名は2026-07-07サンプル実測・CEO回答8点で確定。登録・変更はCEO確認後のみ（AIはdraft提案まで）",
+    "source": "06_Reports/2026-07-07_Airregi_Sample_CSV_Column_Report.md"
+  },
+  "defaults": {
+    "channel": "event",
+    "sales_definition": "unknown",
+    "comment": "チャネルマッピング初期値（CEO確定 2026-07-07）: channel=event / store_name=null / event_name=null。店舗・催事名が確定したら更新可能"
+  },
+  "types": {
+    "daily_sales": {
+      "description": "日別売上集計（1行=1営業日）。欠損日は0円補完しない",
+      "signature": {
+        "first_header": "集計期間",
+        "contains": ["売上", "会計数"]
+      },
+      "date_source": "column:集計期間",
+      "column_map": {
+        "集計期間": "business_date",
+        "売上": "gross_sales",
+        "会計数": "receipt_count",
+        "客数": "customer_count",
+        "商品数": "qty",
+        "現金支払合計額": "cash_sales",
+        "現金その他支払合計額": "non_cash_sales",
+        "割引額": "discount"
+      }
+    },
+    "product_sales": {
+      "description": "商品別売上（1行=1商品の期間集計）。period_start/endはファイル名 _YYYYMMDD-YYYYMMDD から取得",
+      "signature": {
+        "first_header": "商品名",
+        "contains": ["販売総売上", "粗利総額"]
+      },
+      "date_source": "filename_period",
+      "column_map": {
+        "商品名": "product_name",
+        "カテゴリー": "category",
+        "税区分": "tax_type",
+        "販売総売上": "gross_sales",
+        "粗利総額": "gross_profit",
+        "販売商品数": "qty",
+        "返品商品数": "return_qty",
+        "商品ID": "product_id",
+        "商品コード": "product_code"
+      }
+    }
+  }
+}

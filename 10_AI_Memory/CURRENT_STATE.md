@@ -12,7 +12,7 @@
 |---|---|
 | Current Version | NOMADO AI Operating System **v1.0.0**（2026-07-06 Released・Gitタグ） |
 | Current Phase | Phase 7（Lessons/Principle）・9（Agents）・10（AI OS）並行運用中 |
-| Current Sprint | **Sprint 15.3（Result Layer v1.1設計）完了**（次: v1.1レビュー→Recorder v1.1実装 / 催事・AirレジCSV投入 / so u判断） |
+| Current Sprint | **Airレジ Importer v1.0実装Sprint完了**（テスト9ケース合格・SalesRecord 72件。次: CEOによるDS-POS-0001実運用active化（draft→active）→ 実CSV追加投入・催事AI/Brief接続 / Result Layer v1.1レビュー / so u判断） |
 | **Current Mode** | **Implementation**（実装再開可能な状態を維持。14.6はCEO指示の設計Sprintとして実施） |
 
 > **Sprint 14系 CEO一括承認（2026-07-07）**: FOS Operating Rule v1.0〜v1.2 / SYSTEM_BOOT v1.3 / SYSTEM_BOOT_CHECKLIST / Current Mode / Dataset Registry v1.0 / AI Conversation Connectors設計 → **すべてReleased**。DS-AI-0001 / DS-AI-0002 / DS-EVT-0001 active化。**以後、未登録Datasetは読まない。**
@@ -59,6 +59,10 @@
 - **Sprint 15完了（2026-07-07）**: **Result Recorder v1.0実装** — decision_log（読取専用）→Result Draft 2件（RES-0001工場打ち合わせ/RES-0002催事搬入=PENDING #11のResult初号候補）→07_Data/results/→Brief「⏰結果確認待ち」接続（ceo_assistant v1.3.1）。判定はCEOのみ・Evidence必須・冪等/書込制限/Brief統合テスト全合格。**次回BriefでCEOが成功/失敗/継続観察を判定→CEO確認後にresult_log.jsonへ確定**
 - **Sprint 15.3完了（2026-07-07）**: **Result Layer v1.1設計**（09_Learning/RESULT_LAYER_V11.md）— Action Result（実行）/Business Result（経営）の2層化。InsightはBusiness Resultのみ学習・Actionは実行率/SOP改善用・Dashboard分割・KN 3種Evidence・確定はCEOのみ。CEOレビュー待ち
 - **Result初号確定（2026-07-07）**: RES-0001工場打ち合わせ=**継続観察**（watching・メモ受領+成果確認で最終判定）/ RES-0002催事搬入=**成功**（learning_ready=true・学習投入可能な初Result）。判断→実行→結果→学習のループが初めて「結果」まで到達
+- **Airレジ Importer v1.0実装完了（2026-07-07）**: airregi_importer.py v1.0 [Experimental] — 文字コード自動判別（SJIS/UTF-8）・判別テーブル外部化（dataset_type_table.json・1行追加で新type対応をテスト実証）・SalesRecord 35項目・催事照合（完全一致のみ）・書込ホワイトリスト・冪等。**サンプル取込: 72件（daily 10 / product 62・5月合計1,090,658円・event/store未確定null=CEO指示どおり）**。テスト9ケース全合格。registry: DS-POS-0001 update_frequency=催事終了時(event_end)・last_reviewed記入・**status=draftのまま（設計上active候補・実運用active化はCEO操作待ち）**。毎回の型: CSVをraw/サブフォルダへ→`python3 airregi_importer.py`
+- **Airレジ設計書v1.2反映完了（2026-07-07）**: CEO回答8点を反映 — サブフォルダ方式（完全一致のみ確定・サンプル2件はnull扱い）/ period_start・end追加 / payment_sales初期type除外 / sales_definition="unknown"（売上定義の推測禁止）/ 承認7項目追加→SalesRecord 35項目 / 導出値はraw_fieldsのみ / 欠損日0円補完禁止 / Shift_JIS+UTF-8自動判別。判別テーブル2type確定（daily_sales/product_sales・実測）。**残CEO確認3点: ①取得頻度（→registry update_frequency）②サンプル2件の店舗/催事名 ③チャネルマッピング初期値** → active化 → 実装Sprint
+- **Airレジ設計v1.1 CEO承認（2026-07-07）** → **サンプルCSV列名確認Sprint完了（2026-07-07）**: サンプル2件（売上集計/商品別売上・Shift_JIS）をraw/へ配置・列名確認 → 06_Reports/2026-07-07_Airregi_Sample_CSV_Column_Report.md。推定type: daily_sales（10列）/ product_sales（14列・構成比%重複4回=位置ベースマッピング要）。**CEO確認8点**（最重要#1: CSVに店舗名なし→store_name取得方法 / #2: 商品別は期間集計でbusiness_date表現不可→period_start/end追加要否 / #5: 項目追加候補7件）。判別テーブル・README反映は確認後（推測で確定しない）。registry無変更
+- **Sprint 16完了（2026-07-07・設計v1.1へ修正済み）**: **Airレジ Connector v1.0設計**（07_Data/airregi/README.md 設計書v1.1・設計のみ・CEOレビュー待ち）— DS-POS-0001の接続設計。手動CSV方式（Events同型）・**dataset_type方式（CSV種類固定なし・ヘッダー判別・判別テーブル外部化=新type追加は設計変更不要）**・**SalesRecord 20項目（channel/event_name/store_name/terminal_id追加・複数チャネル統合分析対応）**・催事照合ルール（完全一致のみ自動リンク・部分一致はCEO確認）・テスト計画6種。**実装前にCEO確認3点: ①CSVの種類 ②サンプルCSV投入→列マッピング確認 ③CSV取得頻度（毎日/催事終了時/必要時・Registry update_frequencyへ反映）**（実装はairregi_importer v1.0として次Sprint）
 - **Sprint 15.2完了（2026-07-07）**: **Dashboard Generator v1.0実装** — CEO Dashboard初号発行（06_Reports/dashboard/2026-07-07.md・Health 15/30按分・Brief統合・Result確認待ち2件・Dataset 10件・Learning増分）。毎朝の型: `fos_importer → ceo_assistant → dashboard_generator`。追記型・書込制限・決定的生成テスト全合格
 - **Sprint 15.1完了（2026-07-07）**: **CEO Dashboard v1.0設計（CEO承認済み）**（03_Agents/CEO_DASHBOARD.md）— 経営コックピット6セクション（Health 100点/Today's/Brief統合/Result Review/Dataset Status/Learning Status）。Morning BriefはDashboardのセクション3に。読み取り専用・Knowledge生成禁止。CEOレビュー待ち → 承認後dashboard_generator v1.1（接続済みデータのみで生成）
 - **FOS Metadata実装完了（2026-07-07）**: **fos_importer v1.2**（Metadata 6項目透過・null互換・importance/main別集計・結果確認待ち抽出。34件で冪等確認）+ **ceo_assistant v1.3**（並び順v1.2・【main】見出し・未分類/未設定CEO確認・review初期値提案S30/A14/B7・「⏰結果確認待ち」セクション・Draft5項目保存。ユニットテスト5/5合格・本番Brief未発行）。**現FOS-data.jsonはメタ項目なし=全件「未分類/未設定」表示が正常。CEOがFOSへメタ入力を始めると次回Briefから効く**
@@ -82,6 +86,7 @@
 | Knowledge Builder | v1.1 | Experimental（released12/hold1） |
 | CEO Assistant | v1.1 | Experimental（ceo_assistant.py・ハイブリッド方式） |
 | Events Importer | v1.0 | Experimental（07_Data/events/・データ投入待ち） |
+| Airレジ Importer | v1.0 | Experimental（07_Data/airregi/・72件取込済み・active化待ち） |
 | Insight Generator | v1.0 | Experimental（09_Learning/insights/・Draft10件） |
 | AI Memory Layer | v1.0 | Released |
 | Architecture | v1.3 | Released（Principle層新設） |

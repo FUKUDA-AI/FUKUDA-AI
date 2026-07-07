@@ -8,6 +8,36 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### Airレジ Importer v1.0 [Experimental]（実装Sprint 2026-07-07）
+- **対象機能**: airregi_importer.py（新規）/ 07_Data/airregi/dataset_type_table.json（判別テーブル実体・新規）/ 07_Data/airregi/{normalized/, index.json}（新規生成・SalesRecord 72件）/ 07_Data/airregi/README.md v1.3（実装反映）/ dataset_registry.json DS-POS-0001（update_frequency=催事終了時(event_end)・last_reviewed=2026-07-07・CEO確定回答に基づく。**status=draftのまま**=設計上active候補・実運用active化はCEO操作）
+- **変更内容**: Airレジ Connector v1.0の実装 — ①文字コード自動判別（UTF-8 BOM→Shift_JIS→UTF-8・判別不能は取込まず報告）②dataset_typeヘッダー判別（判別テーブル外部定義のみが根拠・daily_sales/product_salesの2type・未知typeは取込まずCEO確認へ）③SalesRecord 35項目正規化（サブフォルダ方式・event/store不明はnull・売上=出力値そのまま・sales_definition="unknown"・未マッピング列はraw_fields保持・重複列は位置サフィックス・欠損日0円補完なし）④催事照合（EventRecord完全一致のみ自動リンク・部分一致は照合候補・原本無変更）⑤書込ホワイトリスト（normalized/とindex.jsonのみ・他はPermissionError）⑥冪等（record_id重複排除）
+- **取込実績**: サンプル2件（Shift_JIS）→ 72件（daily_sales 10 / product_sales 62・5月売上合計1,090,658円・event/store未確定2ファイル=null扱い・CEO指示どおり）
+- **テスト**: 9ケース全合格 — --check / 本実行72件 / 再実行冪等0件 / 書込制限PermissionError×2 / 催事照合（一致=リンク・不一致=null+未確定リスト）/ 未知type=unknown報告 / UTF-8自動判別 / 欠損日非補完 / テーブル1行追加のみで新type取込（コード無変更・拡張性実証）
+- **変更理由**: CEO指示（残確認3点回答→実装Sprint。Knowledge直行禁止・Data Layerまで）
+- **互換性**: raw/原本無変更・既存ファイル削除なし・events/index.json読み取りのみ。Brief/Dashboard接続はactive化後
+- **担当**: CEO（回答3点・実運用active化）/ AI（実装・テスト）
+
+### Airレジ Connector 設計書 v1.2 [Draft]（列名確認Sprint+CEO回答8点反映・設計のみ 2026-07-07）
+- **対象機能**: 07_Data/airregi/README.md（v1.1→v1.2）/ 06_Reports/2026-07-07_Airregi_Sample_CSV_Column_Report.md（列名確認レポート）/ 07_Data/airregi/raw/（CEO提供サンプルCSV 2件配置・原本無変更）。コード実装なし
+- **変更内容**: ①設計v1.1 CEO承認（2026-07-07）②サンプル実測: 売上集計CSV（Shift_JIS・10列・10日分）→daily_sales / 商品別売上CSV（14列・構成比%4回重複=位置ベース）→product_sales。判別テーブル2type確定 ③CEO回答8点反映: 店舗/催事=raw/サブフォルダ方式（EventRecord完全一致のみ確定・推測不可はnull+CEO確認・現サンプルはnull扱い）/ period_start・period_end追加（product_sales=期間集計・ファイル名から取得）/ payment_salesを初期typeから除外 / 売上=Airレジ出力値そのまま保存・sales_definition="unknown"（税込/割引の推測禁止）/ 項目追加7承認（customer_count・cash_sales・non_cash_sales・tax_type・gross_profit・return_qty・product_id）→SalesRecord 35項目 / 会計単価・客単価・構成比%はraw_fieldsのみ保持（本体保存なし）/ 欠損日0円補完禁止（10日分=意図どおり）/ Shift_JIS前提+UTF-8自動判別 ④確定マッピング表新設・テスト計画9ケースへ拡充
+- **変更理由**: CEO指示（列名確認のみ→回答8点→設計v1.2反映。Importer実装はまだしない）
+- **互換性**: dataset_registry.json無変更（DS-POS-0001はdraftのまま）。残るCEO確認: 取得頻度・サンプル2件の店舗/催事名・チャネルマッピング初期値 → active化 → 実装Sprint
+- **担当**: CEO（回答8点・active化）/ AI（列名確認・設計反映）
+
+### Airレジ Connector v1.0 設計修正 v1.1 [Draft・CEOレビュー待ち]（Sprint 16改・設計のみ 2026-07-07）
+- **対象機能**: 07_Data/airregi/README.md（設計書 v1.0→v1.1）。コード実装なし・他ファイル無変更
+- **変更内容**: CEO指示の拡張性修正3点 — ①**CSV種類を固定しない**: 「日別/商品別/決済別」の3種限定を廃止しdataset_type化。Importerは**CSVヘッダーから判別**（判別テーブル外部化: ヘッダーシグネチャ→dataset_type→列マッピング。新CSV種類はテーブル1行追加=CEO確認のみで対応・設計/コード構造変更不要。未知ヘッダーは取込まずCEOへ報告+新type登録draft提案）②**SalesRecord拡張**: channel（催事/店舗/EC/その他・チャネルマッピング表から機械判定・表に無ければnull）/ event_name（照合確定後にEventRecordから転記）/ store_name / terminal_id を追加（17→20項目・複数チャネル統合分析の軸。旧granularityはdataset_typeへ統合）③**初回接続CEO確認3点を明文化**: CSVの種類・サンプルCSV・CSV取得頻度（毎日/催事終了時/必要時の選択式・typeごと設定可・確定値はCEOがRegistry update_frequencyへ反映）。テスト計画にdataset_type判別3ケース追加
+- **変更理由**: CEO指示（将来の拡張性考慮・設計修正のみ）
+- **互換性**: 既存設計の方式（手動CSV・書込ホワイトリスト・照合ルール・active化フロー）は不変。dataset_registry.json無変更（DS-POS-0001はdraftのまま・update_frequency更新はactive化時にCEO操作）
+- **担当**: CEO（レビュー・確認3点・active化）/ AI（設計修正）
+
+### Airレジ Connector v1.0 [Draft・CEOレビュー待ち]（Sprint 16・設計のみ 2026-07-07）
+- **対象機能**: 07_Data/airregi/README.md（新規・設計書）。コード実装なし・既存ファイル無変更
+- **変更内容**: DS-POS-0001（Airレジ・draft）の接続設計 — ①方式: 手動CSVエクスポート→raw/投入（Events Connector同型・認証なし・接続コスト最小）②対象CSV3種想定（日別売上/商品別売上/決済方法別。取引明細はv1.0対象外=粒度過剰・PIIリスク。**実際の列名は初回サンプル投入時にCEOと確認・推測で確定しない**）③SalesRecord詳細定義（17項目・record_id冪等・共通必須3項目）④催事照合ルール: 会期内日付+会場名完全一致のみ自動リンク・部分一致は照合候補としてCEO確認・不一致null・EventRecord原本無変更 ⑤書込ホワイトリスト=07_Data/airregi/のみ ⑥active化条件5段階（エクスポート方法確認→サンプルCSV→列マッピングCEO確認→registry active化=CEO操作→実装Sprint）⑦テスト計画5種（--check/本実行/冪等/書込制限/照合3ケース）
+- **変更理由**: Sprint 16（CEO指示・設計のみ。v1.1接続最優先=催事とセット・Sprint 14.6の実接続前確認事項の履行手順を定義）
+- **互換性**: コード無変更。dataset_registry.jsonも無変更（DS-POS-0001はdraftのまま・active化はCEOのみ）。実装はairregi_importer.py v1.0として設計承認後
+- **担当**: CEO（レビュー・エクスポート方法確認・active化）/ AI（設計）
+
 ### Result Layer v1.1 [Draft・CEOレビュー待ち]（Sprint 15.3・設計のみ）
 - **対象機能**: 09_Learning/RESULT_LAYER_V11.md（新規）/ ARCHITECTURE.md §5（Result Layer項更新）
 - **変更内容**: Resultを2層構造へ拡張 — ①**Action Result**（実行できたか: 成功/失敗/延期/保留・実行日・Evidence必須・実行直後に判定）②**Business Result**（経営として成功か: 成功/失敗/継続観察・評価日・expected/actual・数値=利益/売上/ROI・定性=ブランド価値/顧客満足/運営負荷・成功/失敗要因・Evidence必須）③**Learning Rule**: Insight GeneratorはBusiness Resultのみ学習対象。Action Resultは実行率分析/運営改善/SOP改善用 ④**Dashboard**: Result Review→Action Review+Business Reviewに分割 ⑤**Knowledge**: Decision/Action Result/Business Resultの3種Evidence保持 ⑥**CEO Rule**: 両Resultの確定はCEOのみ・AIは推測しない ⑦既存result_log 2件は削除せず互換読み替え（確定はCEO確認後）
