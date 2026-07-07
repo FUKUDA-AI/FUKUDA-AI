@@ -12,7 +12,7 @@
 |---|---|
 | Current Version | NOMADO AI Operating System **v1.0.0**（2026-07-06 Released・Gitタグ） |
 | Current Phase | Phase 7（Lessons/Principle）・9（Agents）・10（AI OS）並行運用中 |
-| Current Sprint | **Sprint 15.2（Dashboard Generator v1.0実装）完了**（次: Result Draft 2件のCEO判定 / 催事・AirレジデータCSV投入） |
+| Current Sprint | **Sprint 15.3（Result Layer v1.1設計）完了**（次: v1.1レビュー→Recorder v1.1実装 / 催事・AirレジCSV投入 / so u判断） |
 | **Current Mode** | **Implementation**（実装再開可能な状態を維持。14.6はCEO指示の設計Sprintとして実施） |
 
 > **Sprint 14系 CEO一括承認（2026-07-07）**: FOS Operating Rule v1.0〜v1.2 / SYSTEM_BOOT v1.3 / SYSTEM_BOOT_CHECKLIST / Current Mode / Dataset Registry v1.0 / AI Conversation Connectors設計 → **すべてReleased**。DS-AI-0001 / DS-AI-0002 / DS-EVT-0001 active化。**以後、未登録Datasetは読まない。**
@@ -57,6 +57,8 @@
 - **Sprint 14.6完了（2026-07-07）**: **Commerce/Logistics/POS Dataset Expansion v1.0設計** — Shopify/MakeShop/はぴロジ/logiec/FLAM/Airレジ/Airペイの7ソースをDataset Registryへdraft登録（source_type 24種・record_schema 5種新設・全read_only・sensitivity/pii原則high・実行系操作禁止）。CEO確認でactive化 → Connector実装はAirレジ+Shopify（v1.1）から
 - **Sprint 14.6 CEO承認（2026-07-07）**: 7件draft=設計登録として承認。実接続は各source_location・認証・エクスポート方法の確認後にactive化（CEO指示）
 - **Sprint 15完了（2026-07-07）**: **Result Recorder v1.0実装** — decision_log（読取専用）→Result Draft 2件（RES-0001工場打ち合わせ/RES-0002催事搬入=PENDING #11のResult初号候補）→07_Data/results/→Brief「⏰結果確認待ち」接続（ceo_assistant v1.3.1）。判定はCEOのみ・Evidence必須・冪等/書込制限/Brief統合テスト全合格。**次回BriefでCEOが成功/失敗/継続観察を判定→CEO確認後にresult_log.jsonへ確定**
+- **Sprint 15.3完了（2026-07-07）**: **Result Layer v1.1設計**（09_Learning/RESULT_LAYER_V11.md）— Action Result（実行）/Business Result（経営）の2層化。InsightはBusiness Resultのみ学習・Actionは実行率/SOP改善用・Dashboard分割・KN 3種Evidence・確定はCEOのみ。CEOレビュー待ち
+- **Result初号確定（2026-07-07）**: RES-0001工場打ち合わせ=**継続観察**（watching・メモ受領+成果確認で最終判定）/ RES-0002催事搬入=**成功**（learning_ready=true・学習投入可能な初Result）。判断→実行→結果→学習のループが初めて「結果」まで到達
 - **Sprint 15.2完了（2026-07-07）**: **Dashboard Generator v1.0実装** — CEO Dashboard初号発行（06_Reports/dashboard/2026-07-07.md・Health 15/30按分・Brief統合・Result確認待ち2件・Dataset 10件・Learning増分）。毎朝の型: `fos_importer → ceo_assistant → dashboard_generator`。追記型・書込制限・決定的生成テスト全合格
 - **Sprint 15.1完了（2026-07-07）**: **CEO Dashboard v1.0設計（CEO承認済み）**（03_Agents/CEO_DASHBOARD.md）— 経営コックピット6セクション（Health 100点/Today's/Brief統合/Result Review/Dataset Status/Learning Status）。Morning BriefはDashboardのセクション3に。読み取り専用・Knowledge生成禁止。CEOレビュー待ち → 承認後dashboard_generator v1.1（接続済みデータのみで生成）
 - **FOS Metadata実装完了（2026-07-07）**: **fos_importer v1.2**（Metadata 6項目透過・null互換・importance/main別集計・結果確認待ち抽出。34件で冪等確認）+ **ceo_assistant v1.3**（並び順v1.2・【main】見出し・未分類/未設定CEO確認・review初期値提案S30/A14/B7・「⏰結果確認待ち」セクション・Draft5項目保存。ユニットテスト5/5合格・本番Brief未発行）。**現FOS-data.jsonはメタ項目なし=全件「未分類/未設定」表示が正常。CEOがFOSへメタ入力を始めると次回Briefから効く**

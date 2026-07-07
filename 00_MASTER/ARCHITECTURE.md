@@ -97,9 +97,10 @@ MemoryはKnowledgeを**複製せず**、以下だけを保持する。
 
 Decision Log起点の自動学習ルート（Decision Log → Insight → Pattern → Knowledge Draft → CEO Review → Released → Verified Candidate → Verified）を設計済み。詳細は [../09_Learning/LEARNING_CYCLE_V2.md](../09_Learning/LEARNING_CYCLE_V2.md)。Insight Generator v1.0 / Pattern Generator v1.0は先行実装済み。承認・実装時にArchitecture v1.4として正式採用する（それまで本書はv1.3のまま）。
 
-### Result Layer（設計済み・CEOレビュー待ち・未採用）
+### Result Layer（v1.0実装済み・v1.1=2層構造を設計中）
 
-判断の**結果**から学ぶ層: Decision → Action → Result（成功/失敗/継続観察・**判定はCEOのみ・AIは推測しない**）→ 結果つきInsight → 既存サイクルへ。Verified判定を「使われた」から「使われて効いた」へ深化させる。詳細は [../09_Learning/RESULT_LAYER_DESIGN.md](../09_Learning/RESULT_LAYER_DESIGN.md)。v1.4採用時にLearning Cycle v2.0と併せて正式化する。
+判断の**結果**から学ぶ層。v1.0（[../09_Learning/RESULT_LAYER_DESIGN.md](../09_Learning/RESULT_LAYER_DESIGN.md)）はResult Recorder v1.0として実装済み（2026-07-07・初号確定）。
+**v1.1（[../09_Learning/RESULT_LAYER_V11.md](../09_Learning/RESULT_LAYER_V11.md)・Sprint 15.3設計・CEOレビュー待ち）**: Resultを**Action Result（実行できたか: 成功/失敗/延期/保留）**と**Business Result（経営として成功か: 成功/失敗/継続観察）**の2層に分離。**Insight GeneratorはBusiness Resultのみ学習**・Action Resultは実行率分析/運営改善/SOP改善に利用。KnowledgeはDecision/Action Result/Business Resultの3種Evidenceを保持。**両Resultの確定はCEOのみ・AIは推測しない**。v1.4採用時にLearning Cycle v2.0と併せて正式化する。
 
 ## 6. SYSTEM_BOOT（起動ガイド=BIOS・v1.1設計 2026-07-07・Sprint 14.3/14.3.1）
 

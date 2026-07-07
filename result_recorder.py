@@ -194,7 +194,8 @@ def main():
 
     # index: Brief「結果確認待ち」の参照元
     today = date.today().isoformat()
-    pending = [d for d in draft_data["drafts"] if d["record_status"] == "draft"]
+    # draft=CEO判定待ち / watching=継続観察中（結果が出るまでBriefに再掲する）
+    pending = [d for d in draft_data["drafts"] if d["record_status"] in ("draft", "watching")]
     check_due = [
         {"result_id": d["result_id"], "判断": d["decision_ref"]["判断内容"],
          "判断日": (d["decision_ref"].get("日時") or "")[:10],

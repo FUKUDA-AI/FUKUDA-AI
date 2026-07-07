@@ -8,6 +8,20 @@
 
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
 
+### Result Layer v1.1 [Draft・CEOレビュー待ち]（Sprint 15.3・設計のみ）
+- **対象機能**: 09_Learning/RESULT_LAYER_V11.md（新規）/ ARCHITECTURE.md §5（Result Layer項更新）
+- **変更内容**: Resultを2層構造へ拡張 — ①**Action Result**（実行できたか: 成功/失敗/延期/保留・実行日・Evidence必須・実行直後に判定）②**Business Result**（経営として成功か: 成功/失敗/継続観察・評価日・expected/actual・数値=利益/売上/ROI・定性=ブランド価値/顧客満足/運営負荷・成功/失敗要因・Evidence必須）③**Learning Rule**: Insight GeneratorはBusiness Resultのみ学習対象。Action Resultは実行率分析/運営改善/SOP改善用 ④**Dashboard**: Result Review→Action Review+Business Reviewに分割 ⑤**Knowledge**: Decision/Action Result/Business Resultの3種Evidence保持 ⑥**CEO Rule**: 両Resultの確定はCEOのみ・AIは推測しない ⑦既存result_log 2件は削除せず互換読み替え（確定はCEO確認後）
+- **変更理由**: Sprint 15.3（CEO指示・設計のみ。「実行できた」と「経営的に成功した」の分離=Learning Cycle精度向上）
+- **互換性**: コード無変更。実装はResult Recorder v1.1+Insight Generator v1.1として次Sprint以降
+- **担当**: CEO（レビュー・両Result確定）/ AI（設計）
+
+### Result初号確定 — RES-0001/0002（CEO判定 2026-07-07）
+- **対象機能**: 07_Data/results/{result_draft_log.json, result_log.json, index.json} / result_recorder.py（watching状態の再掲対応）/ PENDING #11
+- **変更内容**: **FUKUDA AI初のResult確定** — RES-0001 工場打ち合わせ: **継続観察**（認識合わせ実施・詳細成果は今後確認。Evidence: 実施+メモ後日。learning_ready=false・watchingとしてBrief再掲継続）/ RES-0002 催事搬入確認: **成功**（会期開始に支障なく完了。Evidence: 搬入完了+会期影響なし。**learning_ready=true=学習投入可能な初のResult**）。判定・文言はすべてCEO記入（AIは転記のみ）。想定との差異は「expected_result未記録のため評価なし」と事実記載
+- **変更理由**: CEO判定指示（Dashboard初号のResult Review経由）
+- **互換性**: Decision Log本体無変更・Draft保持（削除なし）
+- **担当**: CEO（判定）/ AI（転記・確定操作）
+
 ### Dashboard Generator v1.0 [Experimental]（Sprint 15.2・実装）
 - **対象機能**: dashboard_generator.py（新規）/ 06_Reports/dashboard/（新規・追記型YYYY-MM-DD.md + _state.json）/ CEO_DASHBOARD.md（承認反映・起動方法追記）
 - **変更内容**: CEO Dashboard v1.0設計（CEO承認済み）の実装 — 接続済みデータのみで6セクションを1枚生成。①Company Health: 接続済み3項目（未対応10・期限10・Learning10=30点分）を機械的算定式（待ち/超過1件毎-5・released有無+直近7日Decision）で按分表示・未接続70点分は対象外と明示 ②Today's Dashboard: FOS由来3項目表示・売上系は「未接続」表示（推測しない）③Morning Brief統合: 当日Brief原文を転記（⏰セクションは§4へ集約・重複排除。生成はしない）④Result Review: 07_Data/results/index.json参照（期待vs実績記入欄・判定はCEOのみ）⑤Dataset Status: Registry 10件（ACTIVE/WARNING/ERROR/DRAFT・最終同期・機械的判定のみ）⑥AI Learning Status: 6段階件数+今日の増分（_state.json比較）+Evidence付与率
