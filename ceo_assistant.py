@@ -32,8 +32,12 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "2.1"
+VERSION = "2.1.1"
 STATE = "Experimental"
+# v2.1.1 (2026-07-18・Brief v2.1 実装Sprint 4「要約精度改善」):
+# ④会社の状態を company_attention() で強化 — 期限切れ/未入金・請求/スタッフ待ち・相談/催事搬入直前/
+# 結果確認期限/未接続 を根拠つきで機械検出しlevel順に列挙（LLMが1〜3行に要約する材料）。推測しない=事実のみ。
+# 未接続ソースの実数値化は各Connector接続時に順次（本Sprintは判定ルールの土台）。
 # v2.1 (2026-07-18・Brief v2.1「Less is More」実装Sprint 2・CEO承認済み設計):
 # Briefを5ブロックへ圧縮 — 💬AIから一言（①先頭と一致）/ ①今日の判断（原則1件・最大3件）/
 # ②AIからの提案（FOS Review・6観点・最大3件厳選）/ ③AI Actions（ai_ready=yes・最大5件・承認制）/
@@ -242,11 +246,56 @@ def fos_review(fos, max_items=3):
     return proposals[:max_items], len(proposals)
 
 
-def company_hints(fos):
-    """v2.1 ④会社の状態の機械ヒント（LLMが1〜3行に要約する材料。数字の羅列はしない）。"""
+def company_attention(fos, es, result_due, today):
+    """v2.1.1 Sprint4: ④会社の状態の『注意点』を機械検出（根拠つき・level順）。
+    推測しない=データにある事実のみ。level: high(お金・期限) > mid(待ち・催事・結果) > low(未接続)。"""
+    import re
+    from datetime import date as _d, timedelta as _td
+    recs = fos["records"] if fos else []
+    items = []
+    # 1. 期限切れ（high）
+    n_over = len(fos["overdue"]) if fos else 0
+    if n_over:
+        items.append({"level": "high", "観点": "期限切れ", "text": f"期限切れ {n_over}件", "根拠": "FOS overdue"})
+    # 2. 入金・請求（未完了タスクのキーワード・high）
+    for r in recs:
+        t = r.get("title") or ""
+        if r.get("status") == "未完了" and re.search(r"未入金|未回収|請求|滞納|未払", t):
+            items.append({"level": "high", "観点": "入金", "text": f"入金/請求の確認: {t}", "根拠": r.get("record_id")})
+    # 3. 待ち（相談・スタッフ待ち・mid）
+    for r in recs:
+        if r.get("consultation"):
+            items.append({"level": "mid", "観点": "待ち", "text": f"相談待ち: {r.get('title')}", "根拠": "consultation"})
+        elif r.get("source_type") == "next_action" and r.get("status") == "スタッフ待ち":
+            items.append({"level": "mid", "観点": "待ち", "text": f"スタッフ待ち: {r.get('title')}", "根拠": r.get("record_id")})
+    # 4. 催事搬入が3日以内（mid）
+    if es and today:
+        try:
+            t0 = _d.fromisoformat(today)
+            soon = (t0 + _td(days=3)).isoformat()
+            for r in es.get("records", []):
+                sd = r.get("setup_date")
+                if r.get("confirmed") and sd and today <= sd <= soon:
+                    items.append({"level": "mid", "観点": "催事", "text": f"催事搬入まもなく: {r.get('name')}（{sd}）", "根拠": "event_schedule"})
+        except ValueError:
+            pass
+    # 5. 結果確認の期限到来（mid）
+    if result_due:
+        items.append({"level": "mid", "観点": "結果確認", "text": f"結果確認の期限到来 {len(result_due)}件", "根拠": "results"})
+    # 6. 未接続（low・情報）
+    items.append({"level": "low", "観点": "未接続", "text": "売上/在庫/入金の自動把握は未接続（Shopify等6ソース）", "根拠": "dataset_registry"})
+    order = {"high": 0, "mid": 1, "low": 2}
+    items.sort(key=lambda x: order[x["level"]])
+    return items
+
+
+def company_hints(fos, es=None, result_due=None, today=None):
+    """v2.1 ④会社の状態の機械ヒント（LLMが1〜3行に要約する材料。数字の羅列はしない）。
+    v2.1.1: 注意点（attention）を根拠つきで同梱。"""
     return {"overdue": len(fos["overdue"]) if fos else 0,
             "connected": "Airレジ・催事スケジュール",
-            "unconnected": "Shopify / MakeShop / Airペイ / FLAM / はぴロジ / logiec"}
+            "unconnected": "Shopify / MakeShop / Airペイ / FLAM / はぴロジ / logiec",
+            "attention": company_attention(fos, es, result_due or [], today)}
 
 
 def events_today(es, today):
@@ -375,11 +424,16 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
         lines.append("- なし（ai_ready=yesのFOSタスクはありません。FOS Rule §4-6でタスクにai_readyを付けると自動掲載）")
     lines.append("")
 
-    # ④ 会社の状態（1-3行要約・数字を並べない）
+    # ④ 会社の状態（1-3行要約・数字を並べない・v2.1.1 注意点検出）
     h = materials.get("company_hints", {})
+    att = h.get("attention", [])
+    real = [a for a in att if a.get("level") != "low"]
     lines += ["## ④ 会社の状態", ""]
-    lines.append("<!-- LLM: 1-3行で要約。「会社は正常です。注意点は_件…」の形。数値の羅列・全項目リストは書かない（詳細はDashboard） -->")
-    lines.append(f"（機械ヒント: 期限切れ{h.get('overdue', 0)}件 / 接続済み: {h.get('connected', '-')} / 未接続: {h.get('unconnected', '-')}）")
+    if real:
+        lines.append("<!-- LLM: 1-3行で要約。「会社は正常です。注意点は_件— …」の形。重要な注意点のみ・数値の羅列や全項目リストは書かない（詳細はDashboard） -->")
+    else:
+        lines.append("<!-- LLM: 実質的な注意点なし→「会社は正常です」を1行。数値の羅列は書かない -->")
+    lines.append("（機械ヒント・注意点: " + ("／".join(f"[{a['観点']}]{a['text']}" for a in att[:5]) if att else "なし") + "）")
     lines.append("")
 
     # 条件付き表示（出す条件があるときだけ現れる）
@@ -488,7 +542,7 @@ def main():
         "fos": fos, "event_schedule": es,
         "fos_review": reviews,
         "ai_actions": ai_actions,
-        "company_hints": company_hints(fos),
+        "company_hints": company_hints(fos, es, due, today),
         "event_today": events_today(es, today),
         "result_check_due": due,
         "night": read_night_build(today),   # Sprint3: 夜間ビルド完了報告（あれば💬一言の材料）

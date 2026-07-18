@@ -8,6 +8,13 @@
 
 ## 2026-07-18
 
+### Brief v2.1 実装Sprint 4 — 要約精度改善（CEO Assistant v2.1.1・実装）＝v2.1実装完了
+- **対象機能**: ceo_assistant.py **v2.1.1**（`company_attention()` 新設・④会社の状態の描画）
+- **変更内容**: ④会社の状態を「注意点の機械検出」へ強化。`company_attention()`が 期限切れ / 未入金・請求(未払・滞納・未回収) / スタッフ待ち・相談待ち / 催事搬入3日以内 / 結果確認の期限到来 / 未接続 を**根拠つき**で検出し level順（high=お金・期限 > mid=待ち・催事・結果 > low=未接続）に列挙 → LLMが1〜3行に要約する材料に。実質的な注意点が無ければ「会社は正常です」。**推測しない=データにある事実のみ**。未接続ソースの実数値化は各Connector接続時に順次（本Sprintは判定ルールの土台）
+- **テスト**: 実データ=スタッフ待ち(銀行・資金繰り)/結果確認1件/未接続を検出 / 合成=未入金・催事搬入直前・相談待ち等をhigh→mid→low順で列挙・Brief④描画・本文14行・FOS不変。全合格
+- **🎉 マイルストーン**: **Brief v2.1 実装 全4Sprint完了**（Sprint1 ai_ready → Sprint2 5ブロックBrief「おはよう」 → Sprint3 Night Build → Sprint4 要約精度）。「CEOが5分で今日の判断を終える」朝の会話の土台が完成
+- **担当**: CEO（承認・運用）/ AI（実装・テスト）
+
 ### Brief v2.1 実装Sprint 3 — Night Build v1.0（夜間パイプライン・実装）
 - **対象機能**: night_build.py（新規）/ ceo_assistant.py（`--draft`モード・💬一言に夜間サマリ）/ 03_Agents/CEO_ASSISTANT.md（§2 Night Build・スケジュール手順）
 - **変更内容**: 夜間準備思想「朝には完成している」の実装。night_build.pyが「取込(fos_importer)→催事(event_schedule_importer)→Result(result_recorder)→Dashboard(dashboard_generator)→Brief下書き(ceo_assistant --draft)」を順に実行。**各ステップは失敗しても止めず異常として記録**（催事はネットワーク要のため環境により失敗し得る＝最新スナップショットで継続）。`06_Reports/morning_brief/_draft/`へ ①Brief下書き ②完了報告(md/json＝💬一言の材料・実行事実のみ) を出力。`ceo_assistant --draft`は下書き専用（decision_draft非起票・_draftは上書き可・報告JSONを読み💬一言へ夜間サマリ付与）。順序: 報告を書いてから下書き生成（下書きが夜間結果を参照できる）
