@@ -136,8 +136,10 @@ def build_records(fos, today):
             })
 
     # 3) staffRequests → Decision候補（判断が明示的に求められている）
+    #    v1.2.3: 決着済み(approved/rejected/resolved/done)は要判断キューから外す。
+    #    残す=未決着のみ(pending/later)。※新規相談は【相談】タスク運用(v1.3)へ移行済み。
     for s in fos.get("staffRequests", []):
-        if s.get("status") in ("resolved", "done"):
+        if s.get("status") in ("resolved", "done", "approved", "rejected"):
             continue
         records.append({
             "record_id": f"FOS-req-{s['id']}",
