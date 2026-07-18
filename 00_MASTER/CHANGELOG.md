@@ -8,6 +8,13 @@
 
 ## 2026-07-18
 
+### Brief v2.1 実装Sprint 1 — FOS Rule v1.3 + FOS Importer v1.3（ai_ready・実装）
+- **対象機能**: FOS/README.md（v1.2→**v1.3**・§4-6 ai_ready追加・入力テンプレート15項目化）/ fos_importer.py **v1.3.0**
+- **変更内容**: FOS **ai_ready属性**（yes/no/null）を新設し、importerがTaskRecordへ**透過**（未入力=null=推測しない）。ai_ready=yes かつ未完了 → **ai_action_candidate=True**（Brief §③ AI Actions候補）。index.jsonへ ai_actions件数 + ai_action_records を出力（ceo_assistant v2.1がSprint 2で参照）。入力はCEO/スタッフ・**AIは提案のみで確定しない**。AI実行はDraft/取込/生成/整理まで（送信・支払・発注・FOS変更・Knowledge released化はCEOのみ・不変）
+- **テスト**: ①実データ --check（書込なし）=AI Actions 0件（現FOSはai_ready未入力=全null）・期限切れ0・エラーなし・FOS-data.json不変 ②合成データ=大文字YES正規化/no/未入力null/不正値null/完了済みガード/next_action透過 全合格（候補2件=期待どおり）
+- **範囲外（実装Sprint 2）**: Briefへの表示・「おはよう」起動・AI Actions実行は ceo_assistant v2.1
+- **担当**: CEO（承認・入力運用）/ AI（実装・テスト）
+
 ### Morning Brief v2.1「Less is More」— CEO承認（Released）
 - **対象**: 06_Reports/CEO_MORNING_BRIEF_V21.md（Draft→**Released**）
 - **変更内容**: Sprint 18設計をCEO承認。評価基準を「CEOが5分で今日の判断を終えられるか」に一本化・7項目上限/30行以内・判断1件原則・「AIから一言」を最重要要素化・FOS Review厳選3件・会社の状態は要約化（数字を並べない）・5要素（昨夜のAI作業/選外リスト/レビュー待ち/次に決めること/AI System）をBriefから削除しDashboard・ログへ移動（情報は消えない）・条件付き表示（催事/Result期限/緊急）。Dashboard無変更・役割分担維持

@@ -33,6 +33,12 @@ v1.2.3（2026-07-18・CEO指示）:
 　完了済みeventのIDを FOS外の 07_Data/fos/completed_events.json に保持し、本Importerがdone扱いにする。
 　→ FOS-data.jsonは一切変更しない（FOS Rule第5条準拠）・期限切れ誤検知を恒久的に防ぐ。
 ・FOSアプリに完了/削除機能が実装されたら本リストは不要になる（STAFF_REQUESTS_UI_SPEC同様のアプリ改修が根治）。
+
+v1.3.0（2026-07-18・Morning Brief v2.1 実装Sprint 1・CEO承認済み設計）:
+・FOS ai_ready属性（yes/no/null）をTaskRecordへ透過（推測で埋めない=未入力はnull）。
+　ai_ready=yes かつ未完了 → ai_action_candidate=True（Brief §5「AI Actions」候補）。
+　AIが実行できるのはDraft/取込/生成/整理まで（対外送信・支払・発注・FOS変更はCEOのみ・不変）。
+　※Briefへの表示・実行はceo_assistant v2.1（Sprint 2）が担当。本Importerは透過と候補フラグまで。
 """
 
 import hashlib
@@ -41,7 +47,7 @@ import sys
 from datetime import datetime, date
 from pathlib import Path
 
-VERSION = "1.2.3"
+VERSION = "1.3.0"
 STATE = "Experimental"
 
 # Decision Metadata（FOS Operating Rule v1.2 §4。項目なし=null・推測で埋めない）
@@ -57,6 +63,18 @@ def dmeta(item: dict) -> dict:
 def needed_yes(item: dict) -> bool:
     """decision_needed=YES か（大文字小文字許容。未入力はFalse=推測しない）。"""
     return str(item.get("decision_needed", "")).strip().upper() == "YES"
+
+
+def ai_ready_val(item: dict):
+    """v1.3: ai_ready属性を正規化して返す。yes/no のみ有効・それ以外(未入力・不明)はNone（推測しない）。"""
+    v = str(item.get("ai_ready", "")).strip().lower()
+    return v if v in ("yes", "no") else None
+
+
+def is_ai_action(item: dict) -> bool:
+    """v1.3: ai_ready=yes かつ未完了 → AI Actions候補（Draft/取込/生成で完結する仕事）。
+    実行範囲・承認はceo_assistant/CEOが担う。ここは候補判定のみ。"""
+    return ai_ready_val(item) == "yes" and not item.get("done")
 
 BASE_DIR = Path(__file__).resolve().parent
 FOS_PATH = BASE_DIR / "FOS" / "FOS-data.json"          # 正本（読み取り専用）
@@ -113,6 +131,7 @@ def build_records(fos, today):
             "due_date": None, "overdue": False,
             "consultation": is_consult,
             "decision_candidate": is_consult or needed_yes(t), "brief_candidate": not t.get("done"),
+            "ai_ready": ai_ready_val(t), "ai_action_candidate": is_ai_action(t),  # v1.3
             **dmeta(t),
         })
 
@@ -132,6 +151,7 @@ def build_records(fos, today):
                 "brief_candidate": p.get("status") == "進行中",
                 "stop_reason": p.get("stopReason") or None,
                 "waiting_other": p.get("waitingOther") or None,
+                "ai_ready": ai_ready_val(p), "ai_action_candidate": is_ai_action(p),  # v1.3
                 **dmeta(p),
             })
 
@@ -153,6 +173,7 @@ def build_records(fos, today):
             "decision_candidate": True, "brief_candidate": True,
             "options": {"A": s.get("optionA"), "B": s.get("optionB"),
                         "スタッフ推奨": s.get("recommended"), "提案": s.get("staffProposal")},
+            "ai_ready": ai_ready_val(s), "ai_action_candidate": is_ai_action(s),  # v1.3
             **dmeta(s),
         })
 
@@ -268,12 +289,13 @@ def main():
     by_type = Counter(r["source_type"] for r in records)
     decisions = [r for r in records if r["decision_candidate"]]
     overdue = [r for r in records if r["overdue"]]
+    ai_actions = [r for r in records if r.get("ai_action_candidate")]  # v1.3: ai_ready=yes
 
     print(f"FOS Importer v{VERSION} [{STATE}]（正本: FOS-data.json / HTMLは読まない）")
     print(f"読込: projects {len(fos.get('projects', []))} / tasks {len(fos.get('tasks', []))} / "
           f"staffRequests {len(fos.get('staffRequests', []))} / improvements {len(fos.get('improvements', []))} / events {len(fos.get('events', []))}")
     print(f"TaskRecord: {len(records)}件 {dict(by_type)}")
-    print(f"Decision候補: {len(decisions)}件 / 期限切れ: {len(overdue)}件")
+    print(f"Decision候補: {len(decisions)}件 / 期限切れ: {len(overdue)}件 / AI Actions候補(ai_ready=yes): {len(ai_actions)}件")
     imp_c = Counter(r.get("decision_importance") or "未設定" for r in decisions)
     typ_c = Counter(r.get("decision_type_main") or "未分類" for r in decisions)
     due = result_check_due(today)
@@ -307,6 +329,10 @@ def main():
         "summary": {"by_type": dict(by_type),
                     "decision_candidates": len(decisions),
                     "overdue": len(overdue),
+                    "ai_actions": len(ai_actions),  # v1.3: Brief §5「AI Actions」候補（ai_ready=yes・未完了）
+                    "ai_action_records": [{"record_id": r["record_id"], "title": r["title"],
+                                           "project": r.get("project"), "source_type": r["source_type"]}
+                                          for r in ai_actions],
                     "decision_metadata": {
                         "by_importance": dict(Counter(r.get("decision_importance") or "未設定" for r in decisions)),
                         "by_type_main": dict(Counter(r.get("decision_type_main") or "未分類" for r in decisions)),
