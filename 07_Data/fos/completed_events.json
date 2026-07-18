@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "purpose": "FOSアプリにイベント完了機能が無く、FOS-data.jsonへ直接done付与しても自動同期(全置換)で消える(FOS/README §10)。CEO確認済みで完了したeventのIDをFOS外で保持し、fos_importerがdone扱いにして期限切れ誤検知を恒久的に防ぐ。",
+    "rule": "追加はCEO確認済みの完了イベントのみ。FOS-data.jsonは一切変更しない(FOS Rule第5条準拠)。FOSアプリに完了/削除機能が実装されたら本ファイルは不要になる。",
+    "created": "2026-07-18",
+    "created_by": "AI(CEO指示・SYSTEM_BOOT起動セッション)",
+    "read_by": "fos_importer.py v1.2.3+ (load_completed_event_ids)"
+  },
+  "completed_event_ids": [
+    "mr46dond3enyc",
+    "mr46dond8tbo7"
+  ],
+  "records": [
+    {
+      "id": "mr46dond3enyc",
+      "title": "工場打ち合わせ",
+      "date": "2026-07-03",
+      "reason": "実施済み。RES-0001として記録(継続観察)。CEO 2026-07-10 done指示(doneNote済)。",
+      "evidence": "CURRENT_STATE.md 2026-07-10 / RES-0001",
+      "marked_at": "2026-07-18"
+    },
+    {
+      "id": "mr46dond8tbo7",
+      "title": "催事 搬入の最終確認",
+      "date": "2026-07-03",
+      "reason": "実施済み。RES-0002として記録(成功・learning_ready=true)。CEO 2026-07-10 done指示(doneNote済)。",
+      "evidence": "CURRENT_STATE.md 2026-07-10 / RES-0002",
+      "marked_at": "2026-07-18"
+    }
+  ]
+}
