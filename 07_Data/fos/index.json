@@ -1,7 +1,7 @@
 {
   "meta": {
     "generator": "FOS Importer v1.3.0 [Experimental]",
-    "generated_at": "2026-07-18 10:18:01",
+    "generated_at": "2026-07-18 10:43:01",
     "source": "FOS/FOS-data.json（正本・読み取り専用）",
     "content_hash": "5ea12342ca0a",
     "note": "Morning Brief・Agent参照用。Knowledge直行禁止。タスク操作はCEO確認後のみ",
@@ -75,7 +75,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -101,7 +101,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -126,7 +126,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -152,7 +152,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -177,7 +177,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -202,7 +202,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -227,7 +227,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -252,7 +252,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -277,7 +277,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -302,7 +302,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -327,7 +327,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -352,7 +352,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -377,7 +377,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -402,7 +402,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -427,7 +427,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -452,7 +452,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -477,7 +477,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -502,7 +502,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -527,7 +527,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -552,7 +552,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -577,7 +577,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -602,7 +602,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -627,7 +627,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -652,7 +652,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -677,7 +677,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -702,7 +702,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -727,7 +727,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -752,7 +752,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -777,7 +777,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -802,7 +802,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -827,7 +827,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -852,7 +852,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -878,7 +878,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -904,7 +904,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -930,7 +930,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -956,7 +956,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -982,7 +982,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1008,7 +1008,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1034,7 +1034,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1060,7 +1060,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1086,7 +1086,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1109,7 +1109,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1131,7 +1131,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     },
     {
@@ -1153,7 +1153,7 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-18 10:18:01",
+      "imported_at": "2026-07-18 10:43:01",
       "importer_version": "v1.3.0"
     }
   ]

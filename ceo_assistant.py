@@ -62,8 +62,9 @@ def safe_write(path: Path, text: str):
     allowed = any(str(path).startswith(str(w.resolve())) for w in WRITE_WHITELIST)
     if not allowed:
         raise PermissionError(f"書き込み禁止: {path} はホワイトリスト外")
-    if path.exists() and BRIEF_DIR.resolve() in path.parents:
+    if path.exists() and BRIEF_DIR.resolve() in path.parents and "_draft" not in path.parts:
         raise PermissionError(f"上書き禁止: {path} は既に存在（追記型命名を使うこと）")
+    # _draft/（前夜下書き）は上書き可（毎晩/当朝に再生成する下書き置き場・確定版はmorning_brief直下）
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
@@ -284,6 +285,25 @@ def next_brief_path(today: str) -> Path:
     return p
 
 
+def draft_path(today: str) -> Path:
+    """v2.1/Sprint3: 前夜Brief下書きの置き場（_draft/・上書き可）。「おはよう」時に表示+当朝差分の起点。"""
+    d = BRIEF_DIR / "_draft"
+    d.mkdir(parents=True, exist_ok=True)
+    return d / f"{today}.md"
+
+
+def read_night_build(today: str):
+    """Night Build完了報告（_draft/night_build_YYYY-MM-DD.json）を読む。💬一言の「昨夜」材料（事実のみ）。
+    無ければNone（推測しない）。"""
+    p = BRIEF_DIR / "_draft" / f"night_build_{today}.json"
+    if not p.exists():
+        return None
+    try:
+        return json.load(open(p, encoding="utf-8"))
+    except Exception:
+        return None
+
+
 def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
     """v2.1 Brief。機械は骨組み+ヒント+プレースホルダを置き、LLMが一言・推奨・要約を言語化する。"""
     today = materials["today"]
@@ -298,12 +318,17 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
 
     # 💬 AIから一言（最重要・①先頭と一致）
     top = selected[0]["item"] if selected else None
+    night = materials.get("night")
     lines += ["## 💬 AIから一言", ""]
     if top:
-        lines.append("<!-- LLM: 3-5行。挨拶 → 今日の中心判断（次の①先頭と必ず一致）→ 理由一言（誰が待つ/何が動く）。事実のみ・演出なし・静けさと余白 -->")
+        lines.append("<!-- LLM: 3-5行。挨拶 →（夜間の実施事実・異常有無があれば1行）→ 今日の中心判断（次の①先頭と必ず一致）→ 理由一言。事実のみ・演出なし・静けさと余白 -->")
         lines.append(f"（機械ヒント: 今日の中心判断=「{top}」）")
     else:
         lines.append("おはようございます。本日、FOSに判断が必要な案件はありません。落ち着いて進められる一日です。")
+    if night:
+        anom = night.get("anomalies") or []
+        status = "異常なし" if not anom else f"異常{len(anom)}件（{', '.join(a.get('label', '') for a in anom)}）"
+        lines.append(f"（夜間ビルド: 成功{night.get('ok')}/{night.get('total')}・{status}・{night.get('generated_at', '')}）")
     lines.append("")
 
     # ① 今日の判断（原則1件）
@@ -420,6 +445,7 @@ def generate_decision_drafts(selected, brief_file: str, today: str):
 
 def main():
     check_only = "--check" in sys.argv
+    draft_mode = "--draft" in sys.argv   # Sprint3: 前夜下書き（_draft/へ・decision_draftは起票しない・上書き可）
     today = datetime.now().strftime("%Y-%m-%d")
 
     knowledge = read_released_knowledge()
@@ -465,16 +491,23 @@ def main():
         "company_hints": company_hints(fos),
         "event_today": events_today(es, today),
         "result_check_due": due,
+        "night": read_night_build(today),   # Sprint3: 夜間ビルド完了報告（あれば💬一言の材料）
     }
-    path = next_brief_path(today)
-    brief_no = "第" + (path.stem.split("_")[-1] if "_" in path.stem else "1") + "号"
-    _, nlines = generate_brief(materials, selected, dropped, path, brief_no=brief_no)
-    total = generate_decision_drafts(selected, path.name, today)
-    print(f"Brief（v2.1・本文{nlines}行）: {path}")
+    if draft_mode:
+        path = draft_path(today)
+        _, nlines = generate_brief(materials, selected, dropped, path, brief_no="前夜下書き")
+        print(f"Brief下書き（v2.1・本文{nlines}行・_draft/）: {path}")
+        print("→ 朝は「おはよう」で本下書きを表示（+当朝差分）。下書きではDecision Log Draftを起票しない（確定は朝）")
+    else:
+        path = next_brief_path(today)
+        brief_no = "第" + (path.stem.split("_")[-1] if "_" in path.stem else "1") + "号"
+        _, nlines = generate_brief(materials, selected, dropped, path, brief_no=brief_no)
+        total = generate_decision_drafts(selected, path.name, today)
+        print(f"Brief（v2.1・本文{nlines}行）: {path}")
+        print(f"Decision Log Draft: {DRAFT_LOG_PATH.name}（累計{total}件）")
+        print("→ 次工程: FUKUDA AI（LLM）が <!-- LLM: --> を言語化（一言=①先頭一致）・30行以内へ整えCEOへ提示")
     if nlines > 32:
         print(f"  ⚠ 30行目安を超過（{nlines}行）。LLM最終整理で圧縮すること")
-    print(f"Decision Log Draft: {DRAFT_LOG_PATH.name}（累計{total}件）")
-    print("→ 次工程: FUKUDA AI（LLM）が <!-- LLM: --> を言語化（一言=①先頭一致）・30行以内へ整えCEOへ提示")
 
 
 if __name__ == "__main__":

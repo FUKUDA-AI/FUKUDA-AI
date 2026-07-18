@@ -1,7 +1,7 @@
 {
   "meta": {
     "generator": "Event Schedule Importer v1.0 [Experimental]",
-    "generated_at": "2026-07-16 13:49:44",
+    "generated_at": "2026-07-18 10:43:01",
     "source": "Google Sheets（18期催事管理・16kd-pP5…・読み取り専用）",
     "fetch_mode": "offline_fallback(2026-07-11_webfetch.csv)",
     "fetched_at": "2026-07-11",

@@ -8,6 +8,15 @@
 
 ## 2026-07-18
 
+### Brief v2.1 実装Sprint 3 — Night Build v1.0（夜間パイプライン・実装）
+- **対象機能**: night_build.py（新規）/ ceo_assistant.py（`--draft`モード・💬一言に夜間サマリ）/ 03_Agents/CEO_ASSISTANT.md（§2 Night Build・スケジュール手順）
+- **変更内容**: 夜間準備思想「朝には完成している」の実装。night_build.pyが「取込(fos_importer)→催事(event_schedule_importer)→Result(result_recorder)→Dashboard(dashboard_generator)→Brief下書き(ceo_assistant --draft)」を順に実行。**各ステップは失敗しても止めず異常として記録**（催事はネットワーク要のため環境により失敗し得る＝最新スナップショットで継続）。`06_Reports/morning_brief/_draft/`へ ①Brief下書き ②完了報告(md/json＝💬一言の材料・実行事実のみ) を出力。`ceo_assistant --draft`は下書き専用（decision_draft非起票・_draftは上書き可・報告JSONを読み💬一言へ夜間サマリ付与）。順序: 報告を書いてから下書き生成（下書きが夜間結果を参照できる）
+- **テスト**: --dry（順序確認）/ 本番=5/5成功・異常0・完了報告と下書き生成・💬一言に「夜間ビルド: 成功4/4・異常なし」反映・FOS-data.json不変（git確認）。失敗継続設計（try/except・timeout 120s/step）
+- **不変**: 読み取り・生成・整理まで。送信・支払・発注・FOS変更なし。各ステップは自スクリプトの書込ホワイトリストに従う
+- **運用**: CEOのMacで実行（催事取込のネットワーク）。スケジュール化cron例はCEO_ASSISTANT.md §2（過渡期は手動/おはよう時生成でも可）
+- **次**: 実装Sprint 4 = 要約精度改善（④会社の状態の「注意点」判定ルール・接続拡大に合わせて）
+- **担当**: CEO（運用・スケジュール）/ AI（実装・テスト）
+
 ### Brief v2.1 実装Sprint 2 — CEO Assistant v2.1「Less is More」（実装）
 - **対象機能**: ceo_assistant.py **v2.1** / 03_Agents/CEO_ASSISTANT.md（§2「おはよう」起動・§5 v2.1フォーマット・変更履歴）
 - **変更内容**: Briefを5ブロックへ再構成 — 💬AIから一言（①先頭と一致）/ ①今日の判断（**原則1件**・S複数or期限切れ時のみ最大3件=`select_v21`）/ ②AIからの提案（`fos_review`＝完了忘れ・重複・待ちを機械検出・最大3件・提案のみFOS不変）/ ③AI Actions（fos_importer v1.3の`ai_action_candidate`=ai_ready=yesを掲載・最大5件・承認制）/ ④会社の状態（1〜3行要約ヒント）。条件付き表示: 🚨緊急（発生時のみ最上部）/ 🎪催事（昨日本日のみ）/ ⏰結果確認待ち（期限到来のみ）。**Briefから削除**: 今日やらないこと / AI開発案件 / 次に決めること / Event常設表（→Dashboard・ログ・条件付き＝隠す勇気）。30行ガード（本文行数を出力・超過警告）。improvementを今日の判断から除外（`brief_candidate=False`尊重）

@@ -1,0 +1,50 @@
+{
+  "date": "2026-07-18",
+  "generated_at": "2026-07-18 10:43:01",
+  "version": "1.0",
+  "ok": 5,
+  "total": 5,
+  "anomalies": [],
+  "steps": [
+    {
+      "label": "FOS取込",
+      "script": "fos_importer.py",
+      "status": "ok",
+      "returncode": 0,
+      "summary": "index.json更新: 44件 → Morning Brief参照可能",
+      "error": ""
+    },
+    {
+      "label": "催事スケジュール取込",
+      "script": "event_schedule_importer.py",
+      "status": "ok",
+      "returncode": 0,
+      "summary": "index.json更新: 23件 → Brief/Dashboard参照可能（表示は出店決定のみ）",
+      "error": ""
+    },
+    {
+      "label": "Result更新",
+      "script": "result_recorder.py",
+      "status": "ok",
+      "returncode": 0,
+      "summary": "→ 次工程: Morning Brief「⏰ 結果確認待ち」に掲載 → CEOが成功/失敗/継続観察を判定 → 確定反映はCEO確認後",
+      "error": ""
+    },
+    {
+      "label": "Dashboard更新",
+      "script": "dashboard_generator.py",
+      "status": "ok",
+      "returncode": 0,
+      "summary": "Dashboard発行: /sessions/rcw-01namrfacnw9ejdg6i9hcbcg/mnt/FUKUDA AI/06_Reports/dashboard/2026-07-18_2.md",
+      "error": ""
+    },
+    {
+      "label": "Brief下書き生成",
+      "script": "ceo_assistant.py",
+      "status": "ok",
+      "returncode": 0,
+      "summary": "→ 朝は「おはよう」で本下書きを表示（+当朝差分）。下書きではDecision Log Draftを起票しない（確定は朝）",
+      "error": ""
+    }
+  ]
+}
