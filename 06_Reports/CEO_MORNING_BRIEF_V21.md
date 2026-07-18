@@ -1,8 +1,8 @@
 # CEO_MORNING_BRIEF_V21 — CEO Operating Morning Brief v2.1 設計書「Less is More」
 
 Version: v2.1（**Sprint 18・設計のみ・コード実装なし**）
-最終更新日: 2026-07-09
-状態: Draft（CEOレビュー待ち）
+最終更新日: 2026-07-18
+状態: **Released（CEO承認 2026-07-18）** — 実装Sprint（§6）へ進行可
 前身: [CEO_MORNING_BRIEF_V2_DESIGN.md](CEO_MORNING_BRIEF_V2_DESIGN.md) v2.0（Released 2026-07-08）— **思想・制約・夜間準備・起動コマンド・Dashboard分離はすべて継承**。本書はv2.0の「構成」を圧縮する
 
 > **「Morning Briefは毎朝読むレポートではなく、CEOとAI秘書の朝の会話である。」**
@@ -122,3 +122,4 @@ Version: v2.1（**Sprint 18・設計のみ・コード実装なし**）
 | 日付 | 版 | 内容 |
 |---|---|---|
 | 2026-07-09 | v2.1 Draft | Sprint 18「Less is More」（設計のみ）。目的を「5分で今日の判断を終える」に一本化 — 7項目上限・スクロールなし・判断1件原則・AIから一言を最重要要素化・FOS Review厳選3件・Company Status要約化（数字を並べない）・AI System等5要素をBriefから削除（Dashboard/ログへ移動・情報は消えない）・条件付き表示（催事/Result/緊急）。Dashboard無変更・役割分担維持。CEOレビュー待ち |
+| 2026-07-18 | v2.1 Released | **CEO承認**。設計を正式化。判断1件原則・5要素のBrief削除（Dashboard/ログへ移動）・条件付き表示・30行以内を承認。次は§6の実装Sprint（1: FOS Rule v1.3+fos_importer v1.3 → 2: ceo_assistant v2.1 → 3: Night Build → 4: 要約精度改善） |

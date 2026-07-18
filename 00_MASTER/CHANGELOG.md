@@ -6,6 +6,28 @@
 
 ---
 
+## 2026-07-18
+
+### Morning Brief v2.1「Less is More」— CEO承認（Released）
+- **対象**: 06_Reports/CEO_MORNING_BRIEF_V21.md（Draft→**Released**）
+- **変更内容**: Sprint 18設計をCEO承認。評価基準を「CEOが5分で今日の判断を終えられるか」に一本化・7項目上限/30行以内・判断1件原則・「AIから一言」を最重要要素化・FOS Review厳選3件・会社の状態は要約化（数字を並べない）・5要素（昨夜のAI作業/選外リスト/レビュー待ち/次に決めること/AI System）をBriefから削除しDashboard・ログへ移動（情報は消えない）・条件付き表示（催事/Result期限/緊急）。Dashboard無変更・役割分担維持
+- **次**: 実装Sprint順 1)FOS Rule v1.3+fos_importer v1.3（ai_ready）2)ceo_assistant v2.1（v2.0を経ず直接実装）3)Night Build 4)要約精度改善
+- **担当**: CEO（承認）/ AI（設計・実装）
+
+### Result Layer v1.1（結果の2層化）— CEO承認（Released）
+- **対象**: 09_Learning/RESULT_LAYER_V11.md（Draft→**Released**）
+- **変更内容**: Sprint 15.3設計をCEO承認。ResultをAction Result（実行の成否: 成功/失敗/延期/保留）とBusiness Result（経営の成否: 成功/失敗/継続観察）へ2層化。Insight学習対象はBusiness Resultのみ・Action Resultは実行率/運営/SOP改善に利用・Knowledge 3種Evidence・判定はCEOのみ確定
+- **次**: 実装時にResult Recorder v1.1 + Architecture v1.4 + Learning Cycle v2.0を併せて採用
+- **担当**: CEO（承認）/ AI（設計・実装）
+
+### FOS Importer v1.2.3 [Experimental]（CEO指示・実装）
+- **対象機能**: fos_importer.py v1.2.3 / 07_Data/fos/completed_events.json（新規）
+- **変更内容**: ①**完了イベント無視リスト**: FOSアプリにイベント完了機能が無く、JSON直接done付与は自動同期(全置換)で消える（FOS/README §10）問題へ対処。完了済みeventのIDをFOS外のcompleted_events.jsonに保持しImporterがdone扱い（FOS-data.json不変=FOS Rule第5条準拠）。工場打ち合わせ/催事搬入の2件を登録→期限切れ2→0を確認 ②**決着済みstaffRequestの除外**: status=approved/rejectedは要判断キューから外す（テスト相談等がBriefに載り続けない）
+- **テスト**: --check（書込なし）で期限切れ0件・staff_request 0件・FOS-data.json未変更を確認
+- **担当**: CEO（指示）/ AI（実装・テスト）
+
+---
+
 ## 2026-07-11
 
 ### スタッフ相談の可視化対応 — FOS Importer v1.2.2ほか（CEO指示・実装）

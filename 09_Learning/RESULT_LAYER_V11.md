@@ -1,8 +1,8 @@
 # RESULT_LAYER_V11 — Result Layer v1.1 設計書（2層構造）
 
 Version: v1.1設計（Sprint 15.3・設計のみ・コードなし）
-最終更新日: 2026-07-07
-状態: Draft（CEOレビュー待ち）
+最終更新日: 2026-07-18
+状態: **Released（CEO承認 2026-07-18）** — Result Recorder v1.1実装時にArchitecture v1.4・Learning Cycle v2.0と併せて正式化
 前版: [RESULT_LAYER_DESIGN.md](RESULT_LAYER_DESIGN.md)（v1.0・Result Recorder v1.0で実装済み）
 
 > **「実行できたか」と「経営的に成功したか」は別物である。**
@@ -124,3 +124,4 @@ Knowledge（KN-xxx）は以下の3種のEvidenceを保持する。
 | 日付 | 版 | 内容 |
 |---|---|---|
 | 2026-07-07 | v1.1設計 | 初版（Sprint 15.3・設計のみ。Action Result / Business Resultの2層化・Learning Rule分離・Dashboard分割・Knowledge 3種Evidence） |
+| 2026-07-18 | v1.1 Released | **CEO承認**。2層化（Action Result=実行の成否 / Business Result=経営の成否）・学習対象はBusiness Resultのみ・判定はCEOのみ確定 を正式化。実装時にResult Recorder v1.1 + Architecture v1.4 + Learning Cycle v2.0を併せて採用 |
