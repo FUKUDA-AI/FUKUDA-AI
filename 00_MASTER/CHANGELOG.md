@@ -6,7 +6,80 @@
 
 ---
 
+## 2026-07-11
+
+### スタッフ相談の可視化対応 — FOS Importer v1.2.2ほか（CEO指示・実装）
+- **背景**: FOS-data.jsonの`staffRequests`配列がアプリ画面に表示されず、CEOが相談を確認・解決できないことが判明（2026-07-11）
+- **変更内容**: ①**運用変更**: 新規相談はtasksにタイトル先頭「【相談】」で書く（FOS/README.md v1.3運用）— Importerが自動でスタッフ相談扱い（priority 90・判断候補・待ちカウント。ceo_assistant/dashboardも対応）②**アプリ改修スペック**: FOS/STAFF_REQUESTS_UI_SPEC.md新規（相談一覧+解決ボタンの要件とドロップインJSコード例）③既存staffRequests（so u上限予算）はCEO判断受領後にCEO承認のもとstatusをresolvedへ更新（判断内容待ち）
+- **担当**: CEO（判断・アプリ改修）/ AI（実装・スペック）
+
+### Event Calendar Export v1.0 [Experimental]（CEO指示・Brief 7/11判断2）
+- **対象機能**: event_calendar_export.py（新規）/ 06_Reports/calendar/（新規・日付つき.ics）
+- **変更内容**: 催事スケジュール（DS-EVT-0002・**出店決定のみ**）からAppleカレンダー取込用.icsを生成 — 15催事→45イベント（【催事】会期=終日複数日・【搬入】・【搬出】。説明欄に販売会社/予算/備考）。専用カレンダー「NOMADO催事」への取込・シート更新時は削除→再取込の運用を推奨
+- **テスト**: VEVENT対応数一致・プランA/B非混入・終日形式（DTEND=終了日+1）検証合格
+- **担当**: CEO（取込・運用）/ AI（実装）
+
+### 催事スケジュールSheets接続 — Event Schedule Importer v1.0 + CEO Assistant v1.6（CEO訂正・実装）
+- **対象機能**: event_schedule_importer.py（新規・✅稼働）/ 07_Data/event_schedule/（新規）/ ceo_assistant.py v1.6 / dashboard_generator.py / dataset_registry.json（DS-EVT-0002修正=催事Sheets active・**DS-PRD-0001新規**=企画アプリdraft・total 12）/ DATASET_REGISTRY.md §2-2 / DATA_SOURCE_DESIGN.md §1-12訂正+§1-13新設 / CONNECTOR_ARCHITECTURE.md
+- **変更内容（CEO訂正 2026-07-11）**: ①Netlifyアプリは催事ではなく**企画スケジュール管理（商品企画・納品）→ DS-PRD-0001へ再分類**（draft・取得方法確認待ち・商品企画AI）②**催事スケジュール=Google Sheets「18期 催事管理」（DS-EVT-0002・active）**。公開CSV（認証不要）を確認しImporter実装・稼働（23件=出店決定15+プランA 2+プランB 5+未定1）③**Brief『Event Status』/Dashboard『Today's・Upcoming Events』は「出店決定」のみ表示**（プランA/Bは件数のみ）。搬入/会期開始/最終日/搬出/営業中をタグ表示・今週注意は曜日つき ④**日々更新→毎朝取込**: 毎朝の型を fos_importer → **event_schedule_importer** → ceo_assistant → dashboard_generator に更新 ⑤オフライン時は最新スナップショットへフォールバック（取得日時明示・推測しない）
+- **テスト**: 冪等（同一ハッシュskip）/ 出店決定のみ表示・プラン非表示 / 搬入日・会期開始・今週注意の日付判定（9/15搬入例）/ 書込先制限 — 全合格
+- **変更理由**: CEO訂正・指示（2026-07-11「日々更新するので、毎朝確認」）
+- **互換性**: 旧07_Data/event_planning/は未作成のため影響なし。既存Brief/Dashboard構造は追加のみ
+- **担当**: CEO（訂正・シート提供・更新運用）/ AI（実装・テスト）
+
+### Event Planning System追加 — DS-EVT-0002 + CEO Assistant v1.5 + Dashboard対応（CEO指示・実装）
+- **対象機能**: dataset_registry.json（DS-EVT-0002 draft登録・total 11・EventPlanRecord追加）/ DATASET_REGISTRY.md §2-2 / ceo_assistant.py v1.5 / dashboard_generator.py（Today's/Upcoming Events）/ DATA_SOURCE_DESIGN.md §1-12 / CONNECTOR_ARCHITECTURE.md / CEO_ASSISTANT.md
+- **変更内容**: SUNNY NOMADO催事スケジュールアプリ（https://sunuynomado-schedule.netlify.app/）を**Planning Layer（これから実施する仕事の正本）**として登録 — ①Brief新セクション「📅 Event Status」（昨日/本日の催事/明日の催事/今週注意。搬入・搬出・準備・スタッフ配置）②情報源の優先順位: FOS→Event Schedule→Shopify→MakeShop→Airレジ→Airペイ→FLAM→はぴロジ→logiec ③Dashboard「Today's Events / Upcoming Events」④**催事ライフサイクル**: Planning→Execution→「スケジュール達成」完了→Result ⑤**Planning/Result分離**: Brief=これからやる仕事のみ・Learning=Resultになった催事のみ（Event Knowledge=売上/利益/来場者/商品構成/在庫/発注/天候/会場/スタッフ数/作業時間+Airレジ+Shopify+FOS判断+Result Layer統合）⑥次回Planning前に過去Result検索（循環型Event Learning Cycle）
+- **接続調査**: ログイン式SPAのため静的取得不可を確認（推測実装せず）。**CSV/JSON/Export機能またはバックエンド種別のCEO確認後にactive化**。それまでBrief/Dashboardは「未接続」表示（受け口: 07_Data/event_planning/index.json実装済み・モックでテスト合格）
+- **変更理由**: CEO指示（2026-07-11・2通統合: データソース追加+Planning Layer位置付け）
+- **互換性**: 既存Brief/Dashboard構造は追加のみ。未接続時は従来どおりFOSのeventsを参照
+- **担当**: CEO（取得方法確認・active化）/ AI（登録・実装・調査）
+
+### Morning Brief実業化 — CEO Assistant v1.4 + AI Dev Report v1.0 [Experimental]（CEO指示・実装）
+- **対象機能**: ceo_assistant.py v1.4 / ai_dev_report.py（新規）/ 06_Reports/ai_dev_report/（新規）/ CEO_ASSISTANT.md（判断候補の正本ルール追記）
+- **変更内容**: ①**Briefの判断候補の正本をFOSのみに変更**（実業データ: FOS、接続後はShopify/MakeShop/Airレジ/Airペイ/FLAM/はぴロジ/logiec）。ROADMAP/CHANGELOG/CURRENT_STATE/PENDING由来の判断候補生成を**廃止**。FOSに存在しない判断候補はBriefに表示しない ②AI開発タスク（Learning Cycle/Dashboard/Result Layer/Importer等）を**「AI開発レポート」へ完全分離**（ai_dev_report.py → 06_Reports/ai_dev_report/YYYY-MM-DD.md・追記型・PENDINGとNEXTとLearning開発状況を表示）③Briefの「レビュー待ち」セクションを「AI開発案件（本Briefには載せない）」へ変更しレポートへ誘導
+- **テスト**: --check（Brief候補3件=全件FOS由来: so u発注+改善案2件）/ 一時領域でBrief生成し検証（FOS由来100%・AI開発ワード混入なし・本番無変更）
+- **変更理由**: CEO指示（2026-07-11）「Morning BriefはCEOが会社を経営するためのレポートであり、FUKUDA AIを開発するためのレポートではない。FOS=Single Source of Truth」
+- **互換性**: 既存Brief・Draftログ無変更。read_pending()はAI開発レポート用に存続
+- **担当**: CEO（ルール決定）/ AI（実装・テスト）
+
 ## 2026-07-06（v1.0.0後・v1.1に向けて）
+
+### FOS完了忘れ2件の完了化（CEO指示）+ FOS Importer v1.2.1 [Experimental]（2026-07-10）
+- **対象機能**: FOS/FOS-data.json（events 2件へ done/doneAt/doneNote追加）/ fos_importer.py v1.2→v1.2.1
+- **変更内容**: ①**FOS-data.json変更（CEOの明示指示 2026-07-10「完了忘れ2件を完了して」= CEO確認後の操作としてAIが実施・対象特定済み・doneNoteに指示経緯を記録）**: 「工場打ち合わせ」（RES-0001継続観察）「催事 搬入の最終確認」（RES-0002成功）へ done=true付与。eventsにはtasks同様のdoneフィールドを採用（スキーマ統一）②fos_importer v1.2.1: event.done対応（done=完了扱い・期限切れ判定除外・Brief候補から除外・status「完了」）。従来eventsに完了概念がなく誤検知が構造的に再発するため
+- **結果**: 期限切れ 2件→**0件**・Decision候補 5→3件（誤検知解消）。バックアップ: 07_Data/fos/snapshots/2026-07-10（変更前スナップショット）
+- **互換性**: done未設定のeventsは従来どおり（null互換）。FOS原本変更は本件限り=今後もCEO指示・確認なしにAIはFOSを変更しない（原則不変）
+- **担当**: CEO（完了判断・指示）/ AI（実施・記録・v1.2.1改修）
+
+### CEO Operating Morning Brief v2.1「Less is More」[Draft・CEOレビュー待ち]（Sprint 18・設計のみ 2026-07-09）
+- **対象機能**: 06_Reports/CEO_MORNING_BRIEF_V21.md（新規）。コード無変更・Dashboard無変更・v2.0設計は思想を継承したまま構成のみ圧縮
+- **変更内容**: 目的を「CEOが5分で今日の経営判断を終えられるか（唯一の評価基準）」へ一本化 — ①7項目上限・スクロールなし（30行以内目標）②AIから一言=最重要要素（「今日会社を一番前に進める判断」を一言で・①先頭と一致保証）③今日の判断=原則1件（最大3件・候補20件でもAIが整理）④FOS Review=Brief最大の価値（6観点・最大3件に厳選・毎日3件ずつ会社が整う・提案のみ）⑤Company Status=数字を並べず要約（「会社は正常です。注意点は2件」型）⑥AI Actions=重要項目（「②お願い」で実行）⑦削除5要素（昨夜のAI作業→一言吸収 / 選外リスト / レビュー待ち / 次に決めること→週次へ / AI System→Dashboard）⑧条件付き表示（催事=あった日のみ・「催事なし」定型行も廃止 / Result=期限到来日のみ / 緊急=発生時のみ）⑨隠す勇気の保証（非表示は表示の話であり記録は全件保持・「詳しく」でいつでも展開・非表示判定はルールベースのみ）
+- **変更理由**: Sprint 18（CEO指示・設計のみ。「Morning Briefは毎朝読むレポートではなく、CEOとAI秘書の朝の会話である」）
+- **互換性**: 実装Sprint順は維持（FOS Rule v1.3 → **ceo_assistant はv2.0を経ずv2.1仕様で直接実装** → Night Build → 要約精度改善）
+- **担当**: CEO（思想・レビュー）/ AI（設計）
+
+### CEO Operating Morning Brief v2.0 [**Released・CEO承認 2026-07-08**]（Sprint 17承認+修正3点反映・設計のみ）
+- **対象機能**: 06_Reports/CEO_MORNING_BRIEF_V2_DESIGN.md（Draft→Released）。コード無変更
+- **承認時修正3点（CEO指示）**: ①**Dashboard統合しない・役割分離を確定** — Dashboard=「会社の現在地を見る画面」（いつでも開く・dashboard_generator独立維持）/ Morning Brief=「CEOが朝5分で判断する画面」（「おはよう」時のみ生成のCEO専用レポート）。DashboardのBriefへの埋め込みは可・置き換えは禁止 ②**夜間準備思想を追加** — 「朝に生成する」ではなく「**朝には完成している**」。夜: CSV取込→同期→Dashboard更新→Result更新→FOSレビュー→Brief下書き（_draft/）/ 朝: 「おはよう」で表示+当朝差分のみ（「お待ちしていました」状態）。過渡期はおはよう時生成 ③**「💬AIから一言」を最上段に新設** — 秘書の5行報告（挨拶/夜間異常有無/同期実施/催事有無/未接続注意/今日の最重要判断1件）。事実のみ・演出なし・③CEO Decision先頭と必ず一致
+- **実装順（確定）**: 1) FOS Rule v1.3+fos_importer v1.3（ai_ready）2) ceo_assistant v2.0（おはよう起動・AIから一言・⓪+7セクション・FOS Review・AI Actions）3) 夜間パイプライン（Night Build・スケジュール化）4) Company Status拡張
+- **担当**: CEO（承認・修正指示）/ AI（設計反映）
+
+### CEO Operating Morning Brief v2.0 [Draft・CEOレビュー待ち]（Sprint 17・設計のみ 2026-07-08）
+- **対象機能**: 06_Reports/CEO_MORNING_BRIEF_V2_DESIGN.md（新規・設計書）。コード実装なし・既存文書無変更（v1.0設計書・CEO_ASSISTANT.md・FOS README・CEO_DASHBOARD.mdは承認後の実装Sprintで改訂）
+- **変更内容**: CEO思想（2026-07-08指示）に基づくBrief全面再設計 — 基本思想「**AIが昨夜までに会社を整理し、CEOは朝に判断だけをする**」「BriefはAIの状態報告ではなくCEOが朝5分で会社を動かすための画面」「FOSはタスクリストではなくCEOのOperating System」。①7セクション構成（Company Status→Event Status→CEO Decision→FOS Review→AI Actions→Result Review→AI System・AI開発情報は最後）②Company Status: 7ソース（Shopify/MakeShop/Airレジ/Airペイ/FLAM/はぴロジ/logiec）統合・未接続は「未接続」表示・推測禁止 ③Event Status新設: 催事なし日は「昨日は催事はありませんでした」（売上0円と表示しない）・あり日のみ売上/平均日商/TOP商品/催事名/未確定事項 ④CEO Decision: S→A→B順・期限切れ→スタッフ待ち→契約→お金→発注優先・AI開発タスク最後 ⑤**FOS Review新設**: Brief生成前にAIが必ずFOSをレビュー（6観点: 順番/今日不要/AI代行可/人待ち/期限切れ/重複）→「AIからの提案」として表示・**AIはFOSを書き換えない** ⑥**AI Actions新設**: AIだけで終わる仕事の一覧（承認制・Draft/取込/生成まで・対外送信等はCEOのみ）⑦**FOS「ai_ready」属性の採用設計**（CEO提案・yes/no/null・AIは候補提案のみ確定しない・タスク管理システム→仕事を進めるAI秘書への一歩）⑧Dashboard統合提案（朝の1枚化 or 2枚維持=CEOレビュー事項）⑨実装計画4段階（FOS Rule v1.3+fos_importer v1.3→ceo_assistant v2.0→Dashboard統合→Company Status拡張）
+- **追加仕様（同日CEO指示・設計へ反映済み）**: ①起動コマンド**「おはよう」**=CEO Operating Morning Brief起動（CEOがシステム用語を使わない設計）②冒頭に**「⓪昨夜のAI作業」**新設（夜間整理の完了報告・実行事実のみ・異常なし明示）③将来コマンド「仕事始めよう」「今日は終わり」（自然な会話がAI OSの起動コマンドになる）
+- **変更理由**: Sprint 17（CEO指示・設計のみ。「機能」から「思想の共通認識」への段階移行）
+- **互換性**: 現行Brief v1.3.1・Dashboard v1.1はそのまま稼働継続。v1.0設計書の細則（絞り込み/緊急アラート/Decision Log連携）は継承
+- **担当**: CEO（思想・レビュー・Dashboard統合判断）/ AI（設計）
+
+### Airレジ Importer v1.0 CEO承認 + DS-POS-0001 active化 + Dashboard Generator v1.1 [Experimental]（接続Sprint 2026-07-07）
+- **対象機能**: dataset_registry.json（DS-POS-0001 status: draft→**active**・CEO承認 2026-07-07）/ dashboard_generator.py v1.0→**v1.1** / 07_Data/airregi/README.md（接続状況反映）
+- **変更内容**: ①**Airレジ Importer v1.0 CEO承認・DS-POS-0001実運用active化** ②Dashboard v1.1: Today's Dashboardの売上欄へAirレジ接続 — 本日の売上（当日daily_salesが無ければ「本日分データなし・最終データ日」表示=催事終了時運用・推測しない）/ 催事売上（取込済み期間合計1,090,658円・データのある日数明示・欠損日0円補完なし）/ 商品別売上TOP3 / 店舗・催事未確定ファイル数（CEO確定待ちの可視化）③Dataset Status: DS-POS-0001をindex対応表へ追加（ACTIVE+最終同期の機械的判定）④Company Health: 売上20点分は「接続済みだが点数化基準未定義のため対象外」と明示（基準はCEOと定義後にv2.0で算定・推測しない）
+- **テスト**: --check（書込なし）/ 本実行（追記型_3.md・上書きなし）/ Today's売上欄4行+未確定行の表示確認 / Dataset Status=Airレジ ACTIVE・最終同期表示 — 合格
+- **変更理由**: CEO指示（Importer承認→active化→Dashboard/Brief接続。Brief本文への組み込みは対象外=Dashboardの§3統合表示で参照可能なため次Sprint候補）
+- **互換性**: 入力は全て読み取り専用・書込は06_Reports/dashboard/のみ（従来どおり）。airregi index未生成時は「未接続」表示へフォールバック
+- **担当**: CEO（承認・active化決定）/ AI（registry反映・実装・テスト）
 
 ### Airレジ Importer v1.0 [Experimental]（実装Sprint 2026-07-07）
 - **対象機能**: airregi_importer.py（新規）/ 07_Data/airregi/dataset_type_table.json（判別テーブル実体・新規）/ 07_Data/airregi/{normalized/, index.json}（新規生成・SalesRecord 72件）/ 07_Data/airregi/README.md v1.3（実装反映）/ dataset_registry.json DS-POS-0001（update_frequency=催事終了時(event_end)・last_reviewed=2026-07-07・CEO確定回答に基づく。**status=draftのまま**=設計上active候補・実運用active化はCEO操作）

@@ -66,6 +66,8 @@ Version: v1.0（設計のみ・実装なし）
 | Airペイ Connector（14.6追加） | Airペイ CSVエクスポート | 読み取り専用 → PaymentRecord | v1.2 |
 | Meta Connector | Meta Marketing API | OAuth読み取り専用 | v1.2 |
 | 催事データConnector | 手元Excel/Sheets | ファイル投入 or Sheets経由 | **v1.1最優先** |
+| **Event Schedule Connector**（2026-07-11・CEO訂正で確定） | 催事スケジュール Google Sheets「18期催事管理」（DS-EVT-0002） | 公開CSV（gviz）読み取り専用 → EventPlanRecord。**表示は出店決定のみ・Planning Layer=Learning対象外・日々更新→毎朝取込** | **✅稼働中**（event_schedule_importer.py v1.0） |
+| Product Planning Connector（2026-07-11再分類） | 企画スケジュール管理アプリ（Netlify・DS-PRD-0001・商品企画納品） | 取得方法調査中（CSV/JSON/Export→将来API）読み取り専用 | 取得方法CEO確認後 |
 | **FOS Connector**（2026-07-06追加・JSON正本） | **FOS-data.json**（正本・Source of Truth）。FOS.htmlは表示用補助 | ローカルJSON読み取り専用 | **✅稼働中**（2026-07-07・fos_importer.py v1.0） |
 
 ## 4. Importer設計（AIごと・ソースごとに分離）

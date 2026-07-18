@@ -1,50 +1,53 @@
 {
   "meta": {
-    "generator": "FOS Importer v1.2 [Experimental]",
-    "generated_at": "2026-07-07 13:14:42",
+    "generator": "FOS Importer v1.2.2 [Experimental]",
+    "generated_at": "2026-07-17 09:27:31",
     "source": "FOS/FOS-data.json（正本・読み取り専用）",
-    "content_hash": "f24b64a93838",
+    "content_hash": "f6cfe5369403",
     "note": "Morning Brief・Agent参照用。Knowledge直行禁止。タスク操作はCEO確認後のみ",
-    "total": 34
+    "total": 45
   },
   "summary": {
     "by_type": {
       "staff_request": 1,
-      "task": 18,
+      "task": 30,
       "next_action": 11,
       "event": 2,
-      "improvement": 2
+      "improvement": 1
     },
-    "decision_candidates": 5,
+    "decision_candidates": 4,
     "overdue": 2,
     "decision_metadata": {
       "by_importance": {
-        "未設定": 5
+        "未設定": 4
       },
       "by_type_main": {
-        "未分類": 5
+        "未分類": 4
       },
       "result_check_due": []
     },
     "sprint_sync": {
       "project_status": {
-        "進行中": 7,
+        "進行中": 9,
         "保留": 1,
-        "今日止まる": 4
+        "今日止まる": 1,
+        "スタッフ待ち": 1
       },
       "active_projects": [
         "SUNNY NOMADO",
         "催事",
         "物流設計",
+        "福田AI",
         "業務",
         "工場",
         "WEB・広告",
-        "金鮨"
+        "金鮨",
+        "卸販売"
       ]
     },
     "pending_sync": {
-      "fos_decision_candidates": 5,
-      "pending_overlap_estimate": 5,
+      "fos_decision_candidates": 4,
+      "pending_overlap_estimate": 4,
       "note": "FOS=CEO操作面 / PENDING=AI記録面。差分の取り込みはBrief経由でCEO確認後のみ"
     }
   },
@@ -55,7 +58,7 @@
       "title": "【要判断】so u: 増やす場合の上限予算の承認",
       "project": "so u",
       "category": "スタッフ相談",
-      "status": "pending",
+      "status": "approved",
       "priority": 90,
       "urgency": 90,
       "due_date": null,
@@ -74,8 +77,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4qmr9dtelpf",
@@ -88,6 +91,7 @@
       "urgency": 78,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -96,23 +100,23 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondz5tq0",
       "source_type": "next_action",
-      "title": "銀行・資金繰り: 請求書発行と藤代くんの委託計算",
+      "title": "銀行・資金繰り: 中小企業省力化投資補助事業（一般型）",
       "project": "銀行・資金繰り",
       "category": "財務",
-      "status": "今日止まる",
+      "status": "スタッフ待ち",
       "priority": 82,
       "urgency": 78,
       "due_date": null,
       "overdue": false,
       "decision_candidate": false,
       "brief_candidate": false,
-      "stop_reason": "京葉銀行のジャッジ待ち",
+      "stop_reason": "マイナンバーカードの証明書暗証番号をリセット",
       "waiting_other": null,
       "decision_needed": null,
       "decision_type_main": null,
@@ -120,8 +124,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-evt-mr46dond3enyc",
@@ -142,8 +146,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-evt-mr46dond8tbo7",
@@ -164,8 +168,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4mh3av7h6w1",
@@ -178,6 +182,7 @@
       "urgency": 43,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -186,8 +191,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondday89",
@@ -210,8 +215,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr49ac35o782w",
@@ -224,6 +229,7 @@
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -232,8 +238,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4d8edrxrgns",
@@ -246,6 +252,7 @@
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -254,8 +261,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4evhe55zmdu",
@@ -268,6 +275,7 @@
       "urgency": 94,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -276,8 +284,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4evrxr5woho",
@@ -290,6 +298,7 @@
       "urgency": 94,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -298,8 +307,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4evypf47oyr",
@@ -307,21 +316,22 @@
       "title": "久米さん　カワサキ",
       "project": "外部デザイン",
       "category": "C",
-      "status": "未完了",
+      "status": "完了",
       "priority": 30,
       "urgency": 94,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
-      "brief_candidate": true,
+      "brief_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4f24smpi5kd",
@@ -334,6 +344,7 @@
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -342,8 +353,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4f2iph48dko",
@@ -356,6 +367,7 @@
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -364,8 +376,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4f4vdkdsxa6",
@@ -378,6 +390,7 @@
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -386,8 +399,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4f5611y6jt6",
@@ -400,6 +413,7 @@
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -408,8 +422,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4fbsz2ufpfr",
@@ -422,6 +436,7 @@
       "urgency": 94,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -430,8 +445,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4mfklninqr2",
@@ -444,6 +459,7 @@
       "urgency": 94,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -452,8 +468,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4qooc2i5q52",
@@ -466,6 +482,7 @@
       "urgency": 97,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -474,8 +491,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4qowd7t9a2d",
@@ -488,6 +505,7 @@
       "urgency": 97,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -496,8 +514,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr4qpxg6ehiw3",
@@ -510,6 +528,7 @@
       "urgency": 97,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -518,8 +537,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr5pekh4alqge",
@@ -532,6 +551,7 @@
       "urgency": 94,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
       "decision_needed": null,
@@ -540,8 +560,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-task-mr8ihklirjnve",
@@ -549,11 +569,81 @@
       "title": "オージェイズの未入金",
       "project": "卸販売",
       "category": "B",
-      "status": "未完了",
+      "status": "完了",
       "priority": 30,
       "urgency": 30,
       "due_date": null,
       "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrbbtben8r3kl",
+      "source_type": "task",
+      "title": "ヒューマンフォーラムPOP UPの返信",
+      "project": "卸販売",
+      "category": "C",
+      "status": "完了",
+      "priority": 30,
+      "urgency": 30,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrbd9c7u6kbl4",
+      "source_type": "task",
+      "title": "仏壇カタログ",
+      "project": "外部デザイン",
+      "category": "C",
+      "status": "完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrbd9p1nt8rpv",
+      "source_type": "task",
+      "title": "ポンチョの写真さがし",
+      "project": "外部デザイン",
+      "category": "C",
+      "status": "未完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
       "decision_needed": null,
@@ -562,8 +652,215 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrctmiqsy1e0c",
+      "source_type": "task",
+      "title": "ヒューマンフォーラムのお礼",
+      "project": "業務",
+      "category": "A",
+      "status": "完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrctmqpw1uacx",
+      "source_type": "task",
+      "title": "松本さんお礼",
+      "project": "業務",
+      "category": "A",
+      "status": "完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrctqojtkvs7z",
+      "source_type": "task",
+      "title": "写真レタッチ",
+      "project": "業務",
+      "category": "B",
+      "status": "完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrewmmaaoehvj",
+      "source_type": "task",
+      "title": "スプレッドシートの整理",
+      "project": "業務",
+      "category": "C",
+      "status": "未完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": true,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrewnyskvh8d3",
+      "source_type": "task",
+      "title": "牛尾さんの保険料をどうするか",
+      "project": "業務",
+      "category": "B",
+      "status": "未完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": true,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrewogmorw5px",
+      "source_type": "task",
+      "title": "不動産の保険料どうするか",
+      "project": "業務",
+      "category": "B",
+      "status": "未完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": true,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrk9pgue1uvao",
+      "source_type": "task",
+      "title": "次にやること（1つだけ） 什器を考える",
+      "project": "催事",
+      "category": "B",
+      "status": "未完了",
+      "priority": 30,
+      "urgency": 97,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": true,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrk9tdzs1sgzp",
+      "source_type": "task",
+      "title": "久米さん　スカイツリー修正",
+      "project": "外部デザイン",
+      "category": "B",
+      "status": "完了",
+      "priority": 30,
+      "urgency": 94,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
+    },
+    {
+      "record_id": "FOS-task-mrn0v2hncjg4a",
+      "source_type": "task",
+      "title": "西船橋の催事",
+      "project": "催事",
+      "category": "B",
+      "status": "未完了",
+      "priority": 30,
+      "urgency": 97,
+      "due_date": null,
+      "overdue": false,
+      "consultation": false,
+      "decision_candidate": false,
+      "brief_candidate": true,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondwu6ce",
@@ -586,13 +883,13 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondjz8wc",
       "source_type": "next_action",
-      "title": "催事: 什器を考える",
+      "title": "催事: JRアプリに承諾",
       "project": "催事",
       "category": "営業・運営",
       "status": "進行中",
@@ -610,13 +907,13 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondfp0ib",
       "source_type": "next_action",
-      "title": "外部デザイン: 久米さん　スカイツリー",
+      "title": "外部デザイン: 久米さん　スカイツリー修正",
       "project": "外部デザイン",
       "category": "受託",
       "status": "今日止まる",
@@ -634,8 +931,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondzko8l",
@@ -658,22 +955,22 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dond4jec6",
       "source_type": "next_action",
-      "title": "福田AI: 進めたAI憲章や、ロードマップで納得できないところを探す",
+      "title": "福田AI: AIを効率よく育てるには",
       "project": "福田AI",
       "category": "構想",
-      "status": "今日止まる",
+      "status": "進行中",
       "priority": 30,
       "urgency": 66,
       "due_date": null,
       "overdue": false,
       "decision_candidate": false,
-      "brief_candidate": false,
+      "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
       "decision_needed": null,
@@ -682,13 +979,13 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondjyea6",
       "source_type": "next_action",
-      "title": "業務: スプレッドシートの整理",
+      "title": "業務: 定款探し",
       "project": "業務",
       "category": "構想",
       "status": "進行中",
@@ -706,8 +1003,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr46dondnotc7",
@@ -730,8 +1027,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr4mlpf0tryg2",
@@ -754,23 +1051,23 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-next-mr7r24zf3a7j6",
       "source_type": "next_action",
-      "title": "卸販売: ヒューマンフォラムに持っていく靴下ピックアップ",
+      "title": "卸販売: ヒューマンフォーラムPOP UPの返信",
       "project": "卸販売",
       "category": "",
-      "status": "今日止まる",
+      "status": "進行中",
       "priority": 30,
       "urgency": 30,
       "due_date": null,
       "overdue": false,
       "decision_candidate": false,
-      "brief_candidate": false,
-      "stop_reason": "6/26に週明けに振込みますと言われているが入金確認にはなかった",
+      "brief_candidate": true,
+      "stop_reason": null,
       "waiting_other": null,
       "decision_needed": null,
       "decision_type_main": null,
@@ -778,31 +1075,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
-    },
-    {
-      "record_id": "FOS-imp-mr4g98umhl1ux",
-      "source_type": "improvement",
-      "title": "改善案: カレンダーに催事スケジュールを取り込み",
-      "project": "催事",
-      "category": "改善",
-      "status": "open",
-      "priority": 20,
-      "urgency": null,
-      "due_date": null,
-      "overdue": false,
-      "decision_candidate": true,
-      "brief_candidate": false,
-      "reason": "",
-      "decision_needed": null,
-      "decision_type_main": null,
-      "decision_type_sub": null,
-      "decision_importance": null,
-      "expected_result": null,
-      "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     },
     {
       "record_id": "FOS-imp-mr4fomna69git",
@@ -824,8 +1098,8 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-07 13:14:42",
-      "importer_version": "v1.2"
+      "imported_at": "2026-07-17 09:27:31",
+      "importer_version": "v1.2.2"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "meta": {
     "generator": "Airレジ Importer v1.0 [Experimental]",
-    "generated_at": "2026-07-07 15:24:04",
+    "generated_at": "2026-07-10 09:31:07",
     "note": "Airレジ売上の索引。催事AI・CEO補佐AIが参照。生データはraw/（変更禁止）・正規化はnormalized/。sales_definition=unknown（税込/割引の解釈はAirレジ仕様確認後）。Knowledge直行禁止（Data Layerまで）",
     "summary": {
       "total_records": 72,

@@ -1,0 +1,367 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//NOMADO FUKUDA AI//Event Calendar Export v1.0//JA
+CALSCALE:GREGORIAN
+X-WR-CALNAME:NOMADO催事スケジュール
+X-WR-TIMEZONE:Asia/Tokyo
+BEGIN:VEVENT
+UID:EVS-1-1082ac-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20260916
+DTEND;VALUE=DATE:20261001
+SUMMARY:【催事】千葉ペリエ　マツキヨ前（15日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 10万円 / 期間予算: 150万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-1-1082ac-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20260915
+DTEND;VALUE=DATE:20260916
+SUMMARY:【搬入】千葉ペリエ　マツキヨ前
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 10万円 / 期間予算: 150万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-1-1082ac-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20260930
+DTEND;VALUE=DATE:20261001
+SUMMARY:【搬出】千葉ペリエ　マツキヨ前
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 10万円 / 期間予算: 150万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-2-d0ef08-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20260922
+DTEND;VALUE=DATE:20261006
+SUMMARY:【催事】船橋臨時A（14日間）
+DESCRIPTION:販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-2-d0ef08-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20260922
+DTEND;VALUE=DATE:20260923
+SUMMARY:【搬入】船橋臨時A
+DESCRIPTION:搬入日\n販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-2-d0ef08-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+SUMMARY:【搬出】船橋臨時A
+DESCRIPTION:搬出日\n販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-3-a9db92-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261014
+DTEND;VALUE=DATE:20261024
+SUMMARY:【催事】千葉ペリエ　コンコース（10日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 15万円 / 期間予算: 150万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-3-a9db92-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261013
+DTEND;VALUE=DATE:20261014
+SUMMARY:【搬入】千葉ペリエ　コンコース
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 15万円 / 期間予算: 150万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-3-a9db92-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:【搬出】千葉ペリエ　コンコース
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 15万円 / 期間予算: 150万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-4-e8b1da-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261102
+SUMMARY:【催事】横浜1-A（6日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 50万円 / 期間予算: 300万円\n備考: 2022年6月平均日商35万\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-4-e8b1da-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261027
+DTEND;VALUE=DATE:20261028
+SUMMARY:【搬入】横浜1-A
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 50万円 / 期間予算: 300万円\n備考: 2022年6月平均日商35万\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-4-e8b1da-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:【搬出】横浜1-A
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 50万円 / 期間予算: 300万円\n備考: 2022年6月平均日商35万\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-5-55266c-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261111
+SUMMARY:【催事】小岩（14日間）
+DESCRIPTION:販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-5-55266c-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261028
+DTEND;VALUE=DATE:20261029
+SUMMARY:【搬入】小岩
+DESCRIPTION:搬入日\n販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-5-55266c-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:【搬出】小岩
+DESCRIPTION:搬出日\n販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-6-af44dd-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261109
+SUMMARY:【催事】西船橋（10日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 50万円 / 期間予算: 500万円\n備考: ペリエ経由　シャインマスカット屋のエンドが決まれば。10/30か31かも7-10日間。階段下スペースをダンボールを隠して欲しい。什器だとベスト\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-6-af44dd-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+SUMMARY:【搬入】西船橋
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 50万円 / 期間予算: 500万円\n備考: ペリエ経由　シャインマスカット屋のエンドが決まれば。10/30か31かも7-10日間。階段下スペースをダンボールを隠して欲しい。什器だとベスト\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-6-af44dd-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:【搬出】西船橋
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 50万円 / 期間予算: 500万円\n備考: ペリエ経由　シャインマスカット屋のエンドが決まれば。10/30か31かも7-10日間。階段下スペースをダンボールを隠して欲しい。什器だとベスト\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-7-f01e2a-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261201
+SUMMARY:【催事】神保町（14日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-7-f01e2a-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261117
+DTEND;VALUE=DATE:20261118
+SUMMARY:【搬入】神保町
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-7-f01e2a-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261130
+DTEND;VALUE=DATE:20261201
+SUMMARY:【搬出】神保町
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-8-02a8c7-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261215
+SUMMARY:【催事】田町（14日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 55万円 / 期間予算: 770万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-8-02a8c7-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+SUMMARY:【搬入】田町
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 55万円 / 期間予算: 770万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-8-02a8c7-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261214
+DTEND;VALUE=DATE:20261215
+SUMMARY:【搬出】田町
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 55万円 / 期間予算: 770万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-10-fd9538-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261216
+SUMMARY:【催事】さいたま新都心（14日間）
+DESCRIPTION:販売会社: Heartland代行\n日商予算: 27万円 / 期間予算: 378万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-10-fd9538-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261202
+DTEND;VALUE=DATE:20261203
+SUMMARY:【搬入】さいたま新都心
+DESCRIPTION:搬入日\n販売会社: Heartland代行\n日商予算: 27万円 / 期間予算: 378万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-10-fd9538-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:【搬出】さいたま新都心
+DESCRIPTION:搬出日\n販売会社: Heartland代行\n日商予算: 27万円 / 期間予算: 378万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-11-8cf447-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261224
+SUMMARY:【催事】大船（13日間）
+DESCRIPTION:販売会社: Heartland代行\n日商予算: 52万円 / 期間予算: 676万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-11-8cf447-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:【搬入】大船
+DESCRIPTION:搬入日\n販売会社: Heartland代行\n日商予算: 52万円 / 期間予算: 676万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-11-8cf447-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261223
+DTEND;VALUE=DATE:20261224
+SUMMARY:【搬出】大船
+DESCRIPTION:搬出日\n販売会社: Heartland代行\n日商予算: 52万円 / 期間予算: 676万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-12-698819-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261229
+SUMMARY:【催事】池袋（14日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 100万円 / 期間予算: 1\,400万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-12-698819-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261214
+DTEND;VALUE=DATE:20261215
+SUMMARY:【搬入】池袋
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 100万円 / 期間予算: 1\,400万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-12-698819-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261228
+DTEND;VALUE=DATE:20261229
+SUMMARY:【搬出】池袋
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 100万円 / 期間予算: 1\,400万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-13-d44990-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261223
+DTEND;VALUE=DATE:20270106
+SUMMARY:【催事】目黒（14日間）
+DESCRIPTION:販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-13-d44990-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20261223
+DTEND;VALUE=DATE:20261224
+SUMMARY:【搬入】目黒
+DESCRIPTION:搬入日\n販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-13-d44990-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270105
+DTEND;VALUE=DATE:20270106
+SUMMARY:【搬出】目黒
+DESCRIPTION:搬出日\n販売会社: Heartland代行\n日商予算: 25万円 / 期間予算: 350万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-14-62ada2-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270111
+DTEND;VALUE=DATE:20270121
+SUMMARY:【催事】中央林間（10日間）
+DESCRIPTION:販売会社: Heartland代行\n日商予算: 13万円 / 期間予算: 130万円\n備考: 調整厳しい場合は9/末目処にお知らせ。\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-14-62ada2-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270110
+DTEND;VALUE=DATE:20270111
+SUMMARY:【搬入】中央林間
+DESCRIPTION:搬入日\n販売会社: Heartland代行\n日商予算: 13万円 / 期間予算: 130万円\n備考: 調整厳しい場合は9/末目処にお知らせ。\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-14-62ada2-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270120
+DTEND;VALUE=DATE:20270121
+SUMMARY:【搬出】中央林間
+DESCRIPTION:搬出日\n販売会社: Heartland代行\n日商予算: 13万円 / 期間予算: 130万円\n備考: 調整厳しい場合は9/末目処にお知らせ。\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-15-9ca4c6-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270127
+SUMMARY:【催事】西荻窪（14日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n備考: アパレル\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-15-9ca4c6-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270113
+DTEND;VALUE=DATE:20270114
+SUMMARY:【搬入】西荻窪
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n備考: アパレル\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-15-9ca4c6-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270126
+DTEND;VALUE=DATE:20270127
+SUMMARY:【搬出】西荻窪
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n備考: アパレル\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-17-f9f8bb-kaiki@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270216
+DTEND;VALUE=DATE:20270302
+SUMMARY:【催事】大森（14日間）
+DESCRIPTION:販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-17-f9f8bb-setup@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270216
+DTEND;VALUE=DATE:20270217
+SUMMARY:【搬入】大森
+DESCRIPTION:搬入日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+BEGIN:VEVENT
+UID:EVS-17-f9f8bb-teardown@fukuda-ai.nomado
+DTSTAMP:20260711T105002Z
+DTSTART;VALUE=DATE:20270301
+DTEND;VALUE=DATE:20270302
+SUMMARY:【搬出】大森
+DESCRIPTION:搬出日\n販売会社: 渡辺さん＋菊田さん＋NOMADO\n日商予算: 20万円 / 期間予算: 280万円\n出典: 18期催事管理シート（出店決定）
+END:VEVENT
+END:VCALENDAR

@@ -32,8 +32,23 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-VERSION = "1.3.1"
+VERSION = "1.6"
 STATE = "Experimental"
+# v1.6 (2026-07-11・CEO訂正): Event Statusの情報源=催事スケジュール（Google Sheets「18期催事管理」
+# DS-EVT-0002・event_schedule_importer.py・毎朝取込）。**表示は「出店決定」のみ**（プランA/Bは営業状況の件数のみ）。
+# Netlifyアプリは企画スケジュール管理（DS-PRD-0001・商品企画納品）として別扱い・取得方法確認待ち。
+# v1.5 (2026-07-11・CEO指示): Event Statusセクション新設（旧: Event Planning System接続）—
+# Briefに「📅 Event Status」セクション追加（昨日/本日/明日/今週注意の催事・搬入搬出・準備・スタッフ配置）。
+# 情報源の優先順位: 1)FOS（会社の判断）2)Event Schedule System（催事予定）3)Shopify 4)MakeShop
+# 5)Airレジ 6)Airペイ 7)FLAM 8)はぴロジ 9)logiec。AI開発情報はAI開発レポートへ（v1.4）。
+# Planning/Result分離: BriefはPlanning（これからやる仕事）のみ。LearningはResult（終わった仕事）のみ。
+# データ取得方法はCEO確認待ちのため、07_Data/event_planning/index.json未存在時は「未接続」表示（推測しない）。
+# v1.4 (2026-07-11・CEO指示): Morning Briefの実業化 —
+# 判断候補の生成源をFOS（実業データ）のみに変更。PENDING/ROADMAP/CHANGELOG/CURRENT_STATE
+# 由来の判断候補を廃止（FOS = Single Source of Truth。FOSに存在しない判断候補はBriefに出さない）。
+# AI開発タスク（Learning Cycle/Dashboard/Result Layer/Importer等）は別画面
+# 「AI開発レポート」（ai_dev_report.py → 06_Reports/ai_dev_report/）へ完全分離。
+# Morning Briefは会社を経営するためのレポートであり、FUKUDA AIを開発するためのレポートではない。
 # v1.2 (2026-07-07): FOS接続 — 07_Data/fos/index.json（FOS Importer出力）から
 # Decision候補・期限切れ・優先タスクをBrief判断候補へ統合（Sprint 13）
 # v1.3 (2026-07-07): FOS Operating Rule v1.0〜v1.2 CEO承認後の実装 —
@@ -113,6 +128,16 @@ def read_memory():
     return out
 
 
+def read_event_schedule():
+    """Event Schedule Reader（v1.6）— 07_Data/event_schedule/index.json
+    （催事スケジュールSheets・DS-EVT-0002・event_schedule_importer.pyが毎朝取込）。
+    未取込の場合はNone=「未接続」表示（推測しない）。"""
+    p = BASE_DIR / "07_Data" / "event_schedule" / "index.json"
+    if not p.exists():
+        return None
+    return json.load(open(p, encoding="utf-8"))
+
+
 def read_result_due():
     """Result Reader（v1.3.1）— 07_Data/results/index.json（Result Recorder出力・読み取りのみ）。
     Brief「⏰ 結果確認待ち」の参照元。判定（成功/失敗/継続観察）はCEOのみ。"""
@@ -159,7 +184,8 @@ def fos_candidates(fos):
     for r in (fos["decisions"] if fos else []):
         imp = r.get("decision_importance")      # None=未設定（AIは推測しない）
         main = r.get("decision_type_main")      # None=未分類
-        waiting = r["source_type"] == "staff_request" or bool(r.get("waiting_person"))
+        waiting = (r["source_type"] == "staff_request" or bool(r.get("waiting_person"))
+                   or bool(r.get("consultation")))  # tasksの【相談】も待ち扱い（2026-07-11）
         score = (r.get("priority") or 50)       # priority=急ぎ度（最下位の判定条件）
         if r.get("overdue"):
             score += 100000                     # 1. 期限切れ
@@ -254,7 +280,7 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
         "",
         f"発行: CEO Assistant v{VERSION} [{STATE}]（機械骨組み {materials['now']}）+ FUKUDA AI（言語化）",
         f"参照: released/verified Knowledge {len(know['usable'])}件（draft {know['excluded_count']}件は除外）/ "
-        f"CORE {materials['principles']['core_count']}条 / EP {len(materials['principles']['eps'])}件 / PENDING {materials['pending_count']}件",
+        f"CORE {materials['principles']['core_count']}条 / EP {len(materials['principles']['eps'])}件 / 判断候補の正本: FOSのみ（v1.4）",
         "",
         "---",
         "",
@@ -262,7 +288,7 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
         "",
     ]
     if not selected:
-        lines.append("（本日、判断が必要な案件はありません）")
+        lines.append("（本日、FOSに判断が必要な案件はありません。判断させたいことはFOSへ入力してください）")
     for i, c in enumerate(selected, 1):
         urgent_mark = "🚨【緊急】" if c["urgent"] else ""
         lines += [
@@ -285,6 +311,49 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
             "- CEO判断: [ 承認 / 却下 / 保留 ] ______",
             "",
         ]
+    # v1.6: ③ Event Status（催事スケジュールSheets・出店決定のみ表示・毎朝更新）
+    es = materials.get("event_schedule")
+    lines += ["## 📅 Event Status（催事スケジュール・出店決定のみ）", ""]
+    if es is None:
+        lines += ["- 未取込（event_schedule_importer.py を実行してください）", ""]
+    else:
+        from datetime import date as _d, timedelta as _td
+        today_s = materials["today"]
+        try:
+            _t = _d.fromisoformat(today_s)
+        except ValueError:
+            _t = _d.today(); today_s = _t.isoformat()
+        tomorrow = (_t + _td(days=1)).isoformat()
+        week_end = (_t + _td(days=7)).isoformat()
+        ev = [r for r in es.get("records", []) if r.get("confirmed")]  # 出店決定のみ
+
+        def day_items(d):
+            out = []
+            for r in ev:
+                tags = []
+                if r.get("setup_date") == d: tags.append("搬入")
+                if r.get("start") == d: tags.append("会期開始")
+                if r.get("end") == d: tags.append("最終日")
+                if r.get("teardown_date") == d: tags.append("搬出")
+                if not tags and r.get("start") and r.get("end") and r["start"] < d < r["end"]:
+                    tags.append("営業中")
+                if tags:
+                    out.append(f"  - {r['name']}: {'・'.join(tags)}（{r.get('vendor') or '-'}／日商予算{r.get('daily_budget_man') or '-'}万）")
+            return out
+        wk = []
+        for r in ev:
+            for key, tag in (("setup_date", "搬入"), ("start", "会期開始"), ("teardown_date", "搬出"), ("end", "最終日")):
+                d = r.get(key)
+                if d and tomorrow < d <= week_end:
+                    wk.append(f"  - {d}（{['月','火','水','木','金','土','日'][_d.fromisoformat(d).weekday()]}）{r['name']}: {tag}")
+        t_items, tm_items = day_items(today_s), day_items(tomorrow)
+        lines.append("- **本日の催事**:"); lines += (t_items or ["  - 催事はありません"])
+        lines.append("- **明日の催事**:"); lines += (tm_items or ["  - 催事はありません"])
+        lines.append(f"- 今週注意（〜{week_end}）:"); lines += (sorted(wk)[:6] or ["  - なし"])
+        sm = es.get("summary", {})
+        lines.append(f"- 営業状況: 出店決定{sm.get('confirmed', len(ev))}件 / プランA {sm.get('plan_a', 0)}件 / プランB {sm.get('plan_b', 0)}件（プランはスケジュール非表示）")
+        lines.append("")
+
     lines += ["## ⛔ 今日やらないこと", ""]
     if dropped:
         for c in dropped:
@@ -305,9 +374,9 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
         lines.append("- なし（review_after_days経過の判断はありません）")
     lines += [
         "",
-        "## 📋 レビュー待ち",
+        "## 📋 AI開発案件（本Briefには載せない）",
         "",
-        f"- PENDING未完了: {materials['pending_count']}件（本Briefの判断候補に反映済み）",
+        f"- AI開発のレビュー待ち・保留 {materials['pending_count']}件 → **AI開発レポート**（06_Reports/ai_dev_report/）を参照",
         "",
         "## ⏭ 次に決めること",
         "",
@@ -376,15 +445,21 @@ def main():
     print(f"CEO Assistant v{VERSION} [{STATE}]")
     print(f"Knowledge: released/verified {len(knowledge['usable'])}件（draft等 {knowledge['excluded_count']}件を除外）")
     print(f"Principles: CORE {principles['core_count']}条 / EP {len(principles['eps'])}件")
-    print(f"PENDING未完了: {len(pending)}件")
+    print(f"PENDING未完了: {len(pending)}件（v1.4〜 Briefには出さない → AI開発レポートへ）")
     if fos:
         print(f"FOS: TaskRecord {len(fos['records'])}件 / Decision候補 {len(fos['decisions'])}件 / "
               f"期限切れ {len(fos['overdue'])}件（取込: {fos['generated_at']}）")
     else:
         print("FOS: 未接続（07_Data/fos/index.jsonなし → fos_importer.py実行で接続）")
 
+    es = read_event_schedule()
+    if es:
+        print(f"催事スケジュール: {es['meta']['total']}件（出店決定{es['summary']['confirmed']}件・取込 {es['meta']['generated_at']}）")
+    else:
+        print("催事スケジュール: 未取込（event_schedule_importer.py実行で接続）")
     print(f"結果確認待ち（Result Recorder）: {len(read_result_due())}件")
-    cands = score_candidates(pending) + fos_candidates(fos)
+    # v1.4: 判断候補はFOS（実業データ）のみ。PENDING等のAI開発案件はAI開発レポートへ分離
+    cands = fos_candidates(fos)
     cands.sort(key=lambda c: -c["score"])
     selected, dropped = select_top3(cands)
     print(f"判断候補: {len(cands)}件 → 選定{len(selected)}件 / 選外{len(dropped)}件")
@@ -398,6 +473,7 @@ def main():
     materials = {"today": today, "now": datetime.now().strftime("%H:%M"),
                  "knowledge": knowledge, "principles": principles,
                  "memory": memory, "pending_count": len(pending),
+                 "event_schedule": es,
                  # 結果確認待ち = Result Recorder（07_Data/results/）+ FOS index集計の統合（v1.3.1）
                  "result_check_due": read_result_due() +
                      (fos or {}).get("summary", {}).get("decision_metadata", {}).get("result_check_due", [])}

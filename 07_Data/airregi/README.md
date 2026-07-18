@@ -185,7 +185,7 @@ CEO確認はすべて回答済み（2026-07-07）: #1 CSVの種類=2type確定 /
 
 - `airregi_importer.py v1.0 [Experimental]`（ルート直下・--check / 本実行 / --base=テスト用）
 - テスト結果（9ケース全合格・2026-07-07）: ①--check（書込なし）②本実行=72件生成 ③再実行=新規0件（冪等）④書込ホワイトリスト=raw/・領域外へPermissionError ⑤催事照合=完全一致リンク/不一致null+未確定リスト（一時領域・模擬EventRecordで検証）⑥type判別=既知2type正常/未知ヘッダーunknown報告・取込なし ⑦文字コード=Shift_JIS・UTF-8自動判別 ⑧サブフォルダ/直置き=null+未確定リスト ⑨欠損日非補完（10日分のみ・0円行なし）。テーブル1行追加のみで新type取込（コード無変更）も実証
-- Brief/Dashboard接続はactive化後（催事AI・Dashboard Today's売上欄への接続はv1.1）
+- **Dashboard接続済み（2026-07-07・dashboard_generator v1.1）**: Today's Dashboard（本日の売上/催事売上/商品TOP3/未確定ファイル数）+ Dataset Status（DS-POS-0001=ACTIVE・最終同期表示）。**DS-POS-0001はCEO承認によりactive化済み（2026-07-07）**。催事AI・Morning Brief本文への組み込みは次Sprint候補
 
 ## 変更履歴
 

@@ -37,10 +37,28 @@ v1.0での唯一の仕事は **CEO Morning Briefの生成**。CEOがその日に
 | 6 | CEOからの当日情報（予定・気掛かり・新規案件） | 当日の文脈（不足時は質問する） |
 | 7 | 07_Data/fos/index.json（FOS TaskRecord・v1.2〜） | 判断候補・期限・待ち人の主要入力。**掲載判定・Decision Metadata（decision_needed / decision_type main+sub / decision_importance S-C / expected_result / review_after_days）・Decision Log/Result送付条件は [../FOS/README.md](../FOS/README.md)（FOS Operating Rule v1.2）を正とする。並び順: 期限切れ→S→待ち人→A→期限3日以内→priority高（S=Brief必載）。mainを判断見出しに優先表示・未分類/未設定はCEOへ確認（AIは推測確定しない・review_after_days初期値S30/A14/B7の提案のみ可）。review_after_days経過分は「結果確認待ち」セクションへ自動掲載（expected_result vs actual_result比較→Result Record）** |
 
+### 情報源の優先順位（v1.5・CEO指示 2026-07-11）
+
+Morning Briefは次の順で生成する: **1) FOS（会社の判断）→ 2) Event Schedule System（催事予定・DS-EVT-0002）→ 3) Shopify → 4) MakeShop → 5) Airレジ → 6) Airペイ → 7) FLAM → 8) はぴロジ → 9) logiec**。
+
+### Event Status（③・v1.5新設）
+
+- Event Planning System（https://sunuynomado-schedule.netlify.app/ = **Planning Layer・これから実施する仕事の正本**）から、昨日/本日の催事/明日の催事/今週注意（搬入・搬出・準備・スタッフ配置・催事タスク）を表示し、CEO Decisionの判断材料にも使う
+- **Planning/Result分離（最重要）**: Briefは「これからやる仕事」（Planning）のみ。Learningは「終わった仕事」（Result）のみ。カテゴリ最後の「スケジュール達成」完了で Planning→Result 遷移し、**Resultになった催事だけ**がEvent Knowledge生成（売上/利益/来場者数/商品構成/在庫/発注量/天候/会場/スタッフ数/作業時間+Airレジ+Shopify+FOS判断+Result Layerの統合）の対象になる
+- 同会場・類似催事のPlanning提案時は**先に過去Resultを検索**する（Event Learning Cycle: Planning→Execution→Result→Learning→次回Planning）
+
+### 判断候補の正本ルール（v1.4・CEO指示 2026-07-11）
+
+- **Morning Briefの判断候補の正本はFOSのみ**（実業データ: FOS、接続後はShopify/MakeShop/Airレジ/Airペイ/FLAM/はぴロジ/logiec等）。**FOSに存在しない判断候補はBriefに表示しない**
+- ROADMAP・CHANGELOG・CURRENT_STATE・PENDING由来の判断候補生成は**廃止**
+- AI開発タスク（Learning Cycle/Dashboard/Result Layer/Importer等）は別画面**「AI開発レポート」**（ai_dev_report.py → 06_Reports/ai_dev_report/）へ完全分離
+- Morning Briefは**会社を経営するためのレポート**であり、FUKUDA AIを開発するためのレポートではない
+- §3の10_AI_Memory・レビューキューは「現在地の把握」にのみ使い、判断候補には使わない
+
 ## 4. 生成手順（Morning Brief Protocol）
 
 1. **収集**: §3の1〜6を順に確認する
-2. **抽出**: 「CEOの判断が必要なもの」だけを抜き出す（情報共有・作業報告と混ぜない）
+2. **抽出**: 「CEOの判断が必要なもの」を**FOS（実業データ）からだけ**抜き出す（情報共有・作業報告・AI開発案件と混ぜない）
 3. **絞り込み**: Brief設計書§5のルールで最大3件に絞る
    （①緊急は無条件1位 ②期限3日以内 ③金額×不可逆性 ④待ち人がいる ⑤CORE第2条の優先順位 ⑥迷ったら載せない）
 4. **整形**: 各判断に推奨案 + 理由・期待効果・リスク・優先順位・実行手順 + 根拠ID（EP-xxx / KN-xxx / データ出典）

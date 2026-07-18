@@ -17,7 +17,7 @@
       "id": "mr46dondday89",
       "name": "SUNNY NOMADO",
       "status": "進行中",
-      "stopReason": "糸見本が来ない",
+      "stopReason": "",
       "nextAction": "ニット帽のソリッドカラー",
       "waitingOther": "",
       "staffHandoff": "",
@@ -82,7 +82,7 @@
       "name": "催事",
       "status": "進行中",
       "stopReason": "",
-      "nextAction": "JRアプリに承諾",
+      "nextAction": "什器を考える",
       "waitingOther": "",
       "staffHandoff": "",
       "improvementMemo": "",
@@ -114,7 +114,7 @@
       "name": "外部デザイン",
       "status": "今日止まる",
       "stopReason": "",
-      "nextAction": "ポンチョの写真さがし",
+      "nextAction": "久米さん　スカイツリー",
       "waitingOther": "",
       "staffHandoff": "",
       "improvementMemo": "",
@@ -176,9 +176,9 @@
       "lastDeepAt": null,
       "id": "mr46dondz5tq0",
       "name": "銀行・資金繰り",
-      "status": "スタッフ待ち",
-      "stopReason": "マイナンバーカードの証明書暗証番号をリセット",
-      "nextAction": "中小企業省力化投資補助事業（一般型）",
+      "status": "今日止まる",
+      "stopReason": "京葉銀行のジャッジ待ち",
+      "nextAction": "請求書発行と藤代くんの委託計算",
       "waitingOther": "",
       "staffHandoff": "",
       "improvementMemo": "",
@@ -197,7 +197,7 @@
       "scores": {
         "urgency": 66,
         "mentalPressure": 30,
-        "thoughtTemperature": 30,
+        "thoughtTemperature": 67,
         "revenueImpact": 40,
         "futureValue": 88,
         "onlyMe": 88,
@@ -208,9 +208,9 @@
       "lastDeepAt": null,
       "id": "mr46dond4jec6",
       "name": "福田AI",
-      "status": "進行中",
+      "status": "今日止まる",
       "stopReason": "",
-      "nextAction": "AIを効率よく育てるには",
+      "nextAction": "進めたAI憲章や、ロードマップで納得できないところを探す",
       "waitingOther": "",
       "staffHandoff": "",
       "improvementMemo": "",
@@ -242,7 +242,7 @@
       "name": "業務",
       "status": "進行中",
       "stopReason": "",
-      "nextAction": "引っ越しするか否か",
+      "nextAction": "スプレッドシートの整理",
       "waitingOther": "",
       "staffHandoff": "",
       "improvementMemo": "",
@@ -368,9 +368,9 @@
       "lastDeepAt": null,
       "id": "mr7r24zf3a7j6",
       "name": "卸販売",
-      "status": "進行中",
-      "stopReason": "",
-      "nextAction": "ヒューマンフォーラムPOP UPの返信",
+      "status": "今日止まる",
+      "stopReason": "6/26に週明けに振込みますと言われているが入金確認にはなかった",
+      "nextAction": "ヒューマンフォラムに持っていく靴下ピックアップ",
       "waitingOther": "",
       "staffHandoff": "",
       "improvementMemo": "",
@@ -416,7 +416,7 @@
     },
     {
       "id": "mr4evypf47oyr",
-      "done": true,
+      "done": false,
       "projectId": "mr46dondfp0ib",
       "title": "久米さん　カワサキ",
       "category": "C"
@@ -507,97 +507,23 @@
     },
     {
       "id": "mr8ihklirjnve",
-      "done": true,
+      "done": false,
       "projectId": "mr7r24zf3a7j6",
       "title": "オージェイズの未入金",
-      "category": "B"
-    },
-    {
-      "id": "mrbbtben8r3kl",
-      "done": true,
-      "projectId": "mr7r24zf3a7j6",
-      "title": "ヒューマンフォーラムPOP UPの返信",
-      "category": "C"
-    },
-    {
-      "id": "mrbd9c7u6kbl4",
-      "done": true,
-      "projectId": "mr46dondfp0ib",
-      "title": "仏壇カタログ",
-      "category": "C"
-    },
-    {
-      "id": "mrbd9p1nt8rpv",
-      "done": true,
-      "projectId": "mr46dondfp0ib",
-      "title": "ポンチョの写真さがし",
-      "category": "C"
-    },
-    {
-      "id": "mrctmiqsy1e0c",
-      "done": true,
-      "projectId": "mr46dondjyea6",
-      "title": "ヒューマンフォーラムのお礼",
-      "category": "A"
-    },
-    {
-      "id": "mrctmqpw1uacx",
-      "done": true,
-      "projectId": "mr46dondjyea6",
-      "title": "松本さんお礼",
-      "category": "A"
-    },
-    {
-      "id": "mrctqojtkvs7z",
-      "done": true,
-      "projectId": "mr46dondjyea6",
-      "title": "写真レタッチ",
-      "category": "B"
-    },
-    {
-      "id": "mrewmmaaoehvj",
-      "done": false,
-      "projectId": "mr46dondjyea6",
-      "title": "スプレッドシートの整理",
-      "category": "C"
-    },
-    {
-      "id": "mrewnyskvh8d3",
-      "done": false,
-      "projectId": "mr46dondjyea6",
-      "title": "牛尾さんの保険料をどうするか",
-      "category": "B"
-    },
-    {
-      "id": "mrewogmorw5px",
-      "done": false,
-      "projectId": "mr46dondjyea6",
-      "title": "不動産の保険料どうするか",
-      "category": "B"
-    },
-    {
-      "id": "mrk9pgue1uvao",
-      "done": false,
-      "projectId": "mr46dondjz8wc",
-      "title": "次にやること（1つだけ） 什器を考える",
-      "category": "B"
-    },
-    {
-      "id": "mrk9tdzs1sgzp",
-      "done": true,
-      "projectId": "mr46dondfp0ib",
-      "title": "久米さん　スカイツリー修正",
-      "category": "B"
-    },
-    {
-      "id": "mrn0v2hncjg4a",
-      "done": false,
-      "projectId": "mr46dondjz8wc",
-      "title": "西船橋の催事",
       "category": "B"
     }
   ],
   "improvements": [
+    {
+      "id": "mr4g98umhl1ux",
+      "createdAt": 1783053903118,
+      "status": "open",
+      "projectId": "mr46dondjz8wc",
+      "idea": "カレンダーに催事スケジュールを取り込み",
+      "reason": "",
+      "urgency": "中",
+      "friday": true
+    },
     {
       "id": "mr4fomna69git",
       "createdAt": 1783052941222,
@@ -619,7 +545,7 @@
       "optionB": "1.5倍に増やす",
       "recommended": "B案（1.5倍）",
       "decisionNeeded": "増やす場合の上限予算の承認",
-      "status": "approved",
+      "status": "pending",
       "createdAt": 1783037314057
     }
   ],

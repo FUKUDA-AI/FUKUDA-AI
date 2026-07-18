@@ -35,7 +35,7 @@ import sys
 from datetime import datetime, date
 from pathlib import Path
 
-VERSION = "1.2"
+VERSION = "1.2.2"
 STATE = "Experimental"
 
 # Decision Metadata（FOS Operating Rule v1.2 §4。項目なし=null・推測で埋めない）
@@ -76,19 +76,22 @@ def build_records(fos, today):
         p = projects.get(pid, {})
         return p.get("name"), p.get("category"), p.get("scores", {})
 
-    # 1) tasks → TaskRecord
+    # 1) tasks → TaskRecord（v1.2.2: 【相談】プレフィックス=スタッフ相談扱い。
+    #    staffRequests配列はアプリUIに表示されないため、新規の相談はtasksに【相談】で書く運用（CEO決定 2026-07-11））
     for t in fos.get("tasks", []):
         pname, pcat, scores = project_of(t.get("projectId"))
+        is_consult = str(t.get("title") or "").startswith("【相談】") and not t.get("done")
         records.append({
             "record_id": f"FOS-task-{t['id']}",
             "source_type": "task",
             "title": t.get("title"),
-            "project": pname, "category": t.get("category") or pcat,
+            "project": pname, "category": "スタッフ相談" if is_consult else (t.get("category") or pcat),
             "status": "完了" if t.get("done") else "未完了",
-            "priority": scores.get("todayScore"),
+            "priority": 90 if is_consult else scores.get("todayScore"),  # 人を待たせない（憲法）
             "urgency": scores.get("urgency"),
             "due_date": None, "overdue": False,
-            "decision_candidate": needed_yes(t), "brief_candidate": not t.get("done"),
+            "consultation": is_consult,
+            "decision_candidate": is_consult or needed_yes(t), "brief_candidate": not t.get("done"),
             **dmeta(t),
         })
 
@@ -147,22 +150,23 @@ def build_records(fos, today):
             **dmeta(i),
         })
 
-    # 5) events → 期限つき予定 + 期限切れ検知
+    # 5) events → 期限つき予定 + 期限切れ検知（v1.2.1: done=trueは完了扱い・期限切れにしない）
     for e in fos.get("events", []):
         due = e.get("date")
-        overdue = bool(due and due < today)
+        done = bool(e.get("done"))
+        overdue = bool(due and due < today) and not done
         records.append({
             "record_id": f"FOS-evt-{e['id']}",
             "source_type": "event",
             "title": e.get("title"),
             "project": e.get("project"), "category": "予定",
-            "status": "期限切れ" if overdue else "予定",
-            "priority": 80 if overdue else 60,
+            "status": "完了" if done else ("期限切れ" if overdue else "予定"),
+            "priority": 10 if done else (80 if overdue else 60),
             "urgency": None,
             "due_date": f"{due} {e.get('time') or ''}".strip(),
             "overdue": overdue,
-            "decision_candidate": overdue or needed_yes(e),  # 期限切れ or decision_needed=YES
-            "brief_candidate": True,
+            "decision_candidate": (overdue or needed_yes(e)) and not done,
+            "brief_candidate": not done,
             **dmeta(e),
         })
 

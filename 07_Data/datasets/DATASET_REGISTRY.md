@@ -62,6 +62,31 @@ google_sheets / excel / csv / json / fos_json / **shopify / makeshop / hapilogi 
 2. 顧客情報・住所・電話番号・メール・決済情報を含むため **data_sensitivity=high / pii_level=high が原則**（参照はCEO確認後・個人特定禁止・PIIはImporterでフィルタ）
 3. Knowledge直行禁止: `Dataset → Connector → Importer → Data Layer → Learning Cycle`
 
+## 2-2. 催事スケジュール（DS-EVT-0002・Google Sheets・Planning Layer）【2026-07-11 CEO訂正で確定】
+
+**Google Sheets「18期 催事管理（2026年9月〜2027年9月）」**（公開CSV・認証不要・✅接続稼働中）。催事の予定管理（Planning Layer）= これから実施する仕事の正本。**日々更新されるため毎朝取込**（event_schedule_importer.py）。
+
+| 項目 | 内容 |
+|---|---|
+| 扱う情報 | ステータス（**出店決定** / プランA=先方と進行中 / プランB=営業中）・催事名・販売会社・会期・搬入/搬出日・売上日商/期間予算・備考 |
+| Morning Brief | **③ Event Status**の情報源（本日/明日/今週注意の搬入・会期開始・搬出）。**表示は「出店決定」のみ**（プランA/Bは件数のみ） |
+| Dashboard | **Today's Events / Upcoming Events**（出店決定のみ） |
+| Learning | **Planning中は対象外**。催事終了・実績確定（Airレジ/events照合）でResult化後のみ学習対象 |
+
+**旧記載の訂正**: Netlifyアプリ（https://sunuynomado-schedule.netlify.app/）は催事ではなく**企画スケジュール管理（商品企画・納品）= DS-PRD-0001**（draft・取得方法CEO確認待ち・商品企画AI担当）。
+
+**催事ライフサイクル**: `Planning（本Sheets）→ Execution → 催事終了・実績確定 → Result`
+
+**Event Learning Cycle（循環）**:
+```
+Planning → Execution → Result → Learning → 次回Planning（→循環）
+```
+1. **学習ルール**: Resultになった催事だけをLearning Cycleへ。学習時は 売上/利益/来場者数/商品構成/在庫/発注量/天候/会場/スタッフ数/作業時間 + Airレジ売上 + Shopify売上 + FOSの判断 + Result Layer を統合し、その催事の**Event Knowledge**を生成する
+2. **次回催事への利用**: 同じ会場・類似催事のPlanning生成**前に過去Resultを検索**し、前回の成功/失敗・搬入時間・商品構成・発注数量・売上・利益・作業負荷・改善点を参考にPlanningを提案する
+3. **最重要**: Morning Brief=「これからやる仕事」（Planning）/ Learning=「終わった仕事」（Result）。**両者を混在させない**
+
+**接続方法（調査結果 2026-07-11）**: ログイン式SPAのため静的取得不可。エクスポート機能（CSV/JSON）またはバックエンド種別（Firebase/GAS等）の**CEO確認後にactive化**（推測実装しない）。将来API連携できる構造でImporterを実装（受け口: 07_Data/event_planning/）。
+
 ## 3. AI Conversation Source（ChatGPT / Claude / Gemini・v1.0新設）
 
 ChatGPT・Gemini・Claudeの会話は**AI Conversation Source**として扱い、**すべて同じConversationRecord形式に正規化**する。どのAIで話しても、FUKUDA AIのLearning Cycleへ統合される。
