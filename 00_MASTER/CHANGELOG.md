@@ -8,6 +8,17 @@
 
 ## 2026-07-18
 
+### Result Layer v1.1 実装 — Result Recorder v1.1 / Architecture v1.4（実装）
+- **対象機能**: result_recorder.py **v1.1** / ceo_assistant.py（⏰にAction/Businessタグ）/ 00_MASTER/ARCHITECTURE.md **v1.4**
+- **変更内容**: Resultを2層化。**Action Result（ARES・実行の成否: 成功/失敗/延期/保留・実行直後判定）**と**Business Result（BRES・経営の成否: 成功/失敗/継続観察・review_after_days経過後）**を判断ごとに生成（相互リンク・expected引継ぎ）。Insight学習対象はBusiness Resultのみ（learning_ready）・Action Resultは実行率/運営/SOP用。index.jsonを action_due / business_due に分離（Brief⏰は[実行]/[経営]タグで表示）。**既存v1.0 Draft（RES-0001/0002）は不変**・legacy_readmap（ARES成功+BRES継続観察）で解釈。判定はCEOのみ・AIは推測しない（数値/要因/status はNone）。**Architecture v1.4 正式採用**（Result Layer 2層）。Insight Generator v1.1・Learning Cycle v2.0は後続（PENDING #7）
+- **テスト**: --check（trackable 2件=既存legacyのみ→重複生成0=冪等）/ 合成新規判断でARES(実行直後None)+BRES(14日後・expected=売上増加・learning_ready=false)・相互リンク・推測なし を確認。index分離・readmap生成OK
+- **担当**: CEO（判定・確定）/ AI（実装・テスト）
+
+### Brief v2.1 運用接続 — 今朝のBrief完成版 + ④へAirレジ売上接続
+- **① 実運用**: night_build実行→下書き→FUKUDA AI（LLM）が言語化した**2026-07-18の完成版Brief**を発行（06_Reports/morning_brief/2026-07-18.md）。判断0件の「静かな日」・一言=①一致・事実のみ
+- **② Airレジ接続**: ceo_assistant `read_airregi()` 追加。稼働中DS-POS-0001の**daily_sales gross_salesを④会社の状態に実数値表示**（1,090,658円 / 2026-05・税込割引の定義は未確定＝解釈しない・net未算出）。他6ソース（Shopify/MakeShop/Airペイ/FLAM/はぴロジ/logiec）は未接続のまま明示。二重計上回避（product_salesは合算しない）
+- **担当**: CEO（運用）/ AI（実装）
+
 ### Brief v2.1 実装Sprint 4 — 要約精度改善（CEO Assistant v2.1.1・実装）＝v2.1実装完了
 - **対象機能**: ceo_assistant.py **v2.1.1**（`company_attention()` 新設・④会社の状態の描画）
 - **変更内容**: ④会社の状態を「注意点の機械検出」へ強化。`company_attention()`が 期限切れ / 未入金・請求(未払・滞納・未回収) / スタッフ待ち・相談待ち / 催事搬入3日以内 / 結果確認の期限到来 / 未接続 を**根拠つき**で検出し level順（high=お金・期限 > mid=待ち・催事・結果 > low=未接続）に列挙 → LLMが1〜3行に要約する材料に。実質的な注意点が無ければ「会社は正常です」。**推測しない=データにある事実のみ**。未接続ソースの実数値化は各Connector接続時に順次（本Sprintは判定ルールの土台）

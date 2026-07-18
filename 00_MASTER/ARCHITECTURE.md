@@ -1,7 +1,7 @@
 # ARCHITECTURE — FUKUDA AI / NOMADO AI Operating System
 
-Architecture Version: **v1.3**（2026-07-06 正式採用・CEO承認）
-最終更新日: 2026-07-06
+Architecture Version: **v1.4**（2026-07-18 正式採用・CEO承認 — Result Layer 2層構造）
+最終更新日: 2026-07-18
 状態: Released
 
 > 本書はシステム全体の正式Architectureを定める唯一の文書である。
@@ -97,10 +97,10 @@ MemoryはKnowledgeを**複製せず**、以下だけを保持する。
 
 Decision Log起点の自動学習ルート（Decision Log → Insight → Pattern → Knowledge Draft → CEO Review → Released → Verified Candidate → Verified）を設計済み。詳細は [../09_Learning/LEARNING_CYCLE_V2.md](../09_Learning/LEARNING_CYCLE_V2.md)。Insight Generator v1.0 / Pattern Generator v1.0は先行実装済み。承認・実装時にArchitecture v1.4として正式採用する（それまで本書はv1.3のまま）。
 
-### Result Layer（v1.0実装済み・v1.1=2層構造を設計中）
+### Result Layer（v1.1実装済み・2層構造・Architecture v1.4で正式採用 2026-07-18）
 
-判断の**結果**から学ぶ層。v1.0（[../09_Learning/RESULT_LAYER_DESIGN.md](../09_Learning/RESULT_LAYER_DESIGN.md)）はResult Recorder v1.0として実装済み（2026-07-07・初号確定）。
-**v1.1（[../09_Learning/RESULT_LAYER_V11.md](../09_Learning/RESULT_LAYER_V11.md)・Sprint 15.3設計・CEOレビュー待ち）**: Resultを**Action Result（実行できたか: 成功/失敗/延期/保留）**と**Business Result（経営として成功か: 成功/失敗/継続観察）**の2層に分離。**Insight GeneratorはBusiness Resultのみ学習**・Action Resultは実行率分析/運営改善/SOP改善に利用。KnowledgeはDecision/Action Result/Business Resultの3種Evidenceを保持。**両Resultの確定はCEOのみ・AIは推測しない**。v1.4採用時にLearning Cycle v2.0と併せて正式化する。
+判断の**結果**から学ぶ層。v1.0はResult Recorder v1.0として実装（2026-07-07・初号確定）。
+**v1.1（[../09_Learning/RESULT_LAYER_V11.md](../09_Learning/RESULT_LAYER_V11.md)・Released 2026-07-18・Result Recorder v1.1実装済み）**: Resultを**Action Result（実行できたか: 成功/失敗/延期/保留・実行直後に判定）**と**Business Result（経営として成功か: 成功/失敗/継続観察・review_after_days経過後）**の2層に分離。**Insight GeneratorはBusiness Resultのみ学習**・Action Resultは実行率分析/運営改善/SOP改善に利用。KnowledgeはDecision/Action Result/Business Resultの3種Evidenceを保持。**両Resultの確定はCEOのみ・AIは推測しない**。既存v1.0記録（RES-xxxx）は不変・layer読み替え（readmap）で解釈。**Insight Generator v1.1（Business Resultのみ読む）とLearning Cycle v2.0は後続**（Learning Cycle v2.0はPENDING #7・別レビュー）。
 
 ## 6. SYSTEM_BOOT（起動ガイド=BIOS・v1.1設計 2026-07-07・Sprint 14.3/14.3.1）
 
@@ -128,3 +128,4 @@ CEOが毎朝最初に見る表示面。**Morning BriefはDashboardの一部**（
 | v1.0 | 2026-07-03 | 直列パイプライン（Development Standard §9） |
 | v1.2 | 2026-07-06 | Insight/Decision並列化・Pattern層・Lesson層・Evolving/Core分離・CEO Review Gate・Knowledge Draft/Released分離・フィードバックループ・AI Memory横断層・5層構造を正式採用（v1.1を経ず直接採用） |
 | v1.3 | 2026-07-06 | **Principle層をLessonとCEO Reviewの間に新設**（Lessonの抽象化 → 判断原則化）。CEO ReviewをEvolvingの前に配置（Principle承認後にEVOLVING登録、Core昇格はCEOのみ） |
+| v1.4 | 2026-07-18 | **Result Layer 2層構造を正式採用**（Result Layer v1.1・CEO承認）。Action Result（実行の成否）とBusiness Result（経営の成否）に分離し、Insight学習対象をBusiness Resultのみに限定。Result Recorder v1.1実装。Insight Generator v1.1・Learning Cycle v2.0は後続 |

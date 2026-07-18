@@ -2,8 +2,9 @@
   "meta": {
     "note": "Result Draft置き場。判定（成功/失敗/継続観察）はCEOのみ。CEO確認後に result_log.json へ確定する（AIは本体へ勝手に書かない）",
     "generator": "Result Recorder v1.0 [Experimental]",
-    "updated_at": "2026-07-18 10:43:01",
-    "total_drafts": 2
+    "updated_at": "2026-07-18 11:20:37",
+    "total_drafts": 2,
+    "schema": "v1.1（layer: action|business。legacy=layerなし=v1.0）"
   },
   "drafts": [
     {

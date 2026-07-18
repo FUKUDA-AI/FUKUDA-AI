@@ -78,7 +78,8 @@
 - **Brief v2.1 実装Sprint 1完了（2026-07-18）**: **FOS Rule v1.3 + fos_importer v1.3.0** — ai_ready属性（yes/no/null）新設・importer透過（推測しない）・ai_action_candidate（yes×未完了）付与・index.jsonにai_actions件数/records出力。テスト全合格（実データ0件・合成で透過/ガード確認・FOS不変）
 - **Brief v2.1 実装Sprint 2完了（2026-07-18）**: **ceo_assistant v2.1「Less is More」** — 「おはよう」起動・5ブロック（💬一言=①先頭一致/①判断原則1件/②FOS Review機械検出3件/③AI Actions=ai_ready連携/④会社状態要約）・条件付き表示（🚨緊急/🎪催事/⏰結果）・30行ガード・improvementを判断から除外。CEO_ASSISTANT.md v2.1（§2おはよう・§5新フォーマット）。テスト合格（実データ19行・合成21行でAI Actions/催事/分類描画確認・Brief実書込なしで検証）。**運用メモ: v2.1は毎朝 fos_importer→ceo_assistant の順（indexを最新化しないと期限切れ等が古いまま）。この自動化がNight Build**
 - **Brief v2.1 実装Sprint 3完了（2026-07-18）**: **Night Build v1.0** — night_build.py（取込→催事→Result→Dashboard→Brief下書きを順に実行・失敗継続・`_draft/`へ下書き+完了報告）+ ceo_assistant `--draft`（下書き専用・decision_draft非起票）+ 💬一言へ夜間サマリ（成功数/異常）反映。テスト5/5成功・一言に「夜間ビルド」反映・FOS不変。CEO_ASSISTANT.md §2にスケジュール(cron)手順。**運用: CEOのMacで `python3 night_build.py`（催事取込のネットワーク）・過渡期は手動/おはよう時生成でも可**。**次: 実装Sprint 4**
-- **Brief v2.1 実装Sprint 4完了（2026-07-18）＝v2.1実装完了**: **ceo_assistant v2.1.1** — ④会社の状態に `company_attention()`（期限切れ/未入金・請求/スタッフ待ち・相談/催事搬入3日以内/結果確認期限/未接続 を根拠つき・level順で検出→LLMが1-3行要約）。推測しない。テスト合格（実データでスタッフ待ち・結果確認検出／合成でhigh→mid→low順・14行・FOS不変）。**🎉 Brief v2.1 実装 全4Sprint（ai_ready→5ブロックBrief→Night Build→要約精度）完了**。次候補: 実運用（毎朝night_build→おはよう）で検証しながら、未接続Connector（Shopify/Airペイ等）を順次接続し④を実数値化、またはResult Layer v1.1実装（Architecture v1.4）へ
+- **Brief v2.1 実装Sprint 4完了（2026-07-18）＝v2.1実装完了**: **ceo_assistant v2.1.1** — ④会社の状態に `company_attention()`（期限切れ/未入金・請求/スタッフ待ち・相談/催事搬入3日以内/結果確認期限/未接続 を根拠つき・level順で検出→LLMが1-3行要約）。推測しない。テスト合格（実データでスタッフ待ち・結果確認検出／合成でhigh→mid→low順・14行・FOS不変）。**🎉 Brief v2.1 実装 全4Sprint（ai_ready→5ブロックBrief→Night Build→要約精度）完了**。次候補: 実運用（毎朝night_build→おはよう）で検証しながら、未接続Connector（Shopify/Airペイ等）を順次接続し④を実数値化
+- **追加実装（2026-07-18）3件**: ①**今朝のBrief完成版発行**（06_Reports/morning_brief/2026-07-18.md・night_build→言語化。判断0件の静かな日）②**Airレジ売上を④へ接続**（read_airregi・催事売上1,090,658円/2026-05を実数値表示・定義未確定は解釈しない・他6ソースは未接続明示）③**Result Layer v1.1実装＋Architecture v1.4**（result_recorder v1.1＝Action/Business 2層・既存RES-0001/0002は不変でreadmap解釈・index action_due/business_due分離・Brief⏰に実行/経営タグ・判定はCEOのみ）。**後続候補: Insight Generator v1.1（Business Resultのみ学習）/ 未接続Connector（Shopify/MakeShop/Airペイ…）の接続 / Learning Cycle v2.0（PENDING #7）**
 - **待ち状態**: ①FOS.html移設（CEO作業）②催事データ投入 ③Learning Cycle v2.0設計レビュー（PENDING #7・Result Layer v1.1実装と併せて採用予定）
 - **Phase 9進捗**: **CEO補佐AI v1.0定義済み（03_Agents/CEO_ASSISTANT.md・Morning Brief専用・FUKUDA AI初の稼働Agent）**。CEOが「Morning Brief」と言えば本定義に従い発行する。次: 催事AI・so u AI
 - **Phase 10進捗**: Data Source Design + CEO Morning Brief Design + **Connector Architecture**（すべてv1.0・2026-07-06）完成。**Morning Brief v1.1は手動運用で即開始可**（CEOが「Morning Brief」と言えば発行）
@@ -103,6 +104,10 @@
 | Dashboard Generator | v1.1 | Experimental（Airレジ売上をToday's/Dataset Statusへ接続） |
 | Insight Generator | v1.0 | Experimental（09_Learning/insights/・Draft10件） |
 | AI Memory Layer | v1.0 | Released |
+| Architecture | v1.4 | Released（Result Layer 2層構造・2026-07-18） |
+| Result Recorder | v1.1 | Experimental（Action/Business 2層・legacy readmap） |
+| CEO Assistant | v2.1.1 | Experimental（Brief v2.1「Less is More」・おはよう・Night Build・④注意点+Airレジ） |
+| Night Build | v1.0 | Experimental（夜間パイプライン・下書き・完了報告） |
 | Architecture | v1.3 | Released（Principle層新設） |
 | NOMADO AI OS | **v1.0.0** | **Released（2026-07-06・Gitタグ）** |
 | Architecture | v1.2 | Released（ARCHITECTURE.md） |

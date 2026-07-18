@@ -1,24 +1,39 @@
 {
   "meta": {
-    "generator": "Result Recorder v1.0 [Experimental]",
-    "generated_at": "2026-07-18 10:43:01",
-    "note": "Brief『結果確認待ち』の参照元。判定はCEOのみ"
+    "generator": "Result Recorder v1.1 [Experimental]",
+    "generated_at": "2026-07-18 11:20:37",
+    "note": "Brief『結果確認待ち』の参照元（v1.1・Action/Business分離）。判定はCEOのみ"
   },
   "summary": {
     "drafts_total": 2,
-    "pending_ceo_review": 1,
-    "check_due_now": 1,
+    "action_pending": 0,
+    "business_pending": 0,
+    "action_due_now": 0,
+    "business_due_now": 0,
+    "legacy_v10": 2,
     "confirmed_results": 2
   },
-  "check_due": [
+  "action_due": [],
+  "business_due": [],
+  "check_due": [],
+  "legacy_readmap": [
     {
-      "result_id": "RES-0001",
+      "legacy_id": "RES-0001",
       "判断": "工場打ち合わせ",
-      "判断日": "2026-07-07",
-      "確認予定日": "未設定（実行済み=確認可）",
-      "expected_result": null,
-      "decision_type_main": null,
-      "decision_importance": null
+      "interpret": {
+        "action_result": "成功（実行済み）",
+        "business_result": "継続観察（経営結果は要確認）"
+      },
+      "note": "v1.0記録のlayer読み替え（確定はCEO・既存レコードは不変）"
+    },
+    {
+      "legacy_id": "RES-0002",
+      "判断": "催事 搬入の最終確認",
+      "interpret": {
+        "action_result": "成功（実行済み）",
+        "business_result": "継続観察（経営結果は要確認）"
+      },
+      "note": "v1.0記録のlayer読み替え（確定はCEO・既存レコードは不変）"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "date": "2026-07-18",
-  "generated_at": "2026-07-18 10:43:01",
+  "generated_at": "2026-07-18 11:14:04",
   "version": "1.0",
   "ok": 5,
   "total": 5,
@@ -35,7 +35,7 @@
       "script": "dashboard_generator.py",
       "status": "ok",
       "returncode": 0,
-      "summary": "Dashboard発行: /sessions/rcw-01namrfacnw9ejdg6i9hcbcg/mnt/FUKUDA AI/06_Reports/dashboard/2026-07-18_2.md",
+      "summary": "Dashboard発行: /sessions/rcw-01namrfacnw9ejdg6i9hcbcg/mnt/FUKUDA AI/06_Reports/dashboard/2026-07-18_3.md",
       "error": ""
     },
     {

@@ -138,6 +138,30 @@ def read_fos():
     }
 
 
+def read_airregi():
+    """Airレジ Reader（稼働中 DS-POS-0001）— 07_Data/airregi/index.json（読み取りのみ・Sprint接続②）。
+    daily_salesのgross_salesを機械集計（net未算出・product_salesは内訳=二重計上回避のため合算しない）。
+    sales_definition=unknownのため税込/割引の解釈はしない（注記つき）。未取込はNone。"""
+    p = BASE_DIR / "07_Data" / "airregi" / "index.json"
+    if not p.exists():
+        return None
+    try:
+        idx = json.load(open(p, encoding="utf-8"))
+    except Exception:
+        return None
+    recs = idx.get("records", [])
+    if not recs:
+        return None
+    daily = [r for r in recs if r.get("dataset_type") == "daily_sales"]
+    gross = sum((r.get("gross_sales") or 0) for r in daily)
+    starts = [r.get("business_date") or r.get("period_start") for r in recs if (r.get("business_date") or r.get("period_start"))]
+    ends = [r.get("period_end") or r.get("business_date") for r in recs if (r.get("period_end") or r.get("business_date"))]
+    return {"records": len(recs),
+            "period": (f"{min(starts)}〜{max(ends)}" if starts and ends else "?"),
+            "gross_sales": gross,
+            "last_import": idx.get("meta", {}).get("generated_at")}
+
+
 IMPORTANCE_DEFAULT_REVIEW = {"S": 30, "A": 14, "B": 7}  # C=原則なし（FOS Rule §4-5）
 
 
@@ -434,6 +458,9 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
     else:
         lines.append("<!-- LLM: 実質的な注意点なし→「会社は正常です」を1行。数値の羅列は書かない -->")
     lines.append("（機械ヒント・注意点: " + ("／".join(f"[{a['観点']}]{a['text']}" for a in att[:5]) if att else "なし") + "）")
+    ag = materials.get("airregi")
+    if ag:  # v2.1.1 接続②: 稼働中Airレジ売上（実数値・定義未確定は解釈しない）
+        lines.append(f"（接続済み・Airレジ催事売上: {ag['gross_sales']:,}円 / {ag['period']}・税込/割引の定義は未確定＝解釈しない。他はDashboard）")
     lines.append("")
 
     # 条件付き表示（出す条件があるときだけ現れる）
@@ -444,9 +471,16 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
     if due:
         lines += ["## ⏰ 結果確認待ち（判定はCEOのみ）", ""]
         for d in due:
+            layer = d.get("layer")  # v1.1: Action=実行の成否 / Business=経営の成否
+            if layer == "action":
+                tag, opts = "実行", "[ 成功 / 失敗 / 延期 / 保留 ]"
+            elif layer == "business":
+                tag, opts = "経営", "[ 成功 / 失敗 / 継続観察 ]"
+            else:
+                tag, opts = "-", "[ 成功 / 失敗 / 継続観察 ]"
             lines.append(
-                f"- {d.get('判断')}（確認予定 {d.get('確認予定日') or '-'}）: "
-                f"expected={d.get('expected_result') or '未入力'} / actual=______ / [ 成功 / 失敗 / 継続観察 ]")
+                f"- [{tag}] {d.get('判断')}（確認予定 {d.get('確認予定日') or '-'}）: "
+                f"expected={d.get('expected_result') or '未入力'} / actual=______ / {opts}")
         lines.append("")
 
     # footer
@@ -545,6 +579,7 @@ def main():
         "company_hints": company_hints(fos, es, due, today),
         "event_today": events_today(es, today),
         "result_check_due": due,
+        "airregi": read_airregi(),          # 接続②: 稼働中Airレジ売上を④へ
         "night": read_night_build(today),   # Sprint3: 夜間ビルド完了報告（あれば💬一言の材料）
     }
     if draft_mode:
