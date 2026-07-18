@@ -8,6 +8,14 @@
 
 ## 2026-07-18
 
+### Brief v2.1 実装Sprint 2 — CEO Assistant v2.1「Less is More」（実装）
+- **対象機能**: ceo_assistant.py **v2.1** / 03_Agents/CEO_ASSISTANT.md（§2「おはよう」起動・§5 v2.1フォーマット・変更履歴）
+- **変更内容**: Briefを5ブロックへ再構成 — 💬AIから一言（①先頭と一致）/ ①今日の判断（**原則1件**・S複数or期限切れ時のみ最大3件=`select_v21`）/ ②AIからの提案（`fos_review`＝完了忘れ・重複・待ちを機械検出・最大3件・提案のみFOS不変）/ ③AI Actions（fos_importer v1.3の`ai_action_candidate`=ai_ready=yesを掲載・最大5件・承認制）/ ④会社の状態（1〜3行要約ヒント）。条件付き表示: 🚨緊急（発生時のみ最上部）/ 🎪催事（昨日本日のみ）/ ⏰結果確認待ち（期限到来のみ）。**Briefから削除**: 今日やらないこと / AI開発案件 / 次に決めること / Event常設表（→Dashboard・ログ・条件付き＝隠す勇気）。30行ガード（本文行数を出力・超過警告）。improvementを今日の判断から除外（`brief_candidate=False`尊重）
+- **テスト**: ①実データ=v2.1生成・改善アイデアが判断から除外され判断0件（正）・期限切れ0（fos_importer再実行でindex最新化＝v1.2.3反映）・削除セクション消滅・本文19行 ②合成=実判断のみ選定(improvement除外)・AI Actions 2件掲載・🎪催事条件付き表示・FOS Review掲載・①分類済みで⚠なし・21行 全合格。**Brief実ファイルは書かず生成関数を捕捉して検証（リポジトリ非汚染）**
+- **不変**: 推測禁止・FOS書換禁止・AI実行はDraft/取込/生成まで・書込ホワイトリスト3か所
+- **次**: 実装Sprint 3 = Night Build（夜間パイプライン・前夜Brief下書き＝「朝には完成している」）。毎朝 fos_importer→ceo_assistant の順序自動化を含む
+- **担当**: CEO（承認・運用）/ AI（実装・テスト）
+
 ### Brief v2.1 実装Sprint 1 — FOS Rule v1.3 + FOS Importer v1.3（ai_ready・実装）
 - **対象機能**: FOS/README.md（v1.2→**v1.3**・§4-6 ai_ready追加・入力テンプレート15項目化）/ fos_importer.py **v1.3.0**
 - **変更内容**: FOS **ai_ready属性**（yes/no/null）を新設し、importerがTaskRecordへ**透過**（未入力=null=推測しない）。ai_ready=yes かつ未完了 → **ai_action_candidate=True**（Brief §③ AI Actions候補）。index.jsonへ ai_actions件数 + ai_action_records を出力（ceo_assistant v2.1がSprint 2で参照）。入力はCEO/スタッフ・**AIは提案のみで確定しない**。AI実行はDraft/取込/生成/整理まで（送信・支払・発注・FOS変更・Knowledge released化はCEOのみ・不変）

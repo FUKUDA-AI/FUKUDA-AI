@@ -1,0 +1,648 @@
+{
+  "projects": [
+    {
+      "category": "WEB・ブランド",
+      "scores": {
+        "urgency": 43,
+        "mentalPressure": 35,
+        "thoughtTemperature": 30,
+        "revenueImpact": 55,
+        "futureValue": 77,
+        "onlyMe": 61,
+        "delegation": 25,
+        "dependency": 20,
+        "todayScore": 60
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondday89",
+      "name": "SUNNY NOMADO",
+      "status": "進行中",
+      "stopReason": "糸見本が来ない",
+      "nextAction": "ニット帽のソリッドカラー",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "ブランド",
+      "scores": {
+        "urgency": 30,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 40,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondwu6ce",
+      "name": "so u",
+      "status": "保留",
+      "stopReason": "コスト",
+      "nextAction": "広告再スタート",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "営業・運営",
+      "scores": {
+        "urgency": 97,
+        "mentalPressure": 74,
+        "thoughtTemperature": 30,
+        "revenueImpact": 97,
+        "futureValue": 40,
+        "onlyMe": 66,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": 1783071518382,
+      "id": "mr46dondjz8wc",
+      "name": "催事",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "JRアプリに承諾",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "もっとコンパクトで台車に乗るように",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": 1783071518382
+      }
+    },
+    {
+      "category": "受託",
+      "scores": {
+        "urgency": 94,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 79,
+        "futureValue": 81,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondfp0ib",
+      "name": "外部デザイン",
+      "status": "今日止まる",
+      "stopReason": "",
+      "nextAction": "ポンチョの写真さがし",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "オペレーション",
+      "scores": {
+        "urgency": 30,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 40,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondzko8l",
+      "name": "物流設計",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "物流倉庫と新事務所の什器内訳",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "財務",
+      "scores": {
+        "urgency": 78,
+        "mentalPressure": 85,
+        "thoughtTemperature": 30,
+        "revenueImpact": 30,
+        "futureValue": 30,
+        "onlyMe": 75,
+        "delegation": 20,
+        "dependency": 10,
+        "todayScore": 82
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondz5tq0",
+      "name": "銀行・資金繰り",
+      "status": "スタッフ待ち",
+      "stopReason": "マイナンバーカードの証明書暗証番号をリセット",
+      "nextAction": "中小企業省力化投資補助事業（一般型）",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "構想",
+      "scores": {
+        "urgency": 66,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 88,
+        "onlyMe": 88,
+        "delegation": 7,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dond4jec6",
+      "name": "福田AI",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "AIを効率よく育てるには",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "構想",
+      "scores": {
+        "urgency": 94,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 71,
+        "onlyMe": 73,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondjyea6",
+      "name": "業務",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "引っ越しするか否か",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "生産",
+      "scores": {
+        "urgency": 30,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 40,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondnotc7",
+      "name": "工場",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "原価表",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "集客",
+      "scores": {
+        "urgency": 30,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 40,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr46dondkjqjd",
+      "name": "WEB・広告",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "",
+      "scores": {
+        "urgency": 30,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 40,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr4mlpf0tryg2",
+      "name": "金鮨",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "AIのレポートの読み込み",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    },
+    {
+      "category": "",
+      "scores": {
+        "urgency": 30,
+        "mentalPressure": 30,
+        "thoughtTemperature": 30,
+        "revenueImpact": 40,
+        "futureValue": 40,
+        "onlyMe": 50,
+        "delegation": 30,
+        "dependency": 20,
+        "todayScore": 30
+      },
+      "lastDeepAt": null,
+      "id": "mr7r24zf3a7j6",
+      "name": "卸販売",
+      "status": "進行中",
+      "stopReason": "",
+      "nextAction": "ヒューマンフォーラムPOP UPの返信",
+      "waitingOther": "",
+      "staffHandoff": "",
+      "improvementMemo": "",
+      "thought": {
+        "last": "",
+        "next": "",
+        "why": "",
+        "firstStep": "",
+        "related": "",
+        "undecided": "",
+        "updatedAt": null
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "mr49ac35o782w",
+      "done": false,
+      "projectId": "mr46dondnotc7",
+      "title": "cab預かり金",
+      "category": "C"
+    },
+    {
+      "id": "mr4d8edrxrgns",
+      "done": true,
+      "projectId": "mr46dondnotc7",
+      "title": "原価表",
+      "category": "C"
+    },
+    {
+      "id": "mr4evhe55zmdu",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "フシジロくんロゴ",
+      "category": "B"
+    },
+    {
+      "id": "mr4evrxr5woho",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "久米さん　スカイツリー",
+      "category": "B"
+    },
+    {
+      "id": "mr4evypf47oyr",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "久米さん　カワサキ",
+      "category": "C"
+    },
+    {
+      "id": "mr4f24smpi5kd",
+      "done": false,
+      "projectId": "mr46dondzko8l",
+      "title": "渡辺さんに車手配",
+      "category": "C"
+    },
+    {
+      "id": "mr4f2iph48dko",
+      "done": false,
+      "projectId": "mr46dondzko8l",
+      "title": "渡辺さんと話したことをまとめる",
+      "category": "C"
+    },
+    {
+      "id": "mr4f4vdkdsxa6",
+      "done": false,
+      "projectId": "mr46dondwu6ce",
+      "title": "ネックレスのパッケージと台座",
+      "category": "C"
+    },
+    {
+      "id": "mr4f5611y6jt6",
+      "done": false,
+      "projectId": "mr46dondwu6ce",
+      "title": "治具のスタート",
+      "category": "C"
+    },
+    {
+      "id": "mr4fbsz2ufpfr",
+      "done": true,
+      "projectId": "mr46dondjyea6",
+      "title": "スプレッドシートの整理",
+      "category": "C"
+    },
+    {
+      "id": "mr4mfklninqr2",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "太陽のアメフトの発注",
+      "category": "A"
+    },
+    {
+      "id": "mr4mh3av7h6w1",
+      "done": false,
+      "projectId": "mr46dondday89",
+      "title": "企画スケジュール作成",
+      "category": "C"
+    },
+    {
+      "id": "mr4qmr9dtelpf",
+      "done": false,
+      "projectId": "mr46dondz5tq0",
+      "title": "日本政策金融公庫にアプローチ",
+      "category": "C"
+    },
+    {
+      "id": "mr4qooc2i5q52",
+      "done": true,
+      "projectId": "mr46dondjz8wc",
+      "title": "クリスマスギフト",
+      "category": "B"
+    },
+    {
+      "id": "mr4qowd7t9a2d",
+      "done": true,
+      "projectId": "mr46dondjz8wc",
+      "title": "什器を考える",
+      "category": "B"
+    },
+    {
+      "id": "mr4qpxg6ehiw3",
+      "done": false,
+      "projectId": "mr46dondjz8wc",
+      "title": "クリスマスギフト",
+      "category": "C"
+    },
+    {
+      "id": "mr5pekh4alqge",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "フシジロくんロゴ",
+      "category": "B"
+    },
+    {
+      "id": "mr8ihklirjnve",
+      "done": true,
+      "projectId": "mr7r24zf3a7j6",
+      "title": "オージェイズの未入金",
+      "category": "B"
+    },
+    {
+      "id": "mrbbtben8r3kl",
+      "done": true,
+      "projectId": "mr7r24zf3a7j6",
+      "title": "ヒューマンフォーラムPOP UPの返信",
+      "category": "C"
+    },
+    {
+      "id": "mrbd9c7u6kbl4",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "仏壇カタログ",
+      "category": "C"
+    },
+    {
+      "id": "mrbd9p1nt8rpv",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "ポンチョの写真さがし",
+      "category": "C"
+    },
+    {
+      "id": "mrctmiqsy1e0c",
+      "done": true,
+      "projectId": "mr46dondjyea6",
+      "title": "ヒューマンフォーラムのお礼",
+      "category": "A"
+    },
+    {
+      "id": "mrctmqpw1uacx",
+      "done": true,
+      "projectId": "mr46dondjyea6",
+      "title": "松本さんお礼",
+      "category": "A"
+    },
+    {
+      "id": "mrctqojtkvs7z",
+      "done": true,
+      "projectId": "mr46dondjyea6",
+      "title": "写真レタッチ",
+      "category": "B"
+    },
+    {
+      "id": "mrewmmaaoehvj",
+      "done": false,
+      "projectId": "mr46dondjyea6",
+      "title": "スプレッドシートの整理",
+      "category": "C"
+    },
+    {
+      "id": "mrewnyskvh8d3",
+      "done": false,
+      "projectId": "mr46dondjyea6",
+      "title": "牛尾さんの保険料をどうするか",
+      "category": "B"
+    },
+    {
+      "id": "mrewogmorw5px",
+      "done": false,
+      "projectId": "mr46dondjyea6",
+      "title": "不動産の保険料どうするか",
+      "category": "B"
+    },
+    {
+      "id": "mrk9pgue1uvao",
+      "done": false,
+      "projectId": "mr46dondjz8wc",
+      "title": "次にやること（1つだけ） 什器を考える",
+      "category": "B"
+    },
+    {
+      "id": "mrk9tdzs1sgzp",
+      "done": true,
+      "projectId": "mr46dondfp0ib",
+      "title": "久米さん　スカイツリー修正",
+      "category": "B"
+    },
+    {
+      "id": "mrn0v2hncjg4a",
+      "done": false,
+      "projectId": "mr46dondjz8wc",
+      "title": "西船橋の催事",
+      "category": "B"
+    }
+  ],
+  "improvements": [
+    {
+      "id": "mr4fomna69git",
+      "createdAt": 1783052941222,
+      "status": "open",
+      "projectId": "mr46dondday89",
+      "idea": "発送袋のプリント入り",
+      "reason": "発送料金とプリント手間で秋冬に対応できなそう",
+      "urgency": "中",
+      "friday": true
+    }
+  ],
+  "staffRequests": [
+    {
+      "id": "mr46dond1fwam",
+      "projectName": "so u",
+      "problem": "再入荷の数量を決めたい",
+      "staffProposal": "前回完売したので1.5倍で発注したい",
+      "optionA": "前回と同数で安全に",
+      "optionB": "1.5倍に増やす",
+      "recommended": "B案（1.5倍）",
+      "decisionNeeded": "増やす場合の上限予算の承認",
+      "status": "approved",
+      "createdAt": 1783037314057
+    }
+  ],
+  "chatImports": [],
+  "learningLogs": [],
+  "events": [
+    {
+      "id": "mr46dond3enyc",
+      "date": "2026-07-03",
+      "time": "10:00",
+      "title": "工場打ち合わせ",
+      "project": "工場",
+      "raw": "",
+      "createdAt": 1783037314057
+    },
+    {
+      "id": "mr46dond8tbo7",
+      "date": "2026-07-03",
+      "time": "15:00",
+      "title": "催事 搬入の最終確認",
+      "project": "催事",
+      "raw": "",
+      "createdAt": 1783037314057
+    }
+  ]
+}

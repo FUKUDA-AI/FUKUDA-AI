@@ -1,28 +1,29 @@
 {
   "meta": {
-    "generator": "FOS Importer v1.2.2 [Experimental]",
-    "generated_at": "2026-07-17 09:27:31",
+    "generator": "FOS Importer v1.3.0 [Experimental]",
+    "generated_at": "2026-07-18 10:18:01",
     "source": "FOS/FOS-data.json（正本・読み取り専用）",
-    "content_hash": "f6cfe5369403",
+    "content_hash": "5ea12342ca0a",
     "note": "Morning Brief・Agent参照用。Knowledge直行禁止。タスク操作はCEO確認後のみ",
-    "total": 45
+    "total": 44
   },
   "summary": {
     "by_type": {
-      "staff_request": 1,
       "task": 30,
       "next_action": 11,
-      "event": 2,
-      "improvement": 1
+      "improvement": 1,
+      "event": 2
     },
-    "decision_candidates": 4,
-    "overdue": 2,
+    "decision_candidates": 1,
+    "overdue": 0,
+    "ai_actions": 0,
+    "ai_action_records": [],
     "decision_metadata": {
       "by_importance": {
-        "未設定": 4
+        "未設定": 1
       },
       "by_type_main": {
-        "未分類": 4
+        "未分類": 1
       },
       "result_check_due": []
     },
@@ -46,40 +47,12 @@
       ]
     },
     "pending_sync": {
-      "fos_decision_candidates": 4,
-      "pending_overlap_estimate": 4,
+      "fos_decision_candidates": 1,
+      "pending_overlap_estimate": 1,
       "note": "FOS=CEO操作面 / PENDING=AI記録面。差分の取り込みはBrief経由でCEO確認後のみ"
     }
   },
   "records": [
-    {
-      "record_id": "FOS-req-mr46dond1fwam",
-      "source_type": "staff_request",
-      "title": "【要判断】so u: 増やす場合の上限予算の承認",
-      "project": "so u",
-      "category": "スタッフ相談",
-      "status": "approved",
-      "priority": 90,
-      "urgency": 90,
-      "due_date": null,
-      "overdue": false,
-      "decision_candidate": true,
-      "brief_candidate": true,
-      "options": {
-        "A": "前回と同数で安全に",
-        "B": "1.5倍に増やす",
-        "スタッフ推奨": "B案（1.5倍）",
-        "提案": "前回完売したので1.5倍で発注したい"
-      },
-      "decision_needed": null,
-      "decision_type_main": null,
-      "decision_type_sub": null,
-      "decision_importance": null,
-      "expected_result": null,
-      "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
-    },
     {
       "record_id": "FOS-task-mr4qmr9dtelpf",
       "source_type": "task",
@@ -94,14 +67,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondz5tq0",
@@ -118,58 +93,16 @@
       "brief_candidate": false,
       "stop_reason": "マイナンバーカードの証明書暗証番号をリセット",
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
-    },
-    {
-      "record_id": "FOS-evt-mr46dond3enyc",
-      "source_type": "event",
-      "title": "工場打ち合わせ",
-      "project": "工場",
-      "category": "予定",
-      "status": "期限切れ",
-      "priority": 80,
-      "urgency": null,
-      "due_date": "2026-07-03 10:00",
-      "overdue": true,
-      "decision_candidate": true,
-      "brief_candidate": true,
-      "decision_needed": null,
-      "decision_type_main": null,
-      "decision_type_sub": null,
-      "decision_importance": null,
-      "expected_result": null,
-      "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
-    },
-    {
-      "record_id": "FOS-evt-mr46dond8tbo7",
-      "source_type": "event",
-      "title": "催事 搬入の最終確認",
-      "project": "催事",
-      "category": "予定",
-      "status": "期限切れ",
-      "priority": 80,
-      "urgency": null,
-      "due_date": "2026-07-03 15:00",
-      "overdue": true,
-      "decision_candidate": true,
-      "brief_candidate": true,
-      "decision_needed": null,
-      "decision_type_main": null,
-      "decision_type_sub": null,
-      "decision_importance": null,
-      "expected_result": null,
-      "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4mh3av7h6w1",
@@ -185,14 +118,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondday89",
@@ -207,16 +142,18 @@
       "overdue": false,
       "decision_candidate": false,
       "brief_candidate": true,
-      "stop_reason": null,
+      "stop_reason": "糸見本が来ない",
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr49ac35o782w",
@@ -232,14 +169,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4d8edrxrgns",
@@ -255,14 +194,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4evhe55zmdu",
@@ -278,14 +219,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4evrxr5woho",
@@ -301,14 +244,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4evypf47oyr",
@@ -324,14 +269,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4f24smpi5kd",
@@ -347,14 +294,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4f2iph48dko",
@@ -370,14 +319,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4f4vdkdsxa6",
@@ -393,14 +344,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4f5611y6jt6",
@@ -416,14 +369,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4fbsz2ufpfr",
@@ -439,14 +394,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4mfklninqr2",
@@ -462,14 +419,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4qooc2i5q52",
@@ -485,14 +444,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4qowd7t9a2d",
@@ -508,14 +469,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr4qpxg6ehiw3",
@@ -531,14 +494,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr5pekh4alqge",
@@ -554,14 +519,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mr8ihklirjnve",
@@ -577,14 +544,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrbbtben8r3kl",
@@ -600,14 +569,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrbd9c7u6kbl4",
@@ -623,14 +594,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrbd9p1nt8rpv",
@@ -638,22 +611,24 @@
       "title": "ポンチョの写真さがし",
       "project": "外部デザイン",
       "category": "C",
-      "status": "未完了",
+      "status": "完了",
       "priority": 30,
       "urgency": 94,
       "due_date": null,
       "overdue": false,
       "consultation": false,
       "decision_candidate": false,
-      "brief_candidate": true,
+      "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrctmiqsy1e0c",
@@ -669,14 +644,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrctmqpw1uacx",
@@ -692,14 +669,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrctqojtkvs7z",
@@ -715,14 +694,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrewmmaaoehvj",
@@ -738,14 +719,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrewnyskvh8d3",
@@ -761,14 +744,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrewogmorw5px",
@@ -784,14 +769,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrk9pgue1uvao",
@@ -807,14 +794,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrk9tdzs1sgzp",
@@ -830,14 +819,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": false,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-task-mrn0v2hncjg4a",
@@ -853,14 +844,16 @@
       "consultation": false,
       "decision_candidate": false,
       "brief_candidate": true,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondwu6ce",
@@ -877,14 +870,16 @@
       "brief_candidate": false,
       "stop_reason": "コスト",
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondjz8wc",
@@ -901,19 +896,21 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondfp0ib",
       "source_type": "next_action",
-      "title": "外部デザイン: 久米さん　スカイツリー修正",
+      "title": "外部デザイン: ポンチョの写真さがし",
       "project": "外部デザイン",
       "category": "受託",
       "status": "今日止まる",
@@ -925,14 +922,16 @@
       "brief_candidate": false,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondzko8l",
@@ -949,14 +948,16 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dond4jec6",
@@ -973,19 +974,21 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondjyea6",
       "source_type": "next_action",
-      "title": "業務: 定款探し",
+      "title": "業務: 引っ越しするか否か",
       "project": "業務",
       "category": "構想",
       "status": "進行中",
@@ -997,14 +1000,16 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr46dondnotc7",
@@ -1021,14 +1026,16 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr4mlpf0tryg2",
@@ -1045,14 +1052,16 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-next-mr7r24zf3a7j6",
@@ -1069,14 +1078,16 @@
       "brief_candidate": true,
       "stop_reason": null,
       "waiting_other": null,
+      "ai_ready": null,
+      "ai_action_candidate": false,
       "decision_needed": null,
       "decision_type_main": null,
       "decision_type_sub": null,
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     },
     {
       "record_id": "FOS-imp-mr4fomna69git",
@@ -1098,8 +1109,52 @@
       "decision_importance": null,
       "expected_result": null,
       "review_after_days": null,
-      "imported_at": "2026-07-17 09:27:31",
-      "importer_version": "v1.2.2"
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
+    },
+    {
+      "record_id": "FOS-evt-mr46dond3enyc",
+      "source_type": "event",
+      "title": "工場打ち合わせ",
+      "project": "工場",
+      "category": "予定",
+      "status": "完了",
+      "priority": 10,
+      "urgency": null,
+      "due_date": "2026-07-03 10:00",
+      "overdue": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
+    },
+    {
+      "record_id": "FOS-evt-mr46dond8tbo7",
+      "source_type": "event",
+      "title": "催事 搬入の最終確認",
+      "project": "催事",
+      "category": "予定",
+      "status": "完了",
+      "priority": 10,
+      "urgency": null,
+      "due_date": "2026-07-03 15:00",
+      "overdue": false,
+      "decision_candidate": false,
+      "brief_candidate": false,
+      "decision_needed": null,
+      "decision_type_main": null,
+      "decision_type_sub": null,
+      "decision_importance": null,
+      "expected_result": null,
+      "review_after_days": null,
+      "imported_at": "2026-07-18 10:18:01",
+      "importer_version": "v1.3.0"
     }
   ]
 }

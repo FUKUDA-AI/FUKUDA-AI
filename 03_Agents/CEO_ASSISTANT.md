@@ -22,8 +22,9 @@ v1.0での唯一の仕事は **CEO Morning Briefの生成**。CEOがその日に
 
 ## 2. 起動条件
 
-- CEOが「Morning Brief」と言ったとき（v1.0は手動起動）
-- 将来: 毎朝の自動実行（v2.0・スケジュール化）
+- **CEOが「おはよう」と言ったとき（v2.1・主）** = CEO Operating Morning Brief 起動。「Morning Brief」も従来どおり有効
+- 起動時の内部処理: ⓪夜間作業の集計（あれば一言に吸収）→ ②FOSレビュー（提案生成）→ 💬一言+①〜④のBrief発行（v2.1・5ブロック）
+- 将来: 夜間パイプライン（Night Build・Sprint 3）で前夜に下書き生成 →「おはよう」時は表示+当朝差分のみ（「朝には完成している」）
 
 ## 3. 参照するもの（この順に読む・これ以外を判断根拠にしない）
 
@@ -65,20 +66,26 @@ Morning Briefは次の順で生成する: **1) FOS（会社の判断）→ 2) Ev
 5. **検査**: 憲法・CORE・EPとの整合を確認（値引き・煽り・推測が紛れていないか。AI_CHARTER第1〜8条）
 6. **発行**: `06_Reports/morning_brief/YYYY-MM-DD.md` として保存しCEOへ提示
 
-## 5. 出力フォーマット（5セクション）
+## 5. 出力フォーマット（v2.1「Less is More」・5ブロック + 条件付き）
+
+正本は [../06_Reports/CEO_MORNING_BRIEF_V21.md](../06_Reports/CEO_MORNING_BRIEF_V21.md)（Released 2026-07-18）。評価基準は**「CEOが5分で今日の判断を終えられるか」**の一つ。**7項目上限・30行以内・判断は原則1件**。
 
 ```markdown
-# CEO Morning Brief — YYYY-MM-DD
+# CEO Operating Brief — YYYY-MM-DD（第N号）
 
-## 🔴 今日の判断（最大3件）
-1. 【領域】判断してほしいこと（1行）
-   推奨: ○○（理由/効果/リスク/手順） 根拠: EP-xxx, KN-xxx
-   CEO: [ 承認 / 却下 / 保留 ] ______
-## ⛔ 今日やらないこと（落選案件と理由）
-## 📋 レビュー待ち（件数+最優先1件）
-## ⏭ 次に決めること（近づいている判断）
-## 📝 Decision Log Draft（昨日の判断の記録案 → CEO承認で確定）
+（🚨 緊急 … 発生時のみ最上部）
+
+## 💬 AIから一言        3-5行。挨拶→今日の中心判断（①先頭と必ず一致）→理由一言
+## ① 今日の判断（原則1件）  1件（S複数・期限切れ時のみ最大3件）。推奨5行以内・CEO記入欄
+## ② AIからの提案         FOS Review・最大3件（完了忘れ/重複/順番/待ち/AIでできる/今日やらなくてよい）。提案のみ・FOS不変
+## ③ AI Actions          ai_ready=yes のタスク・最大5件。CEO承認→AI実行（Draft/取込/生成まで）
+## ④ 会社の状態           1-3行要約（数字を並べない・詳細はDashboard）
+
+（🎪 催事 … 昨日/本日に催事があった日のみ）
+（⏰ 結果確認待ち … review_after_days到来のみ・判定はCEO）
 ```
+
+**Briefから削除（v2.1・→Dashboard/ログ/条件付きへ・情報は消えない）**: 今日やらないこと / レビュー待ち / 次に決めること / AI System / Event常設表。**隠すのは表示であり記録ではない**（「詳しく」と言えばAIがいつでも出す）。Decision Log Draftは裏で起票し、Briefには載せない（footerに一言）。
 
 ## 6. 書き込み先（これ以外への書き込み禁止）
 
@@ -124,3 +131,4 @@ Morning Briefは次の順で生成する: **1) FOS（会社の判断）→ 2) Ev
 |---|---|---|
 | 2026-07-06 | v1.0 | 初版作成（Morning Brief専用Agent定義。設計のみ・コードなし） |
 | 2026-07-06 | v1.1 | ceo_assistant.py実装（ハイブリッド方式・書込ホワイトリスト・追記型保存・decision_log_draft.json分離）。第2号Briefで実運用テスト合格 |
+| 2026-07-18 | v2.1 | **Brief v2.1「Less is More」実装（Sprint 2）** — 「おはよう」起動・5ブロック（💬一言/①判断1件/②FOS Review 3件/③AI Actions/④会社状態要約）・条件付き表示（催事/Result/緊急）・30行ガード。今日やらないこと/レビュー待ち/次に決めること/AI System/Event常設表をBriefから削除（Dashboard・ログ・条件付きへ）。fos_importer v1.3のai_action_candidateを③に接続。ceo_assistant.py v2.1 |
