@@ -6,6 +6,16 @@
 
 ---
 
+## 2026-07-19
+
+### 「おはよう」＝起動兼用 + 開発現在地1行（A案・CEO決定・実装）
+- **対象機能**: ceo_assistant.py（`read_dev_status()`・Brief footerに開発現在地1行）/ 03_Agents/CEO_ASSISTANT.md §2
+- **変更内容**: 「おはよう」はBrief生成前にMemory/原則を読む＝**実質的な起動を含む**ことを明文化。Brief本体は判断のみ（Less is More）に保ち、末尾に **🧭 開発現在地: Version / Phase / Mode** の1行だけ添える（CURRENT_STATEのVersion管理表から機械抽出）。フルの現在地report（Sprint・未決・次候補）は「SYSTEM_BOOT で起動」で使い分け
+- **テスト**: read_dev_status＝v1.0.0 / Phase 7・9・10 / Mode Implementation を抽出・footerに1行・本文13行。合格
+- **担当**: CEO（決定）/ AI（実装）
+
+---
+
 ## 2026-07-18
 
 ### Result Layer v1.1 実装 — Result Recorder v1.1 / Architecture v1.4（実装）

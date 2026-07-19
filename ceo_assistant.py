@@ -106,6 +106,22 @@ def read_memory():
     return out
 
 
+def read_dev_status():
+    """「おはよう」末尾の開発現在地1行（A案 2026-07-19）。CURRENT_STATEのVersion管理表から
+    Version/Phase/Mode を抽出（開発情報はBrief本体に出さず1行だけ・詳細はSYSTEM_BOOT起動）。無ければNone。"""
+    p = MEMORY_DIR / "CURRENT_STATE.md"
+    if not p.exists():
+        return None
+    text = p.read_text(encoding="utf-8")
+    m_ver = re.search(r"Current Version.*?(v\d+\.\d+(?:\.\d+)?)", text)
+    m_phase = re.search(r"Current Phase\s*\|\s*(.+?)\s*\|", text)
+    m_mode = re.search(r"Current Mode\*{0,2}\s*\|\s*\*{0,2}([A-Za-z]+)", text)
+    nums = re.findall(r"\d+", m_phase.group(1)) if m_phase else []
+    return {"version": m_ver.group(1) if m_ver else "?",
+            "phase": ("Phase " + "・".join(nums)) if nums else "?",
+            "mode": m_mode.group(1) if m_mode else "?"}
+
+
 def read_event_schedule():
     """Event Schedule Reader（v1.6）— 07_Data/event_schedule/index.json。未取込はNone（推測しない）。"""
     p = BASE_DIR / "07_Data" / "event_schedule" / "index.json"
@@ -485,8 +501,11 @@ def generate_brief(materials, selected, dropped, path: Path, brief_no: str):
 
     # footer
     content_lines = len([l for l in lines if l.strip()])
+    dev = materials.get("dev_status")
+    lines += ["---"]
+    if dev:  # A案: 「おはよう」に開発現在地を1行だけ添える（詳細はSYSTEM_BOOT起動）
+        lines.append(f"🧭 開発現在地: {dev['version']} / {dev['phase']} / Mode {dev['mode']}（開発の続きは「SYSTEM_BOOT で起動」）")
     lines += [
-        "---",
         "*会社の詳細（売上・Dataset・Learning）はDashboard、AI開発はAI開発レポート、選外・レビュー待ちは各ログへ（情報は消えていません）。*",
         f"*発行: CEO Assistant v{VERSION} [{STATE}]（{materials['now']}）+ FUKUDA AI（言語化）。本文{content_lines}行（目安30行以内）。実行系の提案はありません。*",
     ]
@@ -581,6 +600,7 @@ def main():
         "result_check_due": due,
         "airregi": read_airregi(),          # 接続②: 稼働中Airレジ売上を④へ
         "night": read_night_build(today),   # Sprint3: 夜間ビルド完了報告（あれば💬一言の材料）
+        "dev_status": read_dev_status(),    # A案: 「おはよう」末尾の開発現在地1行
     }
     if draft_mode:
         path = draft_path(today)

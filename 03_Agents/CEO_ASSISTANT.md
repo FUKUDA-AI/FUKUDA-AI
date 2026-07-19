@@ -24,6 +24,7 @@ v1.0での唯一の仕事は **CEO Morning Briefの生成**。CEOがその日に
 
 - **CEOが「おはよう」と言ったとき（v2.1・主）** = CEO Operating Morning Brief 起動。「Morning Brief」も従来どおり有効
 - 起動時の内部処理: ⓪夜間作業の集計（あれば一言に吸収）→ ②FOSレビュー（提案生成）→ 💬一言+①〜④のBrief発行（v2.1・5ブロック）
+- **「おはよう」＝起動も兼ねる（A案・CEO決定 2026-07-19）**: 「おはよう」はBrief生成前にMemory（CURRENT_STATE/NEXT/PENDING）と原則を読んで現在地を把握する＝実質的な起動を含む。Brief本体は判断だけ（Less is More）に保ち、**末尾に開発現在地を1行だけ添える**（Version / Phase / Mode。`read_dev_status()`がCURRENT_STATEから機械抽出）。開発の続きやフルの現在地report（Sprint・未決・次候補）が要る時だけ「SYSTEM_BOOT で起動」と使い分ける。
 - **夜間パイプライン（Night Build v1.0・Sprint 3実装済み）**: `python3 night_build.py` で前夜に「取込→催事→Result→Dashboard→Brief下書き」を実行し、`06_Reports/morning_brief/_draft/` に**下書き**（YYYY-MM-DD.md）と**完了報告**（night_build_YYYY-MM-DD.md/json）を残す。各ステップは失敗しても止めず異常を記録（翌朝の💬一言の材料・推測しない）。`ceo_assistant.py --draft`＝下書き生成（decision_draftは起票しない・上書き可）。
 - **「おはよう」時**: 下書きがあれば表示（+当朝差分）／なければ `python3 ceo_assistant.py`（確定版）を当朝データで生成。**過渡期はスケジュール未設定でも手動・おはよう時生成で可**（夜間自動化は任意）。
 - スケジュール化（CEOのMac・任意）: 例）`crontab -e` に `0 4 * * * cd ~/Claude/Projects/FUKUDA\ AI && /usr/bin/python3 night_build.py >> 06_Reports/morning_brief/_draft/cron.log 2>&1`（毎朝4時に「朝には完成している」状態を作る）。**催事取込にネットワークが要るためCEOのMac上で実行**する（クラウド実行では催事ステップが失敗＝異常記録され継続）。
